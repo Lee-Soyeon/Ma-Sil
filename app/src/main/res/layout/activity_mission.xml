@@ -1,9 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_mission_root_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="?attr/actionBarSize"
+    android:orientation="vertical"
     tools:context=".MissionActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/activity_mission_display_1_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/noto_sans"
+        android:gravity="center"
+        android:text="@string/mission_activity_display_1"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activity_mission_display_2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans"
+        android:gravity="center"
+        android:text="@string/mission_activity_display_2"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:id="@+id/activity_mission_progress_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/activity_mission_progress_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            android:paddingTop="24dp">
+
+            <ProgressBar
+                android:id="@+id/activity_mission_progressbar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="10"
+                android:progressTint="@color/green" />
+
+            <TextView
+                android:id="@+id/activity_mission_goaltime_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:gravity="right"
+                android:text="@string/Min"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_mission_currentpos_linearlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/activity_mission_currentpos_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_directions_walk_black_24" />
+
+            <TextView
+                android:id="@+id/activity_mission_currentpos_time_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Min"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_mission_state_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/activity_mission_state_vertical1_linearlayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_mission_averagepace_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/AveragePace" />
+
+            <TextView
+                android:id="@+id/activity_mission_averagepace_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Mph"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/activity_mission_calories_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Calories" />
+
+            <TextView
+                android:id="@+id/activity_mission_calories_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Kcal"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_mission_state_vertical2_linearlayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_mission_distance_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Distance" />
+
+            <TextView
+                android:id="@+id/activity_mission_distance_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Mile"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/activity_mission_time_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/Time" />
+
+            <TextView
+                android:id="@+id/activity_mission_time_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:text="00:00"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_mission_button_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/activity_mission_playing_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="48dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/activity_mission_map_linearlayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/activity_mission_map_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/graycirclebutton"
+                    android:src="@drawable/ic_map_black_24"
+                    android:text="Button" />
+
+                <TextView
+                    android:id="@+id/activity_mission_map_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/Map"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/activity_mission_pause_button"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/blackcirclebutton"
+                android:src="@drawable/ic_pause_black_24"
+                android:tint="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/activity_mission_camera_linearlayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/activity_mission_camera_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/graycirclebutton"
+                    android:src="@drawable/ic_photo_camera_black_24"
+                    android:text="Button" />
+
+                <TextView
+                    android:id="@+id/activity_mission_camera_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/Camera"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_mission_stop_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageButton
+                android:id="@+id/activity_mission_stop_button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/blackcirclebutton"
+                android:src="@drawable/ic_baseline_stop_24"
+                android:text="Button"
+                android:tint="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/activity_mission_continue_button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/greencirclebutton"
+                android:src="@drawable/ic_play_arrow_black_24"
+                android:text="Button"
+                android:tint="#FFFFFF" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -7,6 +7,21 @@
     <string name="title_neighborhood">우리동네</string>
     <string name="title_information">내정보</string>
 
+    <!-- Comman String -->
+    <string name="AM">오전</string>
+    <string name="PM">오후</string>
+    <string name="Temperature">온도</string>
+    <string name="Min">분</string>
+    <string name="Mile">마일</string>
+    <string name="Kcal">칼로리</string>
+    <string name="Mph">시속</string>
+    <string name="Map">지도</string>
+    <string name="Camera">카메라</string>
+    <string name="Distance">보행 거리</string>
+    <string name="Calories">소모 칼로리</string>
+    <string name="Time">진행 시간</string>
+    <string name="AveragePace">평균 보행속도</string>
+
     <!-- Mission Fragment String -->
     <string name="mission_mission_1">첫번째 도전</string>
     <string name="mission_mission_2">두번째 도전</string>
@@ -20,4 +35,17 @@
     <string name="mission_normal">보통</string>
     <string name="mission_hard">어려움</string>
     <string name="mission_start">시작하기</string>
+
+    <!-- Mission Start Dialog String -->
+    <string name="start_display_1">준비운동은 하셨나요?</string>
+    <string name="start_display_2">날씨가 쌀쌀하니,</string>
+    <string name="start_display_3">따뜻하게 입고 나가세요!</string>
+    <string name="start_ok">확인했어요</string>
+
+    <!-- Map Activity String -->
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Mission Activity String -->
+    <string name="mission_activity_display_1">힘내세요!</string>
+    <string name="mission_activity_display_2">첫번째 도전 중이에요!</string>
 </resources>

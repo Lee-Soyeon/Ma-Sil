@@ -7,6 +7,21 @@
     <string name="title_neighborhood">Neighborhood</string>
     <string name="title_information">Information</string>
 
+    <!-- Comman String -->
+    <string name="AM">AM</string>
+    <string name="PM">PM</string>
+    <string name="Temperature">Temperature</string>
+    <string name="Min">Min</string>
+    <string name="Mile">Mile</string>
+    <string name="Kcal">Kcal</string>
+    <string name="Mph">Mph</string>
+    <string name="Map">Map</string>
+    <string name="Camera">Camera</string>
+    <string name="Distance">Distance</string>
+    <string name="Calories">Calories</string>
+    <string name="Time">Time</string>
+    <string name="AveragePace">AveragePace</string>
+
     <!-- Mission Fragment String -->
     <string name="mission_mission_1">First Mission</string>
     <string name="mission_mission_2">Second Mission</string>
@@ -20,5 +35,17 @@
     <string name="mission_normal">Normal</string>
     <string name="mission_hard">Hard</string>
     <string name="mission_start">START</string>
+
+    <!-- Mission Start Dialog String -->
+    <string name="start_display_1">Did you stretch first?</string>
+    <string name="start_display_2">Take another layer,</string>
+    <string name="start_display_3">Its cold outside!</string>
+    <string name="start_ok">Yes, I did.</string>
+
+    <!-- Map Activity String -->
     <string name="title_activity_maps">Map</string>
+
+    <!-- Mission Activity String -->
+    <string name="mission_activity_display_1">Beginning</string>
+    <string name="mission_activity_display_2">the first mission!</string>
 </resources>
