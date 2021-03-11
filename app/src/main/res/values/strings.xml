@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Title String -->
     <string name="app_name">SilverWalk</string>
     <string name="title_mission">Mission</string>
     <string name="title_achievement">Achievement</string>
     <string name="title_neighborhood">Neighborhood</string>
     <string name="title_information">Information</string>
+
+    <!-- Mission Fragment String -->
+    <string name="mission_mission_1">First Mission</string>
+    <string name="mission_mission_2">Second Mission</string>
+    <string name="mission_mission_3">Third Mission</string>
+    <string name="mission_mission_4">Fourth Mission</string>
+    <string name="mission_mission_5">Fifth Mission</string>
+    <string name="mission_display_1">How about</string>
+    <string name="mission_display_2">%d-minute walk</string>
+    <string name="mission_display_3">In %s?</string>
+    <string name="mission_easy">Easy</string>
+    <string name="mission_normal">Normal</string>
+    <string name="mission_hard">Hard</string>
+    <string name="mission_start">START</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

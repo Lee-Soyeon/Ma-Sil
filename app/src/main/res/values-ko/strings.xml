@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Title String -->
     <string name="app_name">실버워크</string>
     <string name="title_mission">도전과제</string>
     <string name="title_achievement">지난기록</string>
     <string name="title_neighborhood">우리동네</string>
     <string name="title_information">내정보</string>
+
+    <!-- Mission Fragment String -->
+    <string name="mission_mission_1">첫번째 도전</string>
+    <string name="mission_mission_2">두번째 도전</string>
+    <string name="mission_mission_3">세번재 도전</string>
+    <string name="mission_mission_4">네번째 도전</string>
+    <string name="mission_mission_5">다섯번째 도전</string>
+    <string name="mission_display_1">%s</string>
+    <string name="mission_display_2">가서 %d분</string>
+    <string name="mission_display_3">산책 어떠세요?</string>
+    <string name="mission_easy">쉬움</string>
+    <string name="mission_normal">보통</string>
+    <string name="mission_hard">어려움</string>
+    <string name="mission_start">시작하기</string>
 </resources>
