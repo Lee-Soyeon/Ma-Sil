@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SilverWalk</string>
+    <string name="title_mission">Mission</string>
+    <string name="title_achievement">Achievement</string>
+    <string name="title_neighborhood">Neighborhood</string>
+    <string name="title_information">Information</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_mission"
+        android:icon="@drawable/ic_view_carousel_black_24"
+        android:title="@string/title_mission" />
+
+    <item
+        android:id="@+id/navigation_achievement"
+        android:icon="@drawable/ic_bar_chart_black_24"
+        android:title="@string/title_achievement" />
+
+    <item
+        android:id="@+id/navigation_neighborhood"
+        android:icon="@drawable/ic_location_city_black_24"
+        android:title="@string/title_neighborhood" />
+
+    <item
+        android:id="@+id/navigation_information"
+        android:icon="@drawable/ic_person_black_24"
+        android:title="@string/title_information" />
+
+</menu>
