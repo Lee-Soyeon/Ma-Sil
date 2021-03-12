@@ -25,8 +25,8 @@
 
     <fragment
         android:id="@+id/navigation_information"
-        android:name="com.gsc.silverwalk.ui.neighborhood.NeighborhoodFragment"
+        android:name="com.gsc.silverwalk.ui.information.InformationFragment"
         android:label="@string/title_information"
-        tools:layout="@layout/fragment_neighborhood" />
+        tools:layout="@layout/fragment_information" />
 
 </navigation>

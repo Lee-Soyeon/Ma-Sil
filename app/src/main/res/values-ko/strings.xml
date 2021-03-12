@@ -21,6 +21,24 @@
     <string name="Calories">소모 칼로리</string>
     <string name="Time">진행 시간</string>
     <string name="AveragePace">평균 보행속도</string>
+    <string name="Steps">걸음 수</string>
+    <string name="StepsCount">보</string>
+    <string name="HeartRate">심박수</string>
+    <string name="BPM">(분당심박)</string>
+    <string name="Today">오늘</string>
+    <string name="Weekly">이번주</string>
+    <string name="Monthly">이번달</string>
+    <string name="Yearly">올해</string>
+    <string name="Easy">쉬움</string>
+    <string name="Moderate">보통</string>
+    <string name="Hard">어려움</string>
+    <string name="Men">남자</string>
+    <string name="Women">여자</string>
+    <string name="s50">50대</string>
+    <string name="s60">60대</string>
+    <string name="s70">70대</string>
+    <string name="Sir">님</string>
+    <string name="Badge">뱃지</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_mission_1">첫번째 도전</string>
@@ -36,6 +54,10 @@
     <string name="mission_hard">어려움</string>
     <string name="mission_start">시작하기</string>
 
+    <!-- Achievement Fragment String -->
+    <string name="achievement_display_1">오늘의 도전 기록</string>
+    <string name="achievement_display_2">지난 기록</string>
+
     <!-- Mission Start Dialog String -->
     <string name="start_display_1">준비운동은 하셨나요?</string>
     <string name="start_display_2">날씨가 쌀쌀하니,</string>
@@ -48,4 +70,55 @@
     <!-- Mission Activity String -->
     <string name="mission_activity_display_1">힘내세요!</string>
     <string name="mission_activity_display_2">첫번째 도전 중이에요!</string>
+
+    <!-- History Activity String -->
+    <string name="history_activity_display_1">History</string>
+    <string name="history_activity_display_2">%s 산책</string>
+    <string name="history_activity_display_3">총 %d 명이</string>
+    <string name="history_activity_display_4">도전을 성공했어요!</string>
+    <string name="history_activity_display_5">이 미션은</string>
+    <string name="history_activity_display_6">%s 에서 오늘 하신</string>
+    <string name="history_activity_display_7">미션이에요!</string>
+
+    <!-- Information Activity String -->
+    <string name="information_activity_badge_1_text_1">우리 동네</string>
+    <string name="information_activity_badge_1_text_2">운동짱</string>
+    <string name="information_activity_badge_2_text_1">우리 동네</string>
+    <string name="information_activity_badge_2_text_2">산책왕</string>
+    <string name="information_activity_badge_3_text_1">매일의</string>
+    <string name="information_activity_badge_3_text_2">성실왕</string>
+    <string name="information_activity_badge_4_text_1">바른 자세</string>
+    <string name="information_activity_badge_4_text_2">지킴이</string>
+    <string name="information_activity_badge_5_text_1">규칙적인</string>
+    <string name="information_activity_badge_5_text_2">실천왕</string>
+    <string name="information_activity_badge_6_text_1">사진기록</string>
+    <string name="information_activity_badge_6_text_2">인증왕</string>
+    <string name="information_activity_badge_7_text_1">우리 동네</string>
+    <string name="information_activity_badge_7_text_2">공유왕</string>
+    <string name="information_activity_badge_8_text_1">도전</string>
+    <string name="information_activity_badge_8_text_2">100개 달성</string>
+
+    <!-- Finish Mission Activity String -->
+    <string name="finish_mission_activity_display_1_text">대단해요!</string>
+    <string name="finish_mission_activity_display_2_text">오늘의 첫번째 도전을</string>
+    <string name="finish_mission_activity_display_3_text">성공했어요!</string>
+    <string name="finish_mission_activity_button_1_text">도전 마치기</string>
+    <string name="finish_mission_activity_button_2_text">산책로 공유</string>
+
+    <!-- Share Activity String -->
+    <string name="share_activity_display_1">산책로와</string>
+    <string name="share_activity_display_2">사진을 공유할까요?</string>
+    <string name="share_activity_title_1">내용</string>
+    <string name="share_activity_title_2">오늘의 산책로</string>
+    <string name="share_activity_title_3">내가 찍은 사진들</string>
+    <string name="share_activity_button_1">아니요</string>
+    <string name="share_activity_button_2">네</string>
+    <string name="share_activity_edit_label">내용을 한줄로 입력해주세요</string>
+
+    <!-- Cancle Dialog String -->
+    <string name="cancle_dialog_display_1">정말로</string>
+    <string name="cancle_dialog_display_2">취소하시겠어요?</string>
+    <string name="cancle_dialog_button_1">취소할게요</string>
+    <string name="cancle_dialog_button_2">잘못 눌렀어요</string>
+
 </resources>

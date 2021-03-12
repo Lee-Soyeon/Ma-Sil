@@ -21,6 +21,24 @@
     <string name="Calories">Calories</string>
     <string name="Time">Time</string>
     <string name="AveragePace">AveragePace</string>
+    <string name="Steps">Steps</string>
+    <string name="StepsCount">Steps</string>
+    <string name="HeartRate">Heart Rate</string>
+    <string name="BPM">BPM</string>
+    <string name="Today">Today</string>
+    <string name="Weekly">Weekly</string>
+    <string name="Monthly">Monthly</string>
+    <string name="Yearly">Yearly</string>
+    <string name="Easy">Easy</string>
+    <string name="Moderate">Moderate</string>
+    <string name="Hard">Hard</string>
+    <string name="Men">Men</string>
+    <string name="Women">Women</string>
+    <string name="s50">50s</string>
+    <string name="s60">60s</string>
+    <string name="s70">70s</string>
+    <string name="Sir">Sir</string>
+    <string name="Badge">Badge</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_mission_1">First Mission</string>
@@ -36,6 +54,10 @@
     <string name="mission_hard">Hard</string>
     <string name="mission_start">START</string>
 
+    <!-- Achievement Fragment String -->
+    <string name="achievement_display_1">Achievement</string>
+    <string name="achievement_display_2">History</string>
+
     <!-- Mission Start Dialog String -->
     <string name="start_display_1">Did you stretch first?</string>
     <string name="start_display_2">Take another layer,</string>
@@ -48,4 +70,55 @@
     <!-- Mission Activity String -->
     <string name="mission_activity_display_1">Beginning</string>
     <string name="mission_activity_display_2">the first mission!</string>
+
+    <!-- History Activity String -->
+    <string name="history_activity_display_1">History</string>
+    <string name="history_activity_display_2">%s Walk</string>
+    <string name="history_activity_display_3">%d people</string>
+    <string name="history_activity_display_4">also completed</string>
+    <string name="history_activity_display_5">this mission</string>
+    <string name="history_activity_display_6">in %s</string>
+    <string name="history_activity_display_7">today</string>
+
+    <!-- Information Activity String -->
+    <string name="information_activity_badge_1_text_1">Neighborhood</string>
+    <string name="information_activity_badge_1_text_2">Best Walker</string>
+    <string name="information_activity_badge_2_text_1">Hero of</string>
+    <string name="information_activity_badge_2_text_2">Neighborhood</string>
+    <string name="information_activity_badge_3_text_1">Persistency</string>
+    <string name="information_activity_badge_3_text_2">Hero</string>
+    <string name="information_activity_badge_4_text_1">Excelient</string>
+    <string name="information_activity_badge_4_text_2">Posture</string>
+    <string name="information_activity_badge_5_text_1">Regular</string>
+    <string name="information_activity_badge_5_text_2">Routines</string>
+    <string name="information_activity_badge_6_text_1">Photographer</string>
+    <string name="information_activity_badge_6_text_2"> </string>
+    <string name="information_activity_badge_7_text_1">Sharing</string>
+    <string name="information_activity_badge_7_text_2">Hero</string>
+    <string name="information_activity_badge_8_text_1">100 Missions</string>
+    <string name="information_activity_badge_8_text_2">Completed</string>
+
+    <!-- Finish Mission Activity String -->
+    <string name="finish_mission_activity_display_1_text">Great!</string>
+    <string name="finish_mission_activity_display_2_text">You completed</string>
+    <string name="finish_mission_activity_display_3_text">the first mission!</string>
+    <string name="finish_mission_activity_button_1_text">End</string>
+    <string name="finish_mission_activity_button_2_text">Share</string>
+
+    <!-- Share Activity String -->
+    <string name="share_activity_display_1">Share your route</string>
+    <string name="share_activity_display_2">with neighbors</string>
+    <string name="share_activity_title_1">Post</string>
+    <string name="share_activity_title_2">Route of The Day</string>
+    <string name="share_activity_title_3">My Photos</string>
+    <string name="share_activity_button_1">Cancel</string>
+    <string name="share_activity_button_2">Done</string>
+    <string name="share_activity_edit_label">Please write a caption.</string>
+
+    <!-- Cancle Dialog String -->
+    <string name="cancle_dialog_display_1">Are you sure</string>
+    <string name="cancle_dialog_display_2">you want to quit?</string>
+    <string name="cancle_dialog_button_1">Yes, I want to quit</string>
+    <string name="cancle_dialog_button_2">No, resume the mission.</string>
+
 </resources>

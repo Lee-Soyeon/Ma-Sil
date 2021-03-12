@@ -64,7 +64,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/dialog_start_display_1_textview"
+        android:id="@+id/mission_cancle_dialog_display_1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -96,7 +96,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/dialog_start_ok_button"
+        android:id="@+id/mission_cancle_dialog_cnacle_button"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"

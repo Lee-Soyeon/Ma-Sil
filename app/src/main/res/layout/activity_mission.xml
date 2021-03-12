@@ -5,7 +5,6 @@
     android:id="@+id/activity_mission_root_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="?attr/actionBarSize"
     android:orientation="vertical"
     tools:context=".MissionActivity">
 
