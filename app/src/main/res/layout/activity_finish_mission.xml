@@ -170,7 +170,7 @@
         <Button
             android:id="@+id/activity_finish_end_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="bottom"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="4dp"
@@ -180,12 +180,12 @@
             android:fontFamily="@font/noto_sans"
             android:text="@string/finish_mission_activity_button_1_text"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/activity_finish_share_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="bottom"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="16dp"
@@ -195,6 +195,6 @@
             android:fontFamily="@font/noto_sans"
             android:text="@string/finish_mission_activity_button_2_text"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 </LinearLayout>
