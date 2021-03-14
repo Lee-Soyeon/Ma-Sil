@@ -46,9 +46,9 @@
     <string name="mission_mission_3">세번재 도전</string>
     <string name="mission_mission_4">네번째 도전</string>
     <string name="mission_mission_5">다섯번째 도전</string>
-    <string name="mission_display_1">%s</string>
-    <string name="mission_display_2">가서 %d분</string>
-    <string name="mission_display_3">산책 어떠세요?</string>
+    <string name="mission_display_1">(%location) 가서 (\n)</string>
+    <string name="mission_display_2">(%time) 분 동안 (\n)</string>
+    <string name="mission_display_3">(%type) 어떠세요?</string>
     <string name="mission_easy">쉬움</string>
     <string name="mission_normal">보통</string>
     <string name="mission_hard">어려움</string>
