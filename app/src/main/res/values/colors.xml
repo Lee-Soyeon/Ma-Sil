@@ -3,6 +3,11 @@
     <color name="gray_c">#C4C4C4</color>
     <color name="gray_e">#EBEBEB</color>
     <color name="green">#2ED098</color>
+    <color name="light_green">#E3F3E9</color>
+    <color name="green_text">#29A954</color>
+    <color name="black_text">#666C7D</color>
+    <color name="google_key_color">#4E77FB</color>
+    <color name="blue">#00B8D4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

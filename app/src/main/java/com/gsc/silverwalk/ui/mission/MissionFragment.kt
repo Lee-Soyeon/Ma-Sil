@@ -4,8 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +30,6 @@ class MissionFragment : Fragment() {
     private val MissionLevelStringArray : Array<Int> = arrayOf(
         R.string.Easy, R.string.Moderate, R.string.Hard
     )
-    private lateinit var missionLevelCardView : Array<CardView>
 
     // Dialog Parameter
     private lateinit var dialogBuilder : AlertDialog.Builder
@@ -38,7 +39,7 @@ class MissionFragment : Fragment() {
 
     // Today Mission Data
     private var missionDataList : MutableList<Map<String,Any>> = mutableListOf()
-    private var backGroundImageURL : List<String> = listOf()
+    private var LocationImageDataList : MutableList<Map<String,Any>> = mutableListOf()
 
     // UID
     private val UID = "X5NztOqVUgGPT84WmSiK"
@@ -55,13 +56,6 @@ class MissionFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // MissionLevelCardView Init
-        missionLevelCardView = arrayOf(
-            mission_level1_cardview, mission_level2_cardview,
-            mission_level3_cardview, mission_level4_cardview,
-            mission_level5_cardview
-        )
 
         // Init Dialog Configuration
         dialogBuilder = AlertDialog.Builder(context)
@@ -87,6 +81,7 @@ class MissionFragment : Fragment() {
             currentMissionIndex =
                 if (currentMissionIndex == 0) (missionDataList.size - 1)
                 else currentMissionIndex - 1
+
             setMissionParameterByCurrentMissionIndex()
         })
 
@@ -95,6 +90,7 @@ class MissionFragment : Fragment() {
             currentMissionIndex =
                 if (currentMissionIndex == (missionDataList.size - 1)) 0
                 else currentMissionIndex + 1
+
             setMissionParameterByCurrentMissionIndex()
         })
 
@@ -114,7 +110,12 @@ class MissionFragment : Fragment() {
                     missionDataList.add(document.data)
                 }
 
+                // Set TodayMission
                 setMissionParameterByCurrentMissionIndex()
+
+                // Disable ProgressBar
+                mission_progressBar.visibility = View.INVISIBLE
+                mission_linearlayout.visibility = View.VISIBLE
             }
             .addOnFailureListener { exception ->
                 Log.d("FireStore Error", "get failed with ", exception)
@@ -122,6 +123,11 @@ class MissionFragment : Fragment() {
     }
 
     fun setMissionParameterByCurrentMissionIndex(){
+
+        missionImageProgressVisiblity(View.VISIBLE,View.INVISIBLE)
+
+        // mission_index_text
+        mission_info_index_text.setText((currentMissionIndex + 1).toString() + "/5")
 
         // Set mission string
         var mission_string =
@@ -151,15 +157,18 @@ class MissionFragment : Fragment() {
             .get()
             .addOnSuccessListener { querySnapshot ->
                 if(!querySnapshot.isEmpty){
-                    backGroundImageURL =
-                        querySnapshot.documents.get(0).data?.get("image_paths") as List<String>
+                    querySnapshot.documents[0].reference.collection("images").get()
+                        .addOnSuccessListener { imagesSnapshot ->
+                            LocationImageDataList.clear()
+                            for(doc in imagesSnapshot){
+                                LocationImageDataList.add(doc.data)
+                            }
 
-                    FirebaseStorage.getInstance().getReferenceFromUrl(backGroundImageURL[0])
-                        .downloadUrl.addOnSuccessListener { uri ->
-                            Glide.with(this).load(uri).into(mission_background)
+                            changeImage(0)
                         }
                         .addOnFailureListener { exception ->
-                            Log.d("Fire Storage Failed","get failed with ", exception)
+                            Log.d("Fire Store Failed",
+                                    "get failed with " , exception)
                         }
                 }else{
                     // mission_background.setImageURI("DefaultImageURL")
@@ -168,5 +177,41 @@ class MissionFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.d("FireStore Failed", "get failed with ", exception)
             }
+    }
+
+    fun changeImage(index : Int) {
+        FirebaseStorage.getInstance()
+                .getReferenceFromUrl(
+                        LocationImageDataList[index].get("image_path").toString())
+                .downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(this).load(uri).into(mission_background)
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Fire Storage Failed","get failed with ", exception)
+                }
+
+        FirebaseStorage.getInstance()
+                .getReferenceFromUrl(
+                        LocationImageDataList[index].get("user_thumbnail_path").toString())
+                .downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(this).load(uri).into(mission_image_user_info_image)
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Fire Storage Failed","get failed with ", exception)
+                }
+
+        mission_image_user_info_text.setText(
+                LocationImageDataList[index].get("user_name").toString())
+
+        Handler().postDelayed(
+                {
+                    missionImageProgressVisiblity(View.INVISIBLE,View.VISIBLE)
+                }, 1000)
+    }
+
+    fun missionImageProgressVisiblity(progressVisiblity : Int, imageVisiblity : Int) {
+        mission_image_progressBar.visibility = progressVisiblity
+        mission_background.visibility = imageVisiblity
+        mission_image_user_info_linearlayout.visibility = imageVisiblity
     }
 }

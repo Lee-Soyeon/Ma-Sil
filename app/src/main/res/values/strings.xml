@@ -41,18 +41,13 @@
     <string name="Badge">Badge</string>
 
     <!-- Mission Fragment String -->
-    <string name="mission_mission_1">First Mission</string>
-    <string name="mission_mission_2">Second Mission</string>
-    <string name="mission_mission_3">Third Mission</string>
-    <string name="mission_mission_4">Fourth Mission</string>
-    <string name="mission_mission_5">Fifth Mission</string>
     <string name="mission_display_1">How about (%type) (%tab)</string>
     <string name="mission_display_2">for (%time) min (%tab)</string>
     <string name="mission_display_3">At (%location)?</string>
     <string name="mission_easy">Easy</string>
     <string name="mission_normal">Normal</string>
     <string name="mission_hard">Hard</string>
-    <string name="mission_start">START</string>
+    <string name="mission_start">Start</string>
 
     <!-- Achievement Fragment String -->
     <string name="achievement_display_1">Achievement</string>
