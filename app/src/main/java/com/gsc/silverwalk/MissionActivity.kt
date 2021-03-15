@@ -15,9 +15,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.marginLeft
 import kotlinx.android.synthetic.main.activity_mission.*
 import kotlinx.android.synthetic.main.dialog_mission_cancle.*
+import org.jetbrains.annotations.NotNull
 import java.lang.Double.min
 import java.util.*
 import kotlin.concurrent.timer
+import kotlin.properties.Delegates
 
 class MissionActivity : AppCompatActivity() {
 
@@ -30,10 +32,14 @@ class MissionActivity : AppCompatActivity() {
     private lateinit var dialogObject : AlertDialog
 
     // CurrentPos Update Paramter
-    private var currentPosPaddingLeft = 0.0
-    private var currentPosProgress = 0.0
     private var currentTimeSecond = 0
     private var timerTask: Timer? = null
+
+    // Mission Data
+    private var missionTime = 1800L
+    private var missionLocation = ""
+    private var missionType = ""
+    private var missionLevel = 0L
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +47,20 @@ class MissionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mission)
 
         supportActionBar?.hide()
+
+        // Get Intent Data
+        missionTime =
+            if (intent.hasExtra("missionTime"))
+                (intent.getLongExtra("missionTime",0)) else missionTime
+        missionLocation =
+            if (intent.hasExtra("missionLocation"))
+                (intent.getStringExtra("missionLocation")!!) else missionLocation
+        missionType =
+            if (intent.hasExtra("missionType"))
+                (intent.getStringExtra("missionType")!!) else missionType
+        missionLevel =
+            if (intent.hasExtra("missionLevel"))
+                (intent.getLongExtra("missionLevel",0)) else missionLevel
 
         // Init Cancle Dialog
         val dialogView = layoutInflater.inflate(R.layout.dialog_mission_cancle, null)
@@ -108,26 +128,20 @@ class MissionActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun startTimer(){
         timerTask = timer(period = 1000) {
-            // Temp Value, We need find more complex value
-            currentPosPaddingLeft = min(currentPosPaddingLeft + 2.5, 500.0)
-            currentPosProgress = min(currentPosProgress + 1.0, 100.0)
             currentTimeSecond += 1
 
             // UI Thread
             runOnUiThread{
-                activity_mission_currentpos_linearlayout.setPadding(
-                    currentPosPaddingLeft.toInt(), 0, 0, 0)
-                activity_mission_progressbar.progress = currentPosProgress.toInt()
-                activity_mission_time_text.setText(
-                    String.format("%02d:%02d",currentTimeSecond / 60, currentTimeSecond % 60))
+                activity_mission_timer_text.setText(
+                    String.format("%02d'  %02d''",currentTimeSecond / 60, currentTimeSecond % 60))
+                activity_mission_timer_progressBar.progress =
+                    (currentTimeSecond / missionTime * 100).toInt()
 
                 // Google Fit Data Request
                 if(currentTimeSecond % 60 == 0) {
-                    /*
-                    activity_mission_averagepace_text.setText("" + getString(R.string.Mph))
-                    activity_mission_distance_text.setText("" + getString(R.string.Mile))
-                    activity_mission_calories_text.setText("" + getString(R.string.Kcal))
-                     */
+                    activity_mission_average_pace_text.setText("0")
+                    activity_mission_distance_text.setText("0")
+                    activity_mission_kcal_text.setText("0")
                 }
             }
         }

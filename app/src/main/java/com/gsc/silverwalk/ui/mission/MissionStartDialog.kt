@@ -26,6 +26,7 @@ import com.google.gson.JsonParser
 import com.gsc.silverwalk.MissionActivity
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.retrofit.RetrofitClient
+import kotlinx.android.synthetic.main.dialog_mission_start.*
 import org.json.JSONObject
 import retrofit2.Call
 import java.time.LocalDateTime
@@ -34,14 +35,22 @@ import java.util.*
 
 class MissionStartDialog : DialogFragment() {
 
-    lateinit var fusedLocationClient : FusedLocationProviderClient
+    private var temperature = ""
+    private var temperature_text = ""
+    private var time = 0L
+    private var location = ""
+    private var type = ""
+    private var level = 0L
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        // Location Data
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
         val dialogView = inflater.inflate(R.layout.dialog_mission_start, container, false)
 
@@ -51,43 +60,21 @@ class MissionStartDialog : DialogFragment() {
         dialogView.findViewById<TextView>(R.id.dialog_start_time_textview)
             .setText(formatted)
 
-        dialogView.findViewById<Button>(R.id.mission_start_dialog_start_button)!!
-                .setOnClickListener(View.OnClickListener {
-                    val missionActivityIntent = Intent(context, MissionActivity::class.java)
-                    startActivity(missionActivityIntent)
-                    dialog?.dismiss()
-                })
+        dialogView.findViewById<Button>(R.id.mission_start_dialog_start_button)
+            .setOnClickListener(View.OnClickListener {
+                val missionActivityIntent = Intent(context, MissionActivity::class.java)
+                missionActivityIntent.putExtra("missionTime", time)
+                missionActivityIntent.putExtra("missionLocation", location)
+                missionActivityIntent.putExtra("missionType", type)
+                missionActivityIntent.putExtra("missionLevel",level)
+                startActivity(missionActivityIntent)
+                dialog?.dismiss()
+            })
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED)
-        {
-            fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
-                var location: Location? = task.result
-                RetrofitClient.getInstance().getCurrentWeather(
-                    location!!.latitude.toString(),
-                    location!!.longitude.toString(),
-                    { weatherJSON: JSONObject ->
-                        val mainJsonArray = weatherJSON.getJSONObject("main")
-                        val weatherJsonArray = JSONObject(
-                            weatherJSON.getJSONArray("weather")[0].toString())
-                        val temp = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
-                                (9.0f / 5.0f) + 32.0f).toInt().toString() + "ºF"
-                        dialogView.findViewById<TextView>(R.id.dialog_start_temperature_textview)
-                            .setText(temp)
-                        dialogView.findViewById<TextView>(R.id.dialog_start_temperature_info_text)
-                            .setText(weatherJsonArray.getString("main"))
-                    },
-                    { call: Call<JsonObject>, t: Throwable ->
-
-                    })
-            }
-        }
+        dialogView.findViewById<TextView>(R.id.dialog_start_temperature_textview)
+            .setText(temperature)
+        dialogView.findViewById<TextView>(R.id.dialog_start_temperature_info_text)
+            .setText(temperature_text)
 
         return dialogView
     }
@@ -97,5 +84,15 @@ class MissionStartDialog : DialogFragment() {
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
         val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    fun setDialogInfo(time : Long, location : String, type : String, level : Long,
+        temperature : String, temperature_text : String) {
+        this.time = time;
+        this.location = location;
+        this.type = type;
+        this.level = level;
+        this.temperature = temperature
+        this.temperature_text = temperature_text
     }
 }

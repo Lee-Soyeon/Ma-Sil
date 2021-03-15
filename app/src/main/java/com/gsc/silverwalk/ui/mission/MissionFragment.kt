@@ -1,7 +1,9 @@
 package com.gsc.silverwalk.ui.mission
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.location.Location
@@ -14,15 +16,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.whenCreated
 import com.bumptech.glide.Glide
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.JsonObject
 import com.gsc.silverwalk.MissionActivity
 import com.gsc.silverwalk.R
+import com.gsc.silverwalk.retrofit.RetrofitClient
+import kotlinx.android.synthetic.main.dialog_mission_start.*
 import kotlinx.android.synthetic.main.fragment_mission.*
+import org.json.JSONObject
+import retrofit2.Call
 
 class MissionFragment : Fragment() {
 
@@ -32,11 +43,16 @@ class MissionFragment : Fragment() {
         R.string.Easy, R.string.Moderate, R.string.Hard
     )
 
-    private val dialogObject : DialogFragment = MissionStartDialog()
+    private val dialogObject : MissionStartDialog = MissionStartDialog()
 
     // Today Mission Data
     private var missionDataList : MutableList<Map<String,Any>> = mutableListOf()
     private var LocationImageDataList : MutableList<Map<String,Any>> = mutableListOf()
+
+    // Temperature Info
+    lateinit var fusedLocationClient : FusedLocationProviderClient
+    private var temperature = ""
+    private var temperature_text = ""
 
     // UID
     private val UID = "X5NztOqVUgGPT84WmSiK"
@@ -48,6 +64,8 @@ class MissionFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_mission, container, false)
 
+        getWeatherInfo()
+
         return root
     }
 
@@ -56,6 +74,13 @@ class MissionFragment : Fragment() {
 
         // start Mission Button
         mission_select_start_button.setOnClickListener(View.OnClickListener {
+            dialogObject.setDialogInfo(
+                missionDataList[currentMissionIndex].get("time") as Long,
+                missionDataList[currentMissionIndex].get("location").toString(),
+                missionDataList[currentMissionIndex].get("type").toString(),
+                missionDataList[currentMissionIndex].get("level") as Long,
+                temperature,
+                temperature_text)
             dialogObject.show(parentFragmentManager,"DialogFragment")
         })
 
@@ -196,5 +221,39 @@ class MissionFragment : Fragment() {
         mission_image_progressBar.visibility = progressVisiblity
         mission_background.visibility = imageVisiblity
         mission_image_user_info_linearlayout.visibility = imageVisiblity
+    }
+
+    fun getWeatherInfo() {
+        // Location Data
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
+                var location: Location? = task.result
+                RetrofitClient.getInstance().getCurrentWeather(
+                    location!!.latitude.toString(),
+                    location!!.longitude.toString(),
+                    { weatherJSON: JSONObject ->
+                        val mainJsonArray = weatherJSON.getJSONObject("main")
+                        val weatherJsonArray = JSONObject(
+                            weatherJSON.getJSONArray("weather")[0].toString()
+                        )
+                        val temp = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
+                                (9.0f / 5.0f) + 32.0f).toInt().toString() + "ºF"
+                        temperature = temp
+                        temperature_text = weatherJsonArray.getString("main")
+                    },
+                    { call: Call<JsonObject>, t: Throwable ->
+
+                    })
+            }
+        }
     }
 }
