@@ -7,7 +7,9 @@
     <color name="green_text">#29A954</color>
     <color name="black_text">#666C7D</color>
     <color name="google_key_color">#4E77FB</color>
+    <color name="div_color">#D3D3D3</color>
     <color name="blue">#00B8D4</color>
+    <color name="yellow">#FFB800</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

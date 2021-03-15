@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACTIVITY_RECOGNITION,
-        Manifest.permission.BODY_SENSORS
+        Manifest.permission.BODY_SENSORS,
+        Manifest.permission.INTERNET,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

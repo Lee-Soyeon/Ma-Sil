@@ -76,6 +76,7 @@
                         android:id="@+id/mission_image_user_info_image"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        android:scaleType="centerCrop"
                         tools:src="@tools:sample/avatars" />
                 </androidx.cardview.widget.CardView>
 

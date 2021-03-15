@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ktx.firestore
@@ -31,11 +32,7 @@ class MissionFragment : Fragment() {
         R.string.Easy, R.string.Moderate, R.string.Hard
     )
 
-    // Dialog Parameter
-    private lateinit var dialogBuilder : AlertDialog.Builder
-    private lateinit var dialogView : View
-    private lateinit var dialogButton : Button
-    private lateinit var dialogObject : AlertDialog
+    private val dialogObject : DialogFragment = MissionStartDialog()
 
     // Today Mission Data
     private var missionDataList : MutableList<Map<String,Any>> = mutableListOf()
@@ -57,23 +54,9 @@ class MissionFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        // Init Dialog Configuration
-        dialogBuilder = AlertDialog.Builder(context)
-        dialogView = layoutInflater.inflate(R.layout.dialog_mission_start, null)
-        dialogBuilder.setView(dialogView)
-        dialogButton = dialogView.findViewById<Button>(R.id.mission_cancle_dialog_cnacle_button)
-        dialogButton.setOnClickListener(View.OnClickListener {
-            // Activity Show
-            val nextIntent = Intent(context, MissionActivity::class.java)
-            startActivity(nextIntent)
-            dialogObject.dismiss()
-        })
-        dialogObject = dialogBuilder.create()
-        dialogObject.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         // start Mission Button
         mission_select_start_button.setOnClickListener(View.OnClickListener {
-            dialogObject.show()
+            dialogObject.show(parentFragmentManager,"DialogFragment")
         })
 
         // prev Mission Button
