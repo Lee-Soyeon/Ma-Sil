@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mission_cancle_dialog_root_linearlayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="400dp"
     android:background="@drawable/mydialog"
     android:orientation="vertical">
 
@@ -11,7 +11,7 @@
         android:id="@+id/mission_cancle_dialog_display_1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="72dp"
         android:gravity="center"
         android:text="@string/cancle_dialog_display_1"
         android:textColor="@color/black"
@@ -22,7 +22,7 @@
         android:id="@+id/mission_cancle_dialog_display_2_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="72dp"
         android:gravity="center"
         android:text="@string/cancle_dialog_display_2"
         android:textColor="@color/black"
@@ -36,8 +36,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/mybutton"
-        android:text="@string/cancle_dialog_button_1"
+        android:background="@drawable/button_primary_button"
+        android:text="@string/cancle_dialog_button_2"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp" />
 
@@ -48,9 +49,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/mybuttongreen"
-        android:text="@string/cancle_dialog_button_2"
-        android:textColor="@color/white"
+        android:background="@drawable/button_primary_second_button"
+        android:text="@string/cancle_dialog_button_1"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
         android:textSize="24sp" />
 
 </LinearLayout>

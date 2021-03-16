@@ -67,12 +67,13 @@ class MissionActivity : AppCompatActivity() {
         // Cancle Button
         dialogView.findViewById<Button>(R.id.mission_cancle_dialog_cancle_button)
             ?.setOnClickListener(View.OnClickListener {
-                finish()
+                dialogObject.cancel()
             })
         // Resume Button
         dialogView.findViewById<Button>(R.id.mission_cancle_dialog_resume_button)
             ?.setOnClickListener(View.OnClickListener {
-                dialogObject.cancel()
+                pauseTimer()
+                finish()
             })
         dialogObject = AlertDialog.Builder(this).setView(dialogView).create()
         dialogObject.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -115,6 +116,15 @@ class MissionActivity : AppCompatActivity() {
         activity_mission_display_1_text.setOnClickListener(View.OnClickListener {
             val finishMissionIntent =
                 Intent(this, FinishMissionActivity::class.java)
+
+            finishMissionIntent.putExtra("averagePace", 0L)
+            finishMissionIntent.putExtra("calories", 0L)
+            finishMissionIntent.putExtra("distance", 0L)
+            finishMissionIntent.putExtra("heartRate", 0L)
+            finishMissionIntent.putExtra("location", missionLocation)
+            finishMissionIntent.putExtra("steps", 0L)
+            finishMissionIntent.putExtra("time", currentTimeSecond)
+
             startActivity(finishMissionIntent)
             finish()
         })
@@ -127,7 +137,7 @@ class MissionActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun startTimer(){
-        timerTask = timer(period = 1000) {
+        timerTask = timer(initialDelay = 1000, period = 1000) {
             currentTimeSecond += 1
 
             // UI Thread
@@ -135,7 +145,7 @@ class MissionActivity : AppCompatActivity() {
                 activity_mission_timer_text.setText(
                     String.format("%02d'  %02d''",currentTimeSecond / 60, currentTimeSecond % 60))
                 activity_mission_timer_progressBar.progress =
-                    (currentTimeSecond / missionTime * 100).toInt()
+                    (currentTimeSecond.toFloat() / missionTime.toFloat() * 100.0f).toInt()
 
                 // Google Fit Data Request
                 if(currentTimeSecond % 60 == 0) {

@@ -94,11 +94,9 @@
     <string name="information_activity_badge_8_text_2">100개 달성</string>
 
     <!-- Finish Mission Activity String -->
-    <string name="finish_mission_activity_display_1_text">대단해요!</string>
-    <string name="finish_mission_activity_display_2_text">오늘의 첫번째 도전을</string>
-    <string name="finish_mission_activity_display_3_text">성공했어요!</string>
-    <string name="finish_mission_activity_button_1_text">도전 마치기</string>
-    <string name="finish_mission_activity_button_2_text">산책로 공유</string>
+    <string name="finish_mission_activity_display_1_text">얼마나 어려우셨나요?</string>
+    <string name="finish_mission_activity_button_1_text">산책로 공유</string>
+    <string name="finish_mission_activity_button_2_text">도전 마치기</string>
 
     <!-- Share Activity String -->
     <string name="share_activity_display_1">산책로와</string>

@@ -29,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.JsonObject
 import com.gsc.silverwalk.MissionActivity
 import com.gsc.silverwalk.R
+import com.gsc.silverwalk.location.LocationClient
 import com.gsc.silverwalk.retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.dialog_mission_start.*
 import kotlinx.android.synthetic.main.fragment_mission.*
@@ -114,6 +115,7 @@ class MissionFragment : Fragment() {
 
         userTodayMissionDocs
             .addOnSuccessListener { result ->
+                missionDataList.clear()
                 for(document in result){
                     missionDataList.add(document.data)
                 }
@@ -225,35 +227,22 @@ class MissionFragment : Fragment() {
 
     fun getWeatherInfo() {
         // Location Data
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
-                var location: Location? = task.result
-                RetrofitClient.getInstance().getCurrentWeather(
-                    location!!.latitude.toString(),
-                    location!!.longitude.toString(),
+        LocationClient.getInstance().getLastLocation { location: Location ->
+            RetrofitClient.getInstance().getCurrentWeather(
+                    location.latitude.toString(),
+                    location.longitude.toString(),
                     { weatherJSON: JSONObject ->
                         val mainJsonArray = weatherJSON.getJSONObject("main")
                         val weatherJsonArray = JSONObject(
-                            weatherJSON.getJSONArray("weather")[0].toString()
+                                weatherJSON.getJSONArray("weather")[0].toString()
                         )
-                        val temp = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
+                        temperature = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
                                 (9.0f / 5.0f) + 32.0f).toInt().toString() + "ºF"
-                        temperature = temp
                         temperature_text = weatherJsonArray.getString("main")
                     },
                     { call: Call<JsonObject>, t: Throwable ->
 
                     })
-            }
         }
     }
 }

@@ -17,13 +17,13 @@
     <string name="Mph">Mph</string>
     <string name="Map">Map</string>
     <string name="Camera">Camera</string>
-    <string name="Distance">Distance</string>
-    <string name="Calories">Calories</string>
-    <string name="Time">Time</string>
-    <string name="AveragePace">AveragePace</string>
-    <string name="Steps">Steps</string>
+    <string name="Distance">DISTANCE</string>
+    <string name="Calories">BURN CALORIES</string>
+    <string name="Time">TIME</string>
+    <string name="AveragePace">AVERAGE PACE</string>
+    <string name="Steps">STEPS</string>
     <string name="StepsCount">Steps</string>
-    <string name="HeartRate">Heart Rate</string>
+    <string name="HeartRate">HEART RATE</string>
     <string name="BPM">BPM</string>
     <string name="Today">Today</string>
     <string name="Weekly">Weekly</string>
@@ -94,11 +94,9 @@
     <string name="information_activity_badge_8_text_2">Completed</string>
 
     <!-- Finish Mission Activity String -->
-    <string name="finish_mission_activity_display_1_text">Great!</string>
-    <string name="finish_mission_activity_display_2_text">You completed</string>
-    <string name="finish_mission_activity_display_3_text">the first mission!</string>
-    <string name="finish_mission_activity_button_1_text">End</string>
-    <string name="finish_mission_activity_button_2_text">Share</string>
+    <string name="finish_mission_activity_display_1_text">How hard was it?</string>
+    <string name="finish_mission_activity_button_1_text">Share your route</string>
+    <string name="finish_mission_activity_button_2_text">End the mission</string>
 
     <!-- Share Activity String -->
     <string name="share_activity_display_1">Share your route</string>
