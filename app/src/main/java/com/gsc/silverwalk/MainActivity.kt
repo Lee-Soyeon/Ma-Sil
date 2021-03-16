@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.ACTIVITY_RECOGNITION,
         Manifest.permission.BODY_SENSORS,
         Manifest.permission.INTERNET,
-        Manifest.permission.ACCESS_COARSE_LOCATION
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.CAMERA,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
