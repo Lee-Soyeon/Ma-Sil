@@ -65,15 +65,13 @@
                 android:layout_height="110dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/myedittext"
-                android:ems="10"
                 android:fontFamily="@font/roboto"
+                android:gravity="start"
+                android:hint="@string/share_activity_edit_label"
                 android:inputType="textMultiLine|textPersonName"
-                android:lines="2"
                 android:paddingLeft="16dp"
-                android:paddingTop="8dp"
+                android:paddingTop="16dp"
                 android:paddingBottom="8dp"
-                android:text="@string/share_activity_edit_label"
-                android:textAlignment="textStart"
                 android:textColor="#999999"
                 android:textSize="20sp" />
 
@@ -91,14 +89,14 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="8dp">
 
-                <ImageView
-                    android:id="@+id/share_activity_image"
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/google_map_img" />
+                    android:layout_height="400dp" />
+
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -118,10 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:columnCount="3"
-                android:rowCount="3"
-                android:useDefaultMargins="true">
-
-            </GridLayout>
+                android:useDefaultMargins="true" />
 
             <LinearLayout
                 android:id="@+id/share_activity_button_linearlayout"
@@ -132,6 +127,7 @@
 
                 <Button
                     android:id="@+id/share_activity_cancel_button"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="72dp"
                     android:layout_marginRight="4dp"

@@ -39,6 +39,7 @@
     <string name="s70">70s</string>
     <string name="Sir">Sir</string>
     <string name="Badge">Badge</string>
+    <string name="Wait">Wait a second...</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_display_1">How about (%type) (%tab)</string>

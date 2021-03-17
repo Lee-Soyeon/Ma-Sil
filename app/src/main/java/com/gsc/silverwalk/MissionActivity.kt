@@ -25,6 +25,7 @@ import java.io.IOException
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 
 class MissionActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class MissionActivity : AppCompatActivity() {
     companion object{
         val REQUEST_CAMERA = 100
     }
-    private var cameraPathArray : MutableList<String> = mutableListOf()
+    private var cameraPathArray : ArrayList<String> = arrayListOf()
     private var currentImagePath : String = ""
 
     // Cancle Dialog
@@ -131,6 +132,7 @@ class MissionActivity : AppCompatActivity() {
             finishMissionIntent.putExtra("location", missionLocation)
             finishMissionIntent.putExtra("steps", 0L)
             finishMissionIntent.putExtra("time", currentTimeSecond)
+            finishMissionIntent.putExtra("imagePath", cameraPathArray)
 
             startActivity(finishMissionIntent)
             finish()
@@ -214,6 +216,7 @@ class MissionActivity : AppCompatActivity() {
         ).apply {
             // Save a file: path for use with ACTION_VIEW intents
             currentImagePath = absolutePath
+            cameraPathArray.add(currentImagePath)
         }
     }
 }

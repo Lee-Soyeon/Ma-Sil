@@ -22,6 +22,7 @@ class FinishMissionActivity : AppCompatActivity() {
     var steps = 0L
     var time = 0L
     var level = 0L
+    lateinit var imagePath : ArrayList<String>
 
     // UID
     private val UID = "X5NztOqVUgGPT84WmSiK"
@@ -53,6 +54,10 @@ class FinishMissionActivity : AppCompatActivity() {
         time =
                 if (intent.hasExtra("time"))
                     (intent.getLongExtra("time",0)) else time
+        imagePath =
+                if(intent.hasExtra("imagePath"))
+                    (intent.getSerializableExtra("imagePath") as ArrayList<String>)
+                else arrayListOf<String>()
 
         supportActionBar?.hide()
 
@@ -120,8 +125,10 @@ class FinishMissionActivity : AppCompatActivity() {
     }
 
     fun shareMission(){
-        val ShareActivityIntent = Intent(this, ShareActivity::class.java)
-        startActivity(ShareActivityIntent)
+        val shareActivityIntent = Intent(this, ShareActivity::class.java)
+        shareActivityIntent.putExtra("imagePath", imagePath)
+        shareActivityIntent.putExtra("location",location)
+        startActivity(shareActivityIntent)
     }
 
     fun endMission(){

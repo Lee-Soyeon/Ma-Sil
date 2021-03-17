@@ -24,7 +24,7 @@
     <string name="Steps">걸음 수</string>
     <string name="StepsCount">보</string>
     <string name="HeartRate">심박수</string>
-    <string name="BPM">(분당심박)</string>
+    <string name="BPM">분당심박</string>
     <string name="Today">오늘</string>
     <string name="Weekly">이번주</string>
     <string name="Monthly">이번달</string>
@@ -39,6 +39,7 @@
     <string name="s70">70대</string>
     <string name="Sir">님</string>
     <string name="Badge">뱃지</string>
+    <string name="Wait">잠시만 기다려주세요...</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_display_1">(%location) 가서 (%tab)</string>
