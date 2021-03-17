@@ -40,6 +40,7 @@
     <string name="Sir">님</string>
     <string name="Badge">뱃지</string>
     <string name="Wait">잠시만 기다려주세요...</string>
+    <string name="Top">위로</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_display_1">(%location) 가서 (%tab)</string>
@@ -68,13 +69,16 @@
     <string name="mission_activity_display_2">첫번째 도전 중이에요!</string>
 
     <!-- History Activity String -->
-    <string name="history_activity_display_1">History</string>
-    <string name="history_activity_display_2">%s 산책</string>
-    <string name="history_activity_display_3">총 %d 명이</string>
-    <string name="history_activity_display_4">도전을 성공했어요!</string>
-    <string name="history_activity_display_5">이 미션은</string>
-    <string name="history_activity_display_6">%s 에서 오늘 하신</string>
-    <string name="history_activity_display_7">미션이에요!</string>
+    <string name="history_activity_main_title">기록</string>
+    <string name="history_activity_title_1">(%location) 걷기</string>
+    <string name="history_activity_title_2">난이도</string>
+    <string name="history_activity_title_3">성별</string>
+    <string name="history_activity_title_4">나이 평균</string>
+    <string name="history_activity_display_1">그동안 (%tab)</string>
+    <string name="history_activity_display_2">(%location) (%tab)</string>
+    <string name="history_activity_display_3">에서는 (%tab)</string>
+    <string name="history_activity_display_4">총 (%count)명이 (%tab)</string>
+    <string name="history_activity_display_5">도전을 완료했어요! (%tab)</string>
 
     <!-- Information Activity String -->
     <string name="information_activity_badge_1_text_1">우리 동네</string>

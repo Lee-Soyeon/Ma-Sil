@@ -5,6 +5,9 @@
     android:id="@+id/history_cardview"
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="20dp"
     app:cardCornerRadius="8dp">
 
     <LinearLayout

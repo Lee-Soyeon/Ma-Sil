@@ -2,7 +2,6 @@ package com.gsc.silverwalk.ui.achievement
 
 import android.content.Intent
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,16 +11,12 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.type.DateTime
 import com.gsc.silverwalk.HistoryActivity
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.userinfo.UserInfo
 import kotlinx.android.synthetic.main.cardview_history.view.*
 import kotlinx.android.synthetic.main.fragment_achievement.*
-import java.sql.Time
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -46,7 +41,7 @@ class AchievementFragment : Fragment() {
                 val boolList : MutableList<Int> = mutableListOf(4, 4, 4, 4)
                 boolList[tab?.position!!] = View.VISIBLE
                 achievement_today_linearlayout.visibility = boolList[0]
-                history_statistics_chart.visibility = boolList[1]
+                achievement_weekly_chart.visibility = boolList[1]
                 achievement_monthly_chart.visibility = boolList[2]
                 achievement_yearly_chart.visibility = boolList[3]
             }
@@ -142,10 +137,32 @@ class AchievementFragment : Fragment() {
 
                     historyLayout.setOnClickListener {
                         val historyActivityIntent = Intent(context, HistoryActivity::class.java)
+                        historyActivityIntent.putExtra(
+                            "steps", result.data.get("steps") as Long)
+                        historyActivityIntent.putExtra(
+                            "average_pace", result.data.get("average_pace") as Long)
+                        historyActivityIntent.putExtra(
+                            "distance", result.data.get("distance") as Double)
+                        historyActivityIntent.putExtra(
+                            "heart_rate", result.data.get("heart_rate") as Long)
+                        historyActivityIntent.putExtra(
+                            "location", result.data.get("location").toString())
+                        historyActivityIntent.putExtra(
+                            "time_second", result.data.get("time_second") as Long)
+                        historyActivityIntent.putExtra(
+                            "calories", result.data.get("calories") as Long)
+
                         startActivity(historyActivityIntent)
                     }
                     historyLayout.history_card_view_text_1.setText(
                         result.data.get("location").toString())
+                    val timestamp = result.data.get("time") as Timestamp
+                    val timeDate = timestamp.toDate()
+                    timestamp.toDate()
+                    historyLayout.history_card_view_text_2.setText(
+                        SimpleDateFormat("MMM dd, yyyy", Locale.US).format(timeDate))
+                    historyLayout.history_card_view_text_3.setText(
+                        SimpleDateFormat("h:mm a", Locale.US).format(timeDate))
 
                     achievement_history_linearlayout.addView(historyLayout)
                 }

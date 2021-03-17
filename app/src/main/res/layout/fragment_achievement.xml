@@ -497,7 +497,7 @@
             </LinearLayout>
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/history_statistics_chart"
+                android:id="@+id/achievement_weekly_chart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="invisible" />
@@ -539,10 +539,10 @@
             android:id="@+id/achievement_history_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
         </LinearLayout>
 
