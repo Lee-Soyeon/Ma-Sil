@@ -155,7 +155,8 @@ class ShareActivity : AppCompatActivity() {
                 "location" to location,
                 "image_paths" to imagePathList,
                 "user_name" to "Park Misook",
-                "user_thumbnail_path" to "gs://sliverwork.appspot.com/users/X5NztOqVUgGPT84WmSiK/thumbnail.PNG"
+                "user_thumbnail_path" to "gs://sliverwork.appspot.com/users/X5NztOqVUgGPT84WmSiK/thumbnail.PNG",
+                "time" to Timestamp(Date())
         )
 
         Firebase.firestore
@@ -163,9 +164,16 @@ class ShareActivity : AppCompatActivity() {
                 .document(documentId)
                 .set(data)
                 .addOnSuccessListener {
+                    if(imagePathList.isEmpty()){
+                        dialogObject.dismiss()
+                        finish()
+                    }
                     Log.d("TAG","success FireStore upload")
                 }
                 .addOnFailureListener {
+                    if(imagePathList.isEmpty()){
+                        dialogObject.dismiss()
+                    }
                     Log.d("TAG","fail FireStore upload")
                 }
     }

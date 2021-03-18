@@ -229,9 +229,11 @@ class MissionFragment : Fragment() {
                 Log.d("Fire Storage Failed", "get failed with ", exception)
             }
 
-        mission_image_user_info_text.setText(
-            LocationImageDataList[index].get("user_name").toString()
-        )
+        if(isVisible) {
+            mission_image_user_info_text.setText(
+                LocationImageDataList[index].get("user_name").toString()
+            )
+        }
 
         Handler().postDelayed(
             {

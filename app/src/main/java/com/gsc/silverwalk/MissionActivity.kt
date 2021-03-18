@@ -127,7 +127,7 @@ class MissionActivity : AppCompatActivity() {
 
             finishMissionIntent.putExtra("averagePace", 0L)
             finishMissionIntent.putExtra("calories", 0L)
-            finishMissionIntent.putExtra("distance", 0L)
+            finishMissionIntent.putExtra("distance", 0.0)
             finishMissionIntent.putExtra("heartRate", 0L)
             finishMissionIntent.putExtra("location", missionLocation)
             finishMissionIntent.putExtra("steps", 0L)

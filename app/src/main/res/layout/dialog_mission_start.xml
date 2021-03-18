@@ -121,6 +121,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:maxLines="1"
                     android:text="Sunny"
                     android:textColor="@color/black_text"
                     android:textSize="20sp" />

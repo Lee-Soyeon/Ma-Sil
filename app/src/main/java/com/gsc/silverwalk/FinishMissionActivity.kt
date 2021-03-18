@@ -15,7 +15,7 @@ class FinishMissionActivity : AppCompatActivity() {
 
     var averagePace = 0L
     var calories = 0L
-    var distance = 0L
+    var distance = 0.0
     var heartRate = 0L
     var location = ""
     var steps = 0L
@@ -42,7 +42,7 @@ class FinishMissionActivity : AppCompatActivity() {
                     (intent.getLongExtra("calories",0)) else calories
         distance =
                 if (intent.hasExtra("distance"))
-                    (intent.getLongExtra("distance",0)) else distance
+                    (intent.getDoubleExtra("distance",0.0)) else distance
         heartRate =
                 if (intent.hasExtra("heartRate"))
                     (intent.getLongExtra("heartRate",0)) else heartRate
