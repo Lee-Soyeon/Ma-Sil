@@ -1,6 +1,5 @@
 package com.gsc.silverwalk
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +22,8 @@ class FinishMissionActivity : AppCompatActivity() {
     var time = 0L
     var level = 0L
     lateinit var imagePath : ArrayList<String>
+
+    private val dialogObject : WaitDialog = WaitDialog()
 
     // UID
     private val UID = "X5NztOqVUgGPT84WmSiK"
@@ -133,9 +134,7 @@ class FinishMissionActivity : AppCompatActivity() {
 
     fun endMission(){
         // Progress Dialog
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Wait a second...")
-        progressDialog.show()
+        dialogObject.show(supportFragmentManager, "wait dialog")
 
         // History Data
         val data = hashMapOf(
@@ -156,7 +155,7 @@ class FinishMissionActivity : AppCompatActivity() {
                 .collection("history")
                 .add(data)
                 .addOnSuccessListener {
-                    progressDialog.cancel()
+                    dialogObject.dismiss()
                     finish()
                 }
                 .addOnFailureListener {

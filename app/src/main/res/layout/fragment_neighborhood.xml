@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/neighborhood_root_linearlayout"
+    android:id="@+id/neighborhood_root_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
     android:layout_marginBottom="?attr/actionBarSize"
     android:orientation="vertical"
     tools:context=".ui.neighborhood.NeighborhoodFragment">
 
-    <TextView
-        android:id="@+id/neighborhood_display_1_text"
+<LinearLayout
+    android:id="@+id/neighborhood_root_linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/noto_sans"
-        android:text="@string/title_neighborhood"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        app:cardCornerRadius="0dp">
+
+        <TextView
+            android:id="@+id/neighborhood_display_1_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="@font/noto_sans"
+            android:text="@string/title_neighborhood"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>
+
+</ScrollView>

@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.gsc.silverwalk.R
+import com.gsc.silverwalk.userinfo.UserInfo
 import kotlinx.android.synthetic.main.fragment_information.*
 
 class InformationFragment : Fragment() {
@@ -17,19 +20,24 @@ class InformationFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_information, container, false)
 
-        // Find Data From Firebase
-
-        /*
-        information_badge_1_linearlayout.alpha = 0.0f
-        information_badge_2_linearlayout.alpha = 0.0f
-        information_badge_3_linearlayout.alpha = 0.0f
-        information_badge_4_linearlayout.alpha = 0.0f
-        information_badge_5_linearlayout.alpha = 0.0f
-        information_badge_6_linearlayout.alpha = 0.0f
-        information_badge_7_linearlayout.alpha = 0.0f
-        information_badge_8_linearlayout.alpha = 0.0f
-         */
-
         return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        FirebaseStorage.getInstance()
+            .getReferenceFromUrl(UserInfo.getInstance().userThumbnailPath)
+            .downloadUrl
+            .addOnSuccessListener {
+                if(isVisible) {
+                    Glide.with(this).load(it).into(information_user_image)
+                }
+            }
+            .addOnFailureListener {
+
+            }
+
+        information_user_text.setText(UserInfo.getInstance().userName)
     }
 }
