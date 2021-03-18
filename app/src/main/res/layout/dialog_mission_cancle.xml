@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mission_cancle_dialog_root_linearlayout"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/mydialog"
     android:orientation="vertical">
 
@@ -11,31 +11,31 @@
         android:id="@+id/mission_cancle_dialog_display_1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="86dp"
         android:gravity="center"
         android:text="@string/cancle_dialog_display_1"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/mission_cancle_dialog_display_2_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="48dp"
         android:gravity="center"
         android:text="@string/cancle_dialog_display_2"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/mission_cancle_dialog_cancle_button"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_primary_button"
         android:text="@string/cancle_dialog_button_2"
         android:textAllCaps="false"
@@ -44,11 +44,12 @@
 
     <Button
         android:id="@+id/mission_cancle_dialog_resume_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="26dp"
         android:background="@drawable/button_primary_second_button"
         android:text="@string/cancle_dialog_button_1"
         android:textAllCaps="false"

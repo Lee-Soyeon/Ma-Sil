@@ -110,7 +110,7 @@
     <string name="share_activity_title_2">Route of The Day</string>
     <string name="share_activity_title_3">My Photos</string>
     <string name="share_activity_button_1">Cancel</string>
-    <string name="share_activity_button_2">Done</string>
+    <string name="share_activity_button_2">Upload</string>
     <string name="share_activity_edit_label">Please write a caption.</string>
 
     <!-- Cancle Dialog String -->

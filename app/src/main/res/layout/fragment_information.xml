@@ -17,7 +17,7 @@
             android:id="@+id/information_user_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:orientation="horizontal">
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="12dp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/Sir"
                 android:textColor="@color/black"
@@ -72,8 +72,8 @@
         android:id="@+id/information_display_1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/noto_sans"
         android:text="@string/Badge"
         android:textColor="@color/black"
@@ -84,9 +84,10 @@
         android:id="@+id/information_badge_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:contentPadding="16dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="8dp">
 
         <GridLayout
             android:id="@+id/information_badge_gridlayout"
@@ -121,7 +122,8 @@
                     android:alpha="1"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_1_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_1_text_2"
@@ -130,7 +132,8 @@
                     android:alpha="1"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_1_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -157,7 +160,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_2_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_2_text_2"
@@ -165,7 +169,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_2_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -192,7 +197,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_3_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_3_text_2"
@@ -200,7 +206,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_3_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -227,7 +234,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_4_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_4_text_2"
@@ -235,7 +243,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_4_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -263,7 +272,8 @@
                     android:alpha="1"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_5_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_5_text_2"
@@ -272,7 +282,8 @@
                     android:alpha="1"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_5_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -299,7 +310,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_6_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_6_text_2"
@@ -307,7 +319,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_6_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -335,7 +348,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_7_text_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_7_text_2"
@@ -343,7 +357,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_7_text_2"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -371,7 +386,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_8_text_1"
-                    android:textColor="@color/black_text" />
+                    android:textColor="@color/black_text"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/information_badge_8_text_2"
@@ -379,7 +395,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/information_activity_badge_8_text_2"
-                    android:textColor="@color/black_text" />
+                    android:textColor="@color/black_text"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </GridLayout>

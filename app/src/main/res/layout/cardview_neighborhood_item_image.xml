@@ -5,7 +5,7 @@
     android:id="@+id/neighborhood_item_image_cardview"
     android:layout_width="260dp"
     android:layout_height="295dp"
-    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp">
 

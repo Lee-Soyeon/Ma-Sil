@@ -23,13 +23,13 @@
                 android:id="@+id/history_main_title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="28dp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/history_activity_main_title"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="32sp"
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
@@ -37,8 +37,8 @@
             android:id="@+id/history_title_1_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_title_1"
             android:textColor="@color/black"
@@ -48,9 +48,9 @@
             android:id="@+id/history_map_cardview"
             android:layout_width="match_parent"
             android:layout_height="265dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp">
 
@@ -64,6 +64,7 @@
             android:id="@+id/history_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:visibility="visible">>
 
@@ -78,10 +79,11 @@
                     android:id="@+id/history_steps_cardview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    app:cardCornerRadius="8dp">
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_steps_linearlayout"
@@ -94,7 +96,7 @@
                             android:id="@+id/history_steps_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -109,16 +111,18 @@
                                 android:id="@+id/history_steps_info_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/Steps" />
+                                android:text="@string/Steps"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/history_steps_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="22dp"
                             android:fontFamily="@font/roboto"
                             android:text="0"
                             android:textColor="@color/blue"
@@ -129,11 +133,11 @@
                             android:id="@+id/history_steps_unit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="19dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/StepsCount"
                             android:textColor="@color/black"
-                            android:textSize="28sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -143,10 +147,11 @@
                     android:id="@+id/history_averagepace_cardview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    app:cardCornerRadius="8dp">
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_averagepace_linearlayout"
@@ -159,7 +164,7 @@
                             android:id="@+id/history_averagepace_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -173,16 +178,18 @@
                                 android:id="@+id/history_averagepace_info_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/AveragePace" />
+                                android:text="@string/AveragePace"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/history_averagepace_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="22dp"
                             android:fontFamily="@font/roboto"
                             android:text="0"
                             android:textColor="@color/blue"
@@ -193,11 +200,11 @@
                             android:id="@+id/history_averagepace_unit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="19dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/Mph"
                             android:textColor="@color/black"
-                            android:textSize="28sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -208,11 +215,12 @@
                     android:id="@+id/history_calories_cardview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_calories_linearlayout"
@@ -225,7 +233,7 @@
                             android:id="@+id/history_calories_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -239,16 +247,18 @@
                                 android:id="@+id/history_calories_info_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/Calories" />
+                                android:text="@string/Calories"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/history_calories_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="22dp"
                             android:fontFamily="@font/roboto"
                             android:text="0"
                             android:textColor="@color/blue"
@@ -259,11 +269,11 @@
                             android:id="@+id/history_calories_unit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="19dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/Kcal"
                             android:textColor="@color/black"
-                            android:textSize="28sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -283,8 +293,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    app:cardCornerRadius="8dp">
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_heartrate_linearlayout"
@@ -297,7 +308,7 @@
                             android:id="@+id/history_heartrate_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -312,16 +323,18 @@
                                 android:id="@+id/history_heartrate_info_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/HeartRate" />
+                                android:text="@string/HeartRate"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/history_heartrate_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="22dp"
                             android:fontFamily="@font/roboto"
                             android:text="0"
                             android:textColor="@color/blue"
@@ -332,11 +345,11 @@
                             android:id="@+id/history_heartrate_unit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="19dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/BPM"
                             android:textColor="@color/black"
-                            android:textSize="28sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -347,8 +360,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    app:cardCornerRadius="8dp">
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_distance_linearlayout"
@@ -361,7 +375,7 @@
                             android:id="@+id/history_distance_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -375,16 +389,18 @@
                                 android:id="@+id/history_distance_info_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/Distance" />
+                                android:text="@string/Distance"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/history_distance_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="22dp"
                             android:fontFamily="@font/roboto"
                             android:text="0"
                             android:textColor="@color/blue"
@@ -395,11 +411,11 @@
                             android:id="@+id/history_distance_unit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="19dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/Mile"
                             android:textColor="@color/black"
-                            android:textSize="28sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -411,9 +427,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:id="@+id/history_time_linearlayout"
@@ -426,7 +443,7 @@
                             android:id="@+id/history_time_info_linearlayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="13dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -440,9 +457,11 @@
                                 android:id="@+id/history_time_info_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="4dp"
                                 android:fontFamily="@font/roboto"
-                                android:text="@string/Time" />
+                                android:text="@string/Time"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <TextView
@@ -474,59 +493,64 @@
             android:id="@+id/history_display_1_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_1"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_2_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_2"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_3_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_3"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_4_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_4"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_5_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_5"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_title_2_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_title_2"
             android:textColor="@color/black"
@@ -536,14 +560,14 @@
             android:id="@+id/history_level_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/history_level_easy_cardview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 app:cardElevation="0dp">
@@ -558,7 +582,7 @@
                         android:id="@+id/history_level_easy_count_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="40dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="0"
@@ -570,8 +594,8 @@
                         android:id="@+id/history_level_easy_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="@string/Easy"
@@ -599,7 +623,7 @@
                         android:id="@+id/history_level_moderate_count_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="40dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="0"
@@ -611,8 +635,8 @@
                         android:id="@+id/history_level_moderate_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="@string/Moderate"
@@ -626,7 +650,7 @@
                 android:id="@+id/history_level_hard_cardview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 app:cardElevation="0dp">
 
@@ -640,7 +664,7 @@
                         android:id="@+id/history_level_hard_count_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="40dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="0"
@@ -652,8 +676,8 @@
                         android:id="@+id/history_level_hard_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
                         android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="@string/Hard"
@@ -669,8 +693,8 @@
             android:id="@+id/history_title_3_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_title_3"
@@ -681,9 +705,9 @@
             android:id="@+id/history_gender_cardview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp">
 
@@ -691,12 +715,12 @@
                 android:id="@+id/history_statistics_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="28sp"
+                android:layout_marginBottom="28sp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/history_statistics_gender_linearlayout"
+                    android:id="@+id/history_statistics_gender_men_linearlayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -721,7 +745,6 @@
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="32dp"
-                        android:layout_marginBottom="16dp"
                         android:background="@drawable/button_purple_circle"
                         android:fontFamily="@font/roboto"
                         android:text="0%"
@@ -732,7 +755,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/history_statistics_gender_linearlayout"
+                    android:id="@+id/history_statistics_gender_women_linearlayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -757,7 +780,6 @@
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="32dp"
-                        android:layout_marginBottom="16dp"
                         android:background="@drawable/button_orange_circle"
                         android:fontFamily="@font/roboto"
                         android:text="0%"
@@ -774,8 +796,8 @@
             android:id="@+id/history_title_4_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto"
             android:text="@string/history_activity_title_4"
@@ -810,8 +832,8 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_gravity="right"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_primary_gradient_circle"
             android:text="@string/Top"
