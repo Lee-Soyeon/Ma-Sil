@@ -13,409 +13,833 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history_div_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="0dp">
+
+            <TextView
+                android:id="@+id/history_main_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/history_activity_main_title"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/history_title_1_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/history_activity_title_1"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history_map_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/history_mapview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/history_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible">>
+
+            <LinearLayout
+                android:id="@+id/history_div1_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_steps_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_steps_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_steps_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_steps_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundTintMode="add"
+                                android:src="@drawable/achievement_step" />
+
+                            <TextView
+                                android:id="@+id/history_steps_info_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Steps"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_steps_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/history_steps_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/StepsCount"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_averagepace_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_averagepace_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_averagepace_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_averagepace_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_average_pace" />
+
+                            <TextView
+                                android:id="@+id/history_averagepace_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/AveragePace"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_averagepace_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/history_averagepace_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Mph"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_calories_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_calories_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_calories_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_calories_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_burnt_calories" />
+
+                            <TextView
+                                android:id="@+id/history_calories_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Calories"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_calories_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/history_calories_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Kcal"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/history_div2_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_heartrate_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_heartrate_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_heartrate_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_heartrate_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundTintMode="add"
+                                android:src="@drawable/achievement_step_bpm" />
+
+                            <TextView
+                                android:id="@+id/history_heartrate_info_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/HeartRate"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_heartrate_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/history_heartrate_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/BPM"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_distance_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_distance_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_distance_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_distance_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_distance" />
+
+                            <TextView
+                                android:id="@+id/history_distance_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Distance"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_distance_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/history_distance_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Mile"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history_time_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/history_time_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/history_time_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="13dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/history_time_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_time" />
+
+                            <TextView
+                                android:id="@+id/history_time_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Time"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/history_time_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="00:00"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/history_div"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/listDivider" />
+
         <TextView
             android:id="@+id/history_display_1_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_1"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_2_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_2"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/history_routemap_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/google_map_img" />
-
-        <LinearLayout
-            android:id="@+id/history_today_linearlayout"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/history_today_div1_linearlayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/history_steps_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Steps" />
-
-                <TextView
-                    android:id="@+id/history_steps_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/StepsCount"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/history_averagepace_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/AveragePace" />
-
-                <TextView
-                    android:id="@+id/history_averagepace_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Mph"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/history_calories_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Calories" />
-
-                <TextView
-                    android:id="@+id/history_calories_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Kcal"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/history_today_div2_linearlayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/history_heartrate_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/HeartRate" />
-
-                <TextView
-                    android:id="@+id/history_heartrate_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/BPM"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/history_distance_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Distance" />
-
-                <TextView
-                    android:id="@+id/history_distance_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Mile"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/history_time_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Time" />
-
-                <TextView
-                    android:id="@+id/history_time_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="00:00"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-            </LinearLayout>
-        </LinearLayout>
 
         <TextView
             android:id="@+id/history_display_3_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_3"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_4_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_4"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/history_display_5_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/history_activity_display_5"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/history_display_6_text"
+            android:id="@+id/history_title_2_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/noto_sans"
-            android:text="@string/history_activity_display_6"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/history_activity_title_2"
             android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/history_display_7_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/noto_sans"
-            android:text="@string/history_activity_display_7"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/history_level_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/history_level_easy_linearlayout"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/history_level_easy_cardview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="1dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardElevation="0dp">
 
-                <ImageView
-                    android:id="@+id/history_level_easy_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/history_level_easy_text"
+                <LinearLayout
+                    android:id="@+id/history_level_easy_linearlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="@string/Easy"
-                    android:textColor="@color/black" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/history_level_easy_count_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="28sp" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/history_level_easy_count_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white_green"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/history_level_moderate_linearlayout"
+                    <TextView
+                        android:id="@+id/history_level_easy_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/Easy"
+                        android:textColor="@color/white_green"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/history_level_moderate_cardview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardElevation="0dp">
 
-                <ImageView
-                    android:id="@+id/history_level_moderate_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/history_level_moderate_text"
+                <LinearLayout
+                    android:id="@+id/history_level_moderate_linearlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="@string/Moderate"
-                    android:textColor="@color/black" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/history_level_moderate_count_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="28sp" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/history_level_moderate_count_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white_yellow"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/history_level_hard_linearlayout"
+                    <TextView
+                        android:id="@+id/history_level_moderate_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/Moderate"
+                        android:textColor="@color/white_yellow"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/history_level_hard_cardview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardElevation="0dp">
 
-                <ImageView
-                    android:id="@+id/history_level_hard_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/history_level_hard_text"
+                <LinearLayout
+                    android:id="@+id/history_level_hard_linearlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="@string/Hard"
-                    android:textColor="@color/black" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/history_level_hard_count_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="28sp" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/history_level_hard_count_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white_red"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/history_level_hard_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="36dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/Hard"
+                        android:textColor="@color/white_red"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/history_statistics_linearlayout"
+        <TextView
+            android:id="@+id/history_title_3_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="@string/history_activity_title_3"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history_gender_cardview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
 
             <LinearLayout
-                android:id="@+id/history_statistics_gender_linearlayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/history_statistics_gender_men_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="86dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/graystrokecirclebutton"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Men"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/history_statistics_gender_men_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/history_statistics_gender_women_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="86dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/graystrokecirclebutton"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Women"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/history_statistics_gender_women_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/history_statistics_chart"
+                android:id="@+id/history_statistics_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible" />
+                android:layout_marginTop="28sp"
+                android:layout_marginBottom="28sp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/history_statistics_gender_men_linearlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/history_statistics_gender_men_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/Women"
+                        android:textColor="@color/white_purple"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/history_statistics_gender_men_button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="32dp"
+                        android:background="@drawable/button_purple_circle"
+                        android:fontFamily="@font/roboto"
+                        android:text="0%"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/history_statistics_gender_women_linearlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/history_statistics_gender_women_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/Men"
+                        android:textColor="@color/white_orange"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/history_statistics_gender_women_button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="32dp"
+                        android:background="@drawable/button_orange_circle"
+                        android:fontFamily="@font/roboto"
+                        android:text="0%"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/history_title_4_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="@string/history_activity_title_4"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history_age_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:clipChildren="false"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPaddingBottom="20dp"
+            app:contentPaddingLeft="0dp"
+            app:contentPaddingRight="0dp"
+            app:contentPaddingTop="20dp">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/history_age_chart"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:clipChildren="false" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/history_top_button"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_primary_gradient_circle"
+            android:text="@string/Top"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

@@ -24,7 +24,7 @@
     <string name="Steps">걸음 수</string>
     <string name="StepsCount">보</string>
     <string name="HeartRate">심박수</string>
-    <string name="BPM">(분당심박)</string>
+    <string name="BPM">분당심박</string>
     <string name="Today">오늘</string>
     <string name="Weekly">이번주</string>
     <string name="Monthly">이번달</string>
@@ -39,6 +39,8 @@
     <string name="s70">70대</string>
     <string name="Sir">님</string>
     <string name="Badge">뱃지</string>
+    <string name="Wait">잠시만 기다려주세요...</string>
+    <string name="Top">위로</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_display_1">(%location) 가서 (%tab)</string>
@@ -67,13 +69,16 @@
     <string name="mission_activity_display_2">첫번째 도전 중이에요!</string>
 
     <!-- History Activity String -->
-    <string name="history_activity_display_1">History</string>
-    <string name="history_activity_display_2">%s 산책</string>
-    <string name="history_activity_display_3">총 %d 명이</string>
-    <string name="history_activity_display_4">도전을 성공했어요!</string>
-    <string name="history_activity_display_5">이 미션은</string>
-    <string name="history_activity_display_6">%s 에서 오늘 하신</string>
-    <string name="history_activity_display_7">미션이에요!</string>
+    <string name="history_activity_main_title">기록</string>
+    <string name="history_activity_title_1">(%location) 걷기</string>
+    <string name="history_activity_title_2">난이도</string>
+    <string name="history_activity_title_3">성별</string>
+    <string name="history_activity_title_4">나이 평균</string>
+    <string name="history_activity_display_1">그동안 (%tab)</string>
+    <string name="history_activity_display_2">(%location) (%tab)</string>
+    <string name="history_activity_display_3">에서는 (%tab)</string>
+    <string name="history_activity_display_4">총 (%count)명이 (%tab)</string>
+    <string name="history_activity_display_5">도전을 완료했어요! (%tab)</string>
 
     <!-- Information Activity String -->
     <string name="information_activity_badge_1_text_1">우리 동네</string>
@@ -94,11 +99,9 @@
     <string name="information_activity_badge_8_text_2">100개 달성</string>
 
     <!-- Finish Mission Activity String -->
-    <string name="finish_mission_activity_display_1_text">대단해요!</string>
-    <string name="finish_mission_activity_display_2_text">오늘의 첫번째 도전을</string>
-    <string name="finish_mission_activity_display_3_text">성공했어요!</string>
-    <string name="finish_mission_activity_button_1_text">도전 마치기</string>
-    <string name="finish_mission_activity_button_2_text">산책로 공유</string>
+    <string name="finish_mission_activity_display_1_text">얼마나 어려우셨나요?</string>
+    <string name="finish_mission_activity_button_1_text">산책로 공유</string>
+    <string name="finish_mission_activity_button_2_text">도전 마치기</string>
 
     <!-- Share Activity String -->
     <string name="share_activity_display_1">산책로와</string>

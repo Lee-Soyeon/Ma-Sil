@@ -1,25 +1,32 @@
 package com.gsc.silverwalk
 
+import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.marginLeft
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import kotlinx.android.synthetic.main.activity_mission.*
-import kotlinx.android.synthetic.main.dialog_mission_cancle.*
-import org.jetbrains.annotations.NotNull
-import java.lang.Double.min
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
+import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
-import kotlin.properties.Delegates
 
 class MissionActivity : AppCompatActivity() {
 
@@ -27,6 +34,8 @@ class MissionActivity : AppCompatActivity() {
     companion object{
         val REQUEST_CAMERA = 100
     }
+    private var cameraPathArray : ArrayList<String> = arrayListOf()
+    private var currentImagePath : String = ""
 
     // Cancle Dialog
     private lateinit var dialogObject : AlertDialog
@@ -51,7 +60,7 @@ class MissionActivity : AppCompatActivity() {
         // Get Intent Data
         missionTime =
             if (intent.hasExtra("missionTime"))
-                (intent.getLongExtra("missionTime",0)) else missionTime
+                (intent.getLongExtra("missionTime", 0)) else missionTime
         missionLocation =
             if (intent.hasExtra("missionLocation"))
                 (intent.getStringExtra("missionLocation")!!) else missionLocation
@@ -60,19 +69,20 @@ class MissionActivity : AppCompatActivity() {
                 (intent.getStringExtra("missionType")!!) else missionType
         missionLevel =
             if (intent.hasExtra("missionLevel"))
-                (intent.getLongExtra("missionLevel",0)) else missionLevel
+                (intent.getLongExtra("missionLevel", 0)) else missionLevel
 
         // Init Cancle Dialog
         val dialogView = layoutInflater.inflate(R.layout.dialog_mission_cancle, null)
         // Cancle Button
         dialogView.findViewById<Button>(R.id.mission_cancle_dialog_cancle_button)
             ?.setOnClickListener(View.OnClickListener {
-                finish()
+                dialogObject.cancel()
             })
         // Resume Button
         dialogView.findViewById<Button>(R.id.mission_cancle_dialog_resume_button)
             ?.setOnClickListener(View.OnClickListener {
-                dialogObject.cancel()
+                pauseTimer()
+                finish()
             })
         dialogObject = AlertDialog.Builder(this).setView(dialogView).create()
         dialogObject.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -92,8 +102,7 @@ class MissionActivity : AppCompatActivity() {
 
         // Start Camera Activity
         activity_mission_camera_button.setOnClickListener(View.OnClickListener {
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(cameraIntent, REQUEST_CAMERA)
+            dispatchTakePictureIntent()
         })
 
         // Stop Mission
@@ -114,10 +123,28 @@ class MissionActivity : AppCompatActivity() {
         // Testing Finish Mission
         activity_mission_display_1_text.setOnClickListener(View.OnClickListener {
             val finishMissionIntent =
-                Intent(this, FinishMissionActivity::class.java)
+                    Intent(this, FinishMissionActivity::class.java)
+
+            finishMissionIntent.putExtra("averagePace", 0L)
+            finishMissionIntent.putExtra("calories", 0L)
+            finishMissionIntent.putExtra("distance", 0.0)
+            finishMissionIntent.putExtra("heartRate", 0L)
+            finishMissionIntent.putExtra("location", missionLocation)
+            finishMissionIntent.putExtra("steps", 0L)
+            finishMissionIntent.putExtra("time", currentTimeSecond)
+            finishMissionIntent.putExtra("imagePath", cameraPathArray)
+
             startActivity(finishMissionIntent)
             finish()
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == REQUEST_CAMERA && resultCode == RESULT_OK){
+
+        }
     }
 
     override fun onBackPressed() {
@@ -127,15 +154,15 @@ class MissionActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun startTimer(){
-        timerTask = timer(period = 1000) {
+        timerTask = timer(initialDelay = 1000, period = 1000) {
             currentTimeSecond += 1
 
             // UI Thread
             runOnUiThread{
                 activity_mission_timer_text.setText(
-                    String.format("%02d'  %02d''",currentTimeSecond / 60, currentTimeSecond % 60))
+                        String.format("%02d'  %02d''", currentTimeSecond / 60, currentTimeSecond % 60))
                 activity_mission_timer_progressBar.progress =
-                    (currentTimeSecond / missionTime * 100).toInt()
+                    (currentTimeSecond.toFloat() / missionTime.toFloat() * 100.0f).toInt()
 
                 // Google Fit Data Request
                 if(currentTimeSecond % 60 == 0) {
@@ -149,5 +176,47 @@ class MissionActivity : AppCompatActivity() {
 
     private fun pauseTimer(){
         timerTask?.cancel()
+    }
+
+    // Open Camera
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            // Ensure that there's a camera activity to handle the intent
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                // Create the File where the photo should go
+                val photoFile: File? = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                // Continue only if the File was successfully created
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                            this,
+                            "com.gsc.silverwalk",
+                            it
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, 1)
+                }
+            }
+        }
+    }
+
+    // Image To File
+    @Throws(IOException::class)
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+                "JPEG_${timeStamp}_", /* prefix */
+                ".jpg", /* suffix */
+                storageDir /* directory */
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentImagePath = absolutePath
+            cameraPathArray.add(currentImagePath)
+        }
     }
 }

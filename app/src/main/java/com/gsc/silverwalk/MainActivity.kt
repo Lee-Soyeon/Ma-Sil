@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.gsc.silverwalk.location.LocationClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,11 +23,17 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.ACTIVITY_RECOGNITION,
         Manifest.permission.BODY_SENSORS,
         Manifest.permission.INTERNET,
-        Manifest.permission.ACCESS_COARSE_LOCATION
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.CAMERA,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Location Client Build
+        LocationClient.getInstance().buildLocationClient(this)
+
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 

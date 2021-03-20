@@ -29,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.JsonObject
 import com.gsc.silverwalk.MissionActivity
 import com.gsc.silverwalk.R
+import com.gsc.silverwalk.location.LocationClient
 import com.gsc.silverwalk.retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.dialog_mission_start.*
 import kotlinx.android.synthetic.main.fragment_mission.*
@@ -39,18 +40,17 @@ class MissionFragment : Fragment() {
 
     // Current Mission Parameter
     private var currentMissionIndex = 0
-    private val MissionLevelStringArray : Array<Int> = arrayOf(
+    private val MissionLevelStringArray: Array<Int> = arrayOf(
         R.string.Easy, R.string.Moderate, R.string.Hard
     )
 
-    private val dialogObject : MissionStartDialog = MissionStartDialog()
+    private val dialogObject: MissionStartDialog = MissionStartDialog()
 
     // Today Mission Data
-    private var missionDataList : MutableList<Map<String,Any>> = mutableListOf()
-    private var LocationImageDataList : MutableList<Map<String,Any>> = mutableListOf()
+    private var missionDataList: MutableList<Map<String, Any>> = mutableListOf()
+    private var LocationImageDataList: MutableList<Map<String, Any>> = mutableListOf()
 
     // Temperature Info
-    lateinit var fusedLocationClient : FusedLocationProviderClient
     private var temperature = ""
     private var temperature_text = ""
 
@@ -58,9 +58,9 @@ class MissionFragment : Fragment() {
     private val UID = "X5NztOqVUgGPT84WmSiK"
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_mission, container, false)
 
@@ -80,8 +80,9 @@ class MissionFragment : Fragment() {
                 missionDataList[currentMissionIndex].get("type").toString(),
                 missionDataList[currentMissionIndex].get("level") as Long,
                 temperature,
-                temperature_text)
-            dialogObject.show(parentFragmentManager,"DialogFragment")
+                temperature_text
+            )
+            dialogObject.show(parentFragmentManager, "DialogFragment")
         })
 
         // prev Mission Button
@@ -105,8 +106,7 @@ class MissionFragment : Fragment() {
         findTodayMissionFromFireBase()
     }
 
-    fun findTodayMissionFromFireBase()
-    {
+    fun findTodayMissionFromFireBase() {
         // load Firebase Data
         val userTodayMissionDocs = Firebase.firestore
             .collection("users").document(UID)
@@ -114,25 +114,28 @@ class MissionFragment : Fragment() {
 
         userTodayMissionDocs
             .addOnSuccessListener { result ->
-                for(document in result){
-                    missionDataList.add(document.data)
+                if(isVisible) {
+                    missionDataList.clear()
+                    for (document in result) {
+                        missionDataList.add(document.data)
+                    }
+
+                    // Set TodayMission
+                    setMissionParameterByCurrentMissionIndex()
+
+                    // Disable ProgressBar
+                    mission_progressBar.visibility = View.INVISIBLE
+                    mission_linearlayout.visibility = View.VISIBLE
                 }
-
-                // Set TodayMission
-                setMissionParameterByCurrentMissionIndex()
-
-                // Disable ProgressBar
-                mission_progressBar.visibility = View.INVISIBLE
-                mission_linearlayout.visibility = View.VISIBLE
             }
             .addOnFailureListener { exception ->
                 Log.d("FireStore Error", "get failed with ", exception)
             }
     }
 
-    fun setMissionParameterByCurrentMissionIndex(){
+    fun setMissionParameterByCurrentMissionIndex() {
 
-        missionImageProgressVisiblity(View.VISIBLE,View.INVISIBLE)
+        missionImageProgressVisiblity(View.VISIBLE, View.INVISIBLE)
 
         // mission_index_text
         mission_info_index_text.setText((currentMissionIndex + 1).toString() + "/5")
@@ -140,14 +143,20 @@ class MissionFragment : Fragment() {
         // Set mission string
         var mission_string =
             getString(R.string.mission_display_1) +
-            getString(R.string.mission_display_2) +
-            getString(R.string.mission_display_3)
-        mission_string = mission_string.replace("(%location)",
-            missionDataList[currentMissionIndex].get("location").toString())
-        mission_string = mission_string.replace("(%time)",
-            ((missionDataList[currentMissionIndex].get("time") as Long) / 60).toString())
-        mission_string = mission_string.replace("(%type)",
-            missionDataList[currentMissionIndex].get("type").toString())
+                    getString(R.string.mission_display_2) +
+                    getString(R.string.mission_display_3)
+        mission_string = mission_string.replace(
+            "(%location)",
+            missionDataList[currentMissionIndex].get("location").toString()
+        )
+        mission_string = mission_string.replace(
+            "(%time)",
+            ((missionDataList[currentMissionIndex].get("time") as Long) / 60).toString()
+        )
+        mission_string = mission_string.replace(
+            "(%type)",
+            missionDataList[currentMissionIndex].get("type").toString()
+        )
 
         // Update Display Text
         val splitString = mission_string.split("(%tab)")
@@ -155,31 +164,37 @@ class MissionFragment : Fragment() {
         mission_display_2_text.setText(splitString[1])
         mission_display_3_text.setText(splitString[2])
 
-        mission_level_text.setText(MissionLevelStringArray[
-                (missionDataList[currentMissionIndex].get("level") as Long).toInt()])
+        mission_level_text.setText(
+            MissionLevelStringArray[
+                    (missionDataList[currentMissionIndex].get("level") as Long).toInt()]
+        )
 
         // Set BackGround Image
         Firebase.firestore.collection("location")
-            .whereEqualTo("name",
-                missionDataList[currentMissionIndex].get("location").toString())
+            .whereEqualTo(
+                "name",
+                missionDataList[currentMissionIndex].get("location").toString()
+            )
             .get()
             .addOnSuccessListener { querySnapshot ->
-                if(!querySnapshot.isEmpty){
-                    querySnapshot.documents[0].reference.collection("images").get()
-                        .addOnSuccessListener { imagesSnapshot ->
-                            LocationImageDataList.clear()
-                            for(doc in imagesSnapshot){
-                                LocationImageDataList.add(doc.data)
-                            }
+                if(isVisible) {
+                    if (!querySnapshot.isEmpty) {
+                        querySnapshot.documents[0].reference.collection("images").get()
+                            .addOnSuccessListener { imagesSnapshot ->
+                                LocationImageDataList.clear()
+                                for (doc in imagesSnapshot) {
+                                    LocationImageDataList.add(doc.data)
+                                }
 
-                            changeImage(0)
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d("Fire Store Failed",
-                                    "get failed with " , exception)
-                        }
-                }else{
-                    // mission_background.setImageURI("DefaultImageURL")
+                                changeImage(0)
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(
+                                    "Fire Store Failed",
+                                    "get failed with ", exception
+                                )
+                            }
+                    }
                 }
             }
             .addOnFailureListener { exception ->
@@ -187,37 +202,49 @@ class MissionFragment : Fragment() {
             }
     }
 
-    fun changeImage(index : Int) {
+    fun changeImage(index: Int) {
         FirebaseStorage.getInstance()
-                .getReferenceFromUrl(
-                        LocationImageDataList[index].get("image_path").toString())
-                .downloadUrl.addOnSuccessListener { uri ->
+            .getReferenceFromUrl(
+                LocationImageDataList[index].get("image_path").toString()
+            )
+            .downloadUrl.addOnSuccessListener { uri ->
+                if (isVisible) {
                     Glide.with(this).load(uri).into(mission_background)
                 }
-                .addOnFailureListener { exception ->
-                    Log.d("Fire Storage Failed","get failed with ", exception)
-                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Fire Storage Failed", "get failed with ", exception)
+            }
 
         FirebaseStorage.getInstance()
-                .getReferenceFromUrl(
-                        LocationImageDataList[index].get("user_thumbnail_path").toString())
-                .downloadUrl.addOnSuccessListener { uri ->
+            .getReferenceFromUrl(
+                LocationImageDataList[index].get("user_thumbnail_path").toString()
+            )
+            .downloadUrl.addOnSuccessListener { uri ->
+                if (isVisible) {
                     Glide.with(this).load(uri).into(mission_image_user_info_image)
                 }
-                .addOnFailureListener { exception ->
-                    Log.d("Fire Storage Failed","get failed with ", exception)
-                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Fire Storage Failed", "get failed with ", exception)
+            }
 
-        mission_image_user_info_text.setText(
-                LocationImageDataList[index].get("user_name").toString())
+        if(isVisible) {
+            mission_image_user_info_text.setText(
+                LocationImageDataList[index].get("user_name").toString()
+            )
+        }
 
         Handler().postDelayed(
-                {
-                    missionImageProgressVisiblity(View.INVISIBLE,View.VISIBLE)
-                }, 1000)
+            {
+                if(isVisible) {
+                    missionImageProgressVisiblity(View.INVISIBLE, View.VISIBLE)
+                }
+            }, 1000
+        )
     }
 
-    fun missionImageProgressVisiblity(progressVisiblity : Int, imageVisiblity : Int) {
+    fun missionImageProgressVisiblity(progressVisiblity: Int, imageVisiblity: Int) {
         mission_image_progressBar.visibility = progressVisiblity
         mission_background.visibility = imageVisiblity
         mission_image_user_info_linearlayout.visibility = imageVisiblity
@@ -225,35 +252,22 @@ class MissionFragment : Fragment() {
 
     fun getWeatherInfo() {
         // Location Data
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        LocationClient.getInstance().getLastLocation { location: Location ->
+            RetrofitClient.getInstance().getCurrentWeather(
+                location.latitude.toString(),
+                location.longitude.toString(),
+                { weatherJSON: JSONObject ->
+                    val mainJsonArray = weatherJSON.getJSONObject("main")
+                    val weatherJsonArray = JSONObject(
+                        weatherJSON.getJSONArray("weather")[0].toString()
+                    )
+                    temperature = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
+                            (9.0f / 5.0f) + 32.0f).toInt().toString() + "ºF"
+                    temperature_text = weatherJsonArray.getString("main")
+                },
+                { call: Call<JsonObject>, t: Throwable ->
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
-                var location: Location? = task.result
-                RetrofitClient.getInstance().getCurrentWeather(
-                    location!!.latitude.toString(),
-                    location!!.longitude.toString(),
-                    { weatherJSON: JSONObject ->
-                        val mainJsonArray = weatherJSON.getJSONObject("main")
-                        val weatherJsonArray = JSONObject(
-                            weatherJSON.getJSONArray("weather")[0].toString()
-                        )
-                        val temp = ((mainJsonArray.getString("temp").toFloat() / 10.0f) *
-                                (9.0f / 5.0f) + 32.0f).toInt().toString() + "ºF"
-                        temperature = temp
-                        temperature_text = weatherJsonArray.getString("main")
-                    },
-                    { call: Call<JsonObject>, t: Throwable ->
-
-                    })
-            }
+                })
         }
     }
 }

@@ -17,13 +17,13 @@
     <string name="Mph">Mph</string>
     <string name="Map">Map</string>
     <string name="Camera">Camera</string>
-    <string name="Distance">Distance</string>
-    <string name="Calories">Calories</string>
-    <string name="Time">Time</string>
-    <string name="AveragePace">AveragePace</string>
-    <string name="Steps">Steps</string>
+    <string name="Distance">DISTANCE</string>
+    <string name="Calories">BURN CALORIES</string>
+    <string name="Time">TIME</string>
+    <string name="AveragePace">AVERAGE PACE</string>
+    <string name="Steps">STEPS</string>
     <string name="StepsCount">Steps</string>
-    <string name="HeartRate">Heart Rate</string>
+    <string name="HeartRate">HEART RATE</string>
     <string name="BPM">BPM</string>
     <string name="Today">Today</string>
     <string name="Weekly">Weekly</string>
@@ -39,6 +39,8 @@
     <string name="s70">70s</string>
     <string name="Sir">Sir</string>
     <string name="Badge">Badge</string>
+    <string name="Wait">Wait a second...</string>
+    <string name="Top">TOP</string>
 
     <!-- Mission Fragment String -->
     <string name="mission_display_1">How about (%type) (%tab)</string>
@@ -67,13 +69,16 @@
     <string name="mission_activity_display_2">the first mission!</string>
 
     <!-- History Activity String -->
-    <string name="history_activity_display_1">History</string>
-    <string name="history_activity_display_2">%s Walk</string>
-    <string name="history_activity_display_3">%d people</string>
-    <string name="history_activity_display_4">also completed</string>
-    <string name="history_activity_display_5">this mission</string>
-    <string name="history_activity_display_6">in %s</string>
-    <string name="history_activity_display_7">today</string>
+    <string name="history_activity_main_title">History</string>
+    <string name="history_activity_title_1">(%location) Walk</string>
+    <string name="history_activity_title_2">Intensity Level</string>
+    <string name="history_activity_title_3">Gender</string>
+    <string name="history_activity_title_4">Age Range</string>
+    <string name="history_activity_display_1">(%count) people (%tab)</string>
+    <string name="history_activity_display_2">also completed (%tab)</string>
+    <string name="history_activity_display_3">this mission (%tab)</string>
+    <string name="history_activity_display_4">in (%location) (%tab)</string>
+    <string name="history_activity_display_5">Meantime</string>
 
     <!-- Information Activity String -->
     <string name="information_activity_badge_1_text_1">Neighborhood</string>
@@ -94,11 +99,9 @@
     <string name="information_activity_badge_8_text_2">Completed</string>
 
     <!-- Finish Mission Activity String -->
-    <string name="finish_mission_activity_display_1_text">Great!</string>
-    <string name="finish_mission_activity_display_2_text">You completed</string>
-    <string name="finish_mission_activity_display_3_text">the first mission!</string>
-    <string name="finish_mission_activity_button_1_text">End</string>
-    <string name="finish_mission_activity_button_2_text">Share</string>
+    <string name="finish_mission_activity_display_1_text">How hard was it?</string>
+    <string name="finish_mission_activity_button_1_text">Share your route</string>
+    <string name="finish_mission_activity_button_2_text">End the mission</string>
 
     <!-- Share Activity String -->
     <string name="share_activity_display_1">Share your route</string>
@@ -107,7 +110,7 @@
     <string name="share_activity_title_2">Route of The Day</string>
     <string name="share_activity_title_3">My Photos</string>
     <string name="share_activity_button_1">Cancel</string>
-    <string name="share_activity_button_2">Done</string>
+    <string name="share_activity_button_2">Upload</string>
     <string name="share_activity_edit_label">Please write a caption.</string>
 
     <!-- Cancle Dialog String -->

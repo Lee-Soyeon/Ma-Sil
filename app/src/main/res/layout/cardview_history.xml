@@ -4,7 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/history_cardview"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="150dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    app:cardCornerRadius="8dp">
 
     <LinearLayout
         android:id="@+id/history_cardview_root_linearlayout"
@@ -12,12 +16,22 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/history_cardview_image"
-            android:layout_width="150dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/history_cardview_map_cardview"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/google_map_img" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/history_cardview_mapview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:id="@+id/history_cardview_text_linearlayout"
@@ -29,31 +43,29 @@
                 android:id="@+id/history_card_view_text_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="48dp"
-                android:fontFamily="@font/noto_sans"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/roboto"
                 android:text="PLACE"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/history_card_view_text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="36dp"
-                android:fontFamily="@font/noto_sans"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto"
                 android:text="TIME_1"
-                android:textColor="@color/black" />
+                android:textColor="@color/black_text" />
 
             <TextView
                 android:id="@+id/history_card_view_text_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:fontFamily="@font/noto_sans"
+                android:fontFamily="@font/roboto"
                 android:text="TIME_2"
-                android:textColor="@color/black" />
+                android:textColor="@color/black_text" />
 
         </LinearLayout>
 

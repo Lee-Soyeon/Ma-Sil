@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/achievement_root_scrollview"
@@ -15,210 +15,503 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/achievement_display_1_text"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/achievement_div_cardview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/noto_sans"
-            android:text="@string/achievement_display_1"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/achievement_tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/achievement_today_tabitem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Today" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/achievement_weekly_tabitem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Weekly" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/achievement_monthly_tabitem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Monthly" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/achievement_yearly_tabitem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Yearly" />
-        </com.google.android.material.tabs.TabLayout>
-
-        <FrameLayout
-            android:id="@+id/achievement_tab_framelayout"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
+            android:layout_height="match_parent"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
-                android:id="@+id/achievement_today_linearlayout"
+                android:id="@+id/achievement_title_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/achievement_today_div1_linearlayout"
+                <TextView
+                    android:id="@+id/achievement_display_1_text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/achievement_display_1"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/achievement_steps_info_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Steps" />
-
-                    <TextView
-                        android:id="@+id/achievement_steps_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/StepsCount"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/achievement_averagepace_info_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/AveragePace" />
-
-                    <TextView
-                        android:id="@+id/achievement_averagepace_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Mph"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/achievement_calories_info_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Calories" />
-
-                    <TextView
-                        android:id="@+id/achievement_calories_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Kcal"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/achievement_today_div2_linearlayout"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/achievement_tablayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginRight="20dp"
+                    app:tabIndicatorColor="@color/google_key_color">
 
-                    <TextView
-                        android:id="@+id/achievement_heartrate_info_text"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/achievement_today_tabitem"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/HeartRate" />
+                        android:text="@string/Today" />
 
-                    <TextView
-                        android:id="@+id/achievement_heartrate_text"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/achievement_weekly_tabitem"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/BPM"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:text="@string/Weekly" />
 
-                    <TextView
-                        android:id="@+id/achievement_distance_info_text"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/achievement_monthly_tabitem"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Distance" />
+                        android:text="@string/Monthly" />
 
-                    <TextView
-                        android:id="@+id/achievement_distance_text"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/achievement_yearly_tabitem"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Mile"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/achievement_time_info_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="@string/Time" />
-
-                    <TextView
-                        android:id="@+id/achievement_time_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans"
-                        android:text="00:00"
-                        android:textColor="@color/black"
-                        android:textSize="24sp" />
-                </LinearLayout>
+                        android:text="@string/Yearly" />
+                </com.google.android.material.tabs.TabLayout>
             </LinearLayout>
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/history_statistics_chart"
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/achievement_today_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:visibility="visible">>
+
+            <LinearLayout
+                android:id="@+id/achievement_today_div1_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/achievement_monthly_chart"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_steps_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/achievement_today_steps_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_steps_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_steps_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundTintMode="add"
+                                android:src="@drawable/achievement_step" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_steps_info_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Steps"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_steps_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/achievement_today_steps_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/StepsCount"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_averagepace_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/achievement_today_averagepace_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_averagepace_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_averagepace_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_average_pace" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_averagepace_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/AveragePace"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_averagepace_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/achievement_today_averagepace_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Mph"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_calories_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/achievement_today_calories_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_calories_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_calories_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_burnt_calories" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_calories_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Calories"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_calories_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/achievement_today_calories_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Kcal"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/achievement_today_div2_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/achievement_yearly_chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_heartrate_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
-        </FrameLayout>
+                    <LinearLayout
+                        android:id="@+id/achievement_today_heartrate_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_heartrate_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_heartrate_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundTintMode="add"
+                                android:src="@drawable/achievement_step_bpm" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_heartrate_info_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/HeartRate"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_heartrate_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/achievement_today_heartrate_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/BPM"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_distance_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/achievement_today_distance_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_distance_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_distance_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_distance" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_distance_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Distance"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_distance_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="0"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/achievement_today_distance_unit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="19dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/Mile"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/achievement_today_time_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/achievement_today_time_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/achievement_today_time_info_linearlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/achievement_today_time_info_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/achievement_time" />
+
+                            <TextView
+                                android:id="@+id/achievement_today_time_info_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/Time"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/achievement_today_time_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="00:00"
+                            android:textColor="@color/blue"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/achievement_divider"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="20dp"
+            android:background="?android:attr/listDivider" />
 
         <TextView
             android:id="@+id/achievement_display_2_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/noto_sans"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/achievement_display_2"
             android:textColor="@color/black"
             android:textSize="28sp"
@@ -228,10 +521,10 @@
             android:id="@+id/achievement_history_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
         </LinearLayout>
 

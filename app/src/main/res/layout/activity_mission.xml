@@ -12,7 +12,7 @@
         android:id="@+id/activity_mission_display_1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/noto_sans"
         android:gravity="center"
         android:text="@string/mission_activity_display_1"
@@ -58,7 +58,7 @@
             android:fontFamily="@font/roboto"
             android:text="00'  00''"
             android:textColor="@color/black"
-            android:textSize="48sp"
+            android:textSize="60sp"
             android:textStyle="bold" />
     </FrameLayout>
 
@@ -97,7 +97,7 @@
                 android:gravity="center"
                 android:text="@string/Mph"
                 android:textColor="@color/black_text"
-                android:textSize="30sp" />
+                android:textSize="28sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,7 +126,7 @@
                 android:gravity="center"
                 android:text="@string/Mile"
                 android:textColor="@color/black_text"
-                android:textSize="30sp" />
+                android:textSize="28sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -155,7 +155,7 @@
                 android:gravity="center"
                 android:text="@string/Kcal"
                 android:textColor="@color/black_text"
-                android:textSize="30sp" />
+                android:textSize="28sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -170,80 +170,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginBottom="48dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
-            <LinearLayout
-                android:id="@+id/activity_mission_map_linearlayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/activity_mission_map_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/activity_mission_map_button"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/graycirclebutton"
-                    android:src="@drawable/ic_map_black_24"
-                    android:text="Button" />
-
-                <TextView
-                    android:id="@+id/activity_mission_map_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Map"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/button_primary_second_circle"
+                android:src="@drawable/ic_map_black_24"
+                android:text="Button" />
 
             <ImageButton
                 android:id="@+id/activity_mission_pause_button"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_height="105dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/blackcirclebutton"
                 android:src="@drawable/ic_pause_black_24"
                 android:tint="@color/white" />
 
-            <LinearLayout
-                android:id="@+id/activity_mission_camera_linearlayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/activity_mission_camera_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_primary_second_circle"
+                android:src="@drawable/ic_photo_camera_black_24"
+                android:text="Button" />
 
-                <ImageButton
-                    android:id="@+id/activity_mission_camera_button"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/graycirclebutton"
-                    android:src="@drawable/ic_photo_camera_black_24"
-                    android:text="Button" />
-
-                <TextView
-                    android:id="@+id/activity_mission_camera_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/Camera"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -251,18 +213,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginBottom="48dp"
-            android:gravity="center"
             android:orientation="horizontal"
             android:visibility="invisible">
 
             <ImageButton
                 android:id="@+id/activity_mission_stop_button"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginLeft="86dp"
                 android:layout_marginRight="16dp"
+                android:layout_weight="1"
                 android:background="@drawable/blackcirclebutton"
                 android:src="@drawable/ic_baseline_stop_24"
                 android:text="Button"
@@ -270,9 +231,11 @@
 
             <ImageButton
                 android:id="@+id/activity_mission_continue_button"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="86dp"
+                android:layout_weight="1"
                 android:background="@drawable/button_green_primary_circle"
                 android:src="@drawable/ic_play_arrow_black_24"
                 android:text="Button"
