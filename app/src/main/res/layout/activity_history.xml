@@ -827,7 +827,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
+        <ImageButton
             android:id="@+id/history_top_button"
             android:layout_width="85dp"
             android:layout_height="85dp"
@@ -836,10 +836,10 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_primary_gradient_circle"
-            android:text="@string/Top"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:elevation="5dp"
+            android:shadowDx="10.0"
+            android:shadowDy="10.0"
+            android:src="@drawable/top_button_image" />
 
     </LinearLayout>
 </ScrollView>

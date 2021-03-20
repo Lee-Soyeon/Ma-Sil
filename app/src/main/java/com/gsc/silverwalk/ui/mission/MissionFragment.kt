@@ -142,9 +142,7 @@ class MissionFragment : Fragment() {
 
         // Set mission string
         var mission_string =
-            getString(R.string.mission_display_1) +
-                    getString(R.string.mission_display_2) +
-                    getString(R.string.mission_display_3)
+            getString(R.string.mission_display_1);
         mission_string = mission_string.replace(
             "(%location)",
             missionDataList[currentMissionIndex].get("location").toString()
@@ -159,10 +157,7 @@ class MissionFragment : Fragment() {
         )
 
         // Update Display Text
-        val splitString = mission_string.split("(%tab)")
-        mission_display_1_text.setText(splitString[0])
-        mission_display_2_text.setText(splitString[1])
-        mission_display_3_text.setText(splitString[2])
+        mission_display_1_text.setText(mission_string)
 
         mission_level_text.setText(
             MissionLevelStringArray[

@@ -43,9 +43,7 @@
     <string name="Top">TOP</string>
 
     <!-- Mission Fragment String -->
-    <string name="mission_display_1">How about (%type) (%tab)</string>
-    <string name="mission_display_2">for (%time) min (%tab)</string>
-    <string name="mission_display_3">At (%location)?</string>
+    <string name="mission_display_1">How about (%type) for (%time) min At (%location)?</string>
     <string name="mission_easy">Easy</string>
     <string name="mission_normal">Normal</string>
     <string name="mission_hard">Hard</string>

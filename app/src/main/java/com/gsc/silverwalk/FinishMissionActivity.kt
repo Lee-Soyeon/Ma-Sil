@@ -1,6 +1,7 @@
 package com.gsc.silverwalk
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -89,7 +90,7 @@ class FinishMissionActivity : AppCompatActivity() {
 
         if(this.level == 0L){
             activity_finish_mission_easy_cardview
-                    .setCardBackgroundColor(getColor(R.color.google_key_color))
+                    .setCardBackgroundColor(getColor(R.color.blue))
             activity_finish_mission_moderate_cardview
                     .setCardBackgroundColor(getColor(R.color.white))
             activity_finish_mission_hard_cardview
@@ -100,26 +101,35 @@ class FinishMissionActivity : AppCompatActivity() {
                     getColor(R.color.black))
             activity_finish_mission_hard_text.setTextColor(
                     getColor(R.color.black))
+            activity_finish_mission_easy_text.typeface = Typeface.DEFAULT_BOLD
+            activity_finish_mission_moderate_text.typeface = Typeface.DEFAULT
+            activity_finish_mission_hard_text.typeface = Typeface.DEFAULT
         }else if(this.level == 1L){
             activity_finish_mission_easy_cardview
                     .setCardBackgroundColor(getColor(R.color.white))
             activity_finish_mission_moderate_cardview
-                    .setCardBackgroundColor(getColor(R.color.google_key_color))
+                    .setCardBackgroundColor(getColor(R.color.blue))
             activity_finish_mission_hard_cardview
                     .setCardBackgroundColor(getColor(R.color.white))
             activity_finish_mission_easy_text.setTextColor(getColor(R.color.black))
             activity_finish_mission_moderate_text.setTextColor(getColor(R.color.white))
             activity_finish_mission_hard_text.setTextColor(getColor(R.color.black))
+            activity_finish_mission_easy_text.typeface = Typeface.DEFAULT
+            activity_finish_mission_moderate_text.typeface = Typeface.DEFAULT_BOLD
+            activity_finish_mission_hard_text.typeface = Typeface.DEFAULT
         }else if(this.level == 2L){
             activity_finish_mission_easy_cardview
                     .setCardBackgroundColor(getColor(R.color.white))
             activity_finish_mission_moderate_cardview
                     .setCardBackgroundColor(getColor(R.color.white))
             activity_finish_mission_hard_cardview
-                    .setCardBackgroundColor(getColor(R.color.google_key_color))
+                    .setCardBackgroundColor(getColor(R.color.blue))
             activity_finish_mission_easy_text.setTextColor(getColor(R.color.black))
             activity_finish_mission_moderate_text.setTextColor(getColor(R.color.black))
             activity_finish_mission_hard_text.setTextColor(getColor(R.color.white))
+            activity_finish_mission_easy_text.typeface = Typeface.DEFAULT
+            activity_finish_mission_moderate_text.typeface = Typeface.DEFAULT
+            activity_finish_mission_hard_text.typeface = Typeface.DEFAULT_BOLD
         }
 
         activity_finish_mission_button_linearlayout.visibility = View.VISIBLE
