@@ -1,6 +1,7 @@
 package com.gsc.silverwalk
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -17,7 +18,14 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.FileProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.fitness.Fitness
+import com.google.android.gms.fitness.FitnessOptions
+import com.google.android.gms.fitness.data.DataType
+import com.google.android.gms.fitness.data.Field
 import kotlinx.android.synthetic.main.activity_mission.*
 import java.io.File
 import java.io.FileOutputStream
@@ -27,12 +35,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
+import kotlin.jvm.Throws
 
 class MissionActivity : AppCompatActivity() {
 
     // CAMERA Intent Parameter
     companion object{
         val REQUEST_CAMERA = 100
+        const val SIGN_IN_REQUEST_CODE = 1001
     }
     private var cameraPathArray : ArrayList<String> = arrayListOf()
     private var currentImagePath : String = ""
@@ -50,12 +60,21 @@ class MissionActivity : AppCompatActivity() {
     private var missionType = ""
     private var missionLevel = 0L
 
+    private val fitnessOptions: FitnessOptions by lazy {
+        FitnessOptions.builder()
+            .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
+            .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
+            .build()
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mission)
 
         supportActionBar?.hide()
+
+        fitSignIn()
 
         // Get Intent Data
         missionTime =
@@ -139,12 +158,57 @@ class MissionActivity : AppCompatActivity() {
         })
     }
 
+    private fun fitSignIn() {
+        if (oAuthPermissionsApproved()) {
+            readDailySteps()
+        } else {
+            GoogleSignIn.requestPermissions(
+                this,
+                SIGN_IN_REQUEST_CODE,
+                getGoogleAccount(),
+                fitnessOptions
+            )
+        }
+    }
+
+    private fun oAuthPermissionsApproved() =
+        GoogleSignIn.hasPermissions(getGoogleAccount(), fitnessOptions)
+
+    private fun getGoogleAccount(): GoogleSignInAccount =
+        GoogleSignIn.getAccountForExtension(this, fitnessOptions)
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == REQUEST_CAMERA && resultCode == RESULT_OK){
+        if(requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
 
         }
+
+        when (resultCode) {
+            RESULT_OK -> {
+                readDailySteps()
+            }
+            else -> {
+
+            }
+        }
+    }
+
+    private fun readDailySteps() {
+        Fitness.getHistoryClient(this, getGoogleAccount())
+            .readDailyTotal(DataType.TYPE_STEP_COUNT_DELTA)
+            .addOnSuccessListener { dataSet ->
+                val total = when {
+                    dataSet.isEmpty -> 0
+                    else -> dataSet.dataPoints.first()
+                        .getValue(Field.FIELD_STEPS).asInt()
+                }
+
+                Log.i("#####", "Total steps: $total")
+            }
+            .addOnFailureListener { e ->
+                Log.w("#####", "There was a problem getting the step count.", e)
+            }
     }
 
     override fun onBackPressed() {
