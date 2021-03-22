@@ -36,7 +36,7 @@ class RetrofitClient {
         var res: Call<JsonObject> = RetrofitClient
                 .getInstance()
                 .buildRetrofit()
-                .getCurrentWeather(lat, lon, "")
+                .getCurrentWeather(lat, lon, "98f72a185ab70464886924c037e07ed0")
 
         val result = res.enqueue(object: Callback<JsonObject> {
 
