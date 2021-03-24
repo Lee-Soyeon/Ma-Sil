@@ -24,7 +24,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical"
-            tools:context=".ShareActivity">
+            tools:context=".ui.share.ShareActivity">
 
             <TextView
                 android:id="@+id/share_activity_display_1_text"

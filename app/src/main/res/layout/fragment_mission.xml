@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".ui.mission.MissionFragment">
+    tools:context=".ui.fragment.mission.MissionFragment">
 
     <ProgressBar
         android:id="@+id/mission_progressBar"
@@ -140,35 +140,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="0dp"
             android:fontFamily="@font/roboto"
+            android:lineSpacingExtra="10sp"
             android:text="@string/mission_display_1"
-            android:textColor="@color/black"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/mission_display_2_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/mission_display_2"
-            android:textColor="@color/black"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/mission_display_3_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/mission_display_3"
             android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold" />

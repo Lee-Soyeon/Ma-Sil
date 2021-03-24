@@ -6,27 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MissionActivity">
+    tools:context=".ui.domission.MissionActivity">
 
     <TextView
         android:id="@+id/activity_mission_display_1_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/noto_sans"
+        android:layout_marginRight="40dp"
+        android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="@string/mission_activity_display_1"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/activity_mission_display_2_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/noto_sans"
-        android:gravity="center"
-        android:text="@string/mission_activity_display_2"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -165,7 +156,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom">
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/activity_mission_playing_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,15 +169,15 @@
                 android:id="@+id/activity_mission_map_button"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/button_primary_second_circle"
                 android:src="@drawable/ic_map_black_24"
                 android:text="Button" />
 
             <ImageButton
                 android:id="@+id/activity_mission_pause_button"
-                android:layout_width="0dp"
+                android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="35dp"
@@ -200,15 +191,15 @@
                 android:id="@+id/activity_mission_camera_button"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="40dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="30dp"
                 android:background="@drawable/button_primary_second_circle"
                 android:src="@drawable/ic_photo_camera_black_24"
                 android:text="Button" />
 
-        </LinearLayout>
+        </FrameLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/activity_mission_stop_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -219,11 +210,10 @@
 
             <ImageButton
                 android:id="@+id/activity_mission_stop_button"
-                android:layout_width="0dp"
+                android:layout_width="105dp"
                 android:layout_height="105dp"
-                android:layout_marginLeft="86dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="72dp"
                 android:background="@drawable/blackcirclebutton"
                 android:src="@drawable/ic_baseline_stop_24"
                 android:text="Button"
@@ -231,16 +221,15 @@
 
             <ImageButton
                 android:id="@+id/activity_mission_continue_button"
-                android:layout_width="0dp"
+                android:layout_width="105dp"
                 android:layout_height="105dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="86dp"
-                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:layout_marginRight="72dp"
                 android:background="@drawable/button_green_primary_circle"
                 android:src="@drawable/ic_play_arrow_black_24"
                 android:text="Button"
                 android:tint="#FFFFFF" />
-        </LinearLayout>
+        </FrameLayout>
 
     </FrameLayout>
 

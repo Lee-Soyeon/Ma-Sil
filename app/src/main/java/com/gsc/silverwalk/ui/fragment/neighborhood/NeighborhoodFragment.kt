@@ -1,25 +1,16 @@
-package com.gsc.silverwalk.ui.neighborhood
+package com.gsc.silverwalk.ui.fragment.neighborhood
 
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.gsc.silverwalk.R
-import kotlinx.android.synthetic.main.cardview_neighborhood_item_image.view.*
-import kotlinx.android.synthetic.main.fragment_achievement.*
 import kotlinx.android.synthetic.main.fragment_neighborhood.*
 import kotlinx.android.synthetic.main.linearlayout_neighborhood_item.view.*
 import java.text.SimpleDateFormat

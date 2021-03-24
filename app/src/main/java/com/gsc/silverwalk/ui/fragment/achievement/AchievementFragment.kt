@@ -1,4 +1,4 @@
-package com.gsc.silverwalk.ui.achievement
+package com.gsc.silverwalk.ui.fragment.achievement
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +11,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.gsc.silverwalk.HistoryActivity
+import com.gsc.silverwalk.ui.history.HistoryActivity
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.userinfo.UserInfo
 import kotlinx.android.synthetic.main.cardview_history.view.*
 import kotlinx.android.synthetic.main.fragment_achievement.*
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt

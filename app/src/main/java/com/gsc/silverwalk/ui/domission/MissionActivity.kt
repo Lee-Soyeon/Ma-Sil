@@ -1,16 +1,14 @@
-package com.gsc.silverwalk
+package com.gsc.silverwalk.ui.domission
 
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -20,17 +18,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.FileProvider
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.Field
+import com.gsc.silverwalk.R
+import com.gsc.silverwalk.ui.finishmission.FinishMissionActivity
+import com.gsc.silverwalk.ui.map.MapsActivity
 import kotlinx.android.synthetic.main.activity_mission.*
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
-import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
