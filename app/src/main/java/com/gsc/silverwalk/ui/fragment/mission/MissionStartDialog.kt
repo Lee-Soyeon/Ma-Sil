@@ -47,6 +47,12 @@ class MissionStartDialog : DialogFragment() {
 
         dialogView.findViewById<Button>(R.id.mission_start_dialog_start_button)
             .setOnClickListener(View.OnClickListener {
+                val i = Intent(context, MissionActivity::class.java)
+                i.putExtra("missionTime",time)
+                i.putExtra("missionLocation",location)
+                i.putExtra("missionType",type)
+                i.putExtra("missionLevel",level)
+                startActivity(i)
                 dialog?.dismiss()
             })
 
