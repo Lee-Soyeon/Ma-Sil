@@ -29,7 +29,7 @@
 
 ### Expected Results
 
-* Comunity Mapping
+* Community Mapping
     * 자연스러운 참여 과정에서 커뮤니티 구성원 간의 소통이 더욱 원활해지고 활발
     * 지도를 만들어가는 과정에서 관심있는 일정 주제와 이슈를 중심으로 주민들간의 소통 촉진
 * 신체적・정신적 건강 증진
