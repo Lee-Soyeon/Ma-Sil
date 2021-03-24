@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_mission"
-        android:name="com.gsc.silverwalk.ui.mission.MissionFragment"
+        android:name="com.gsc.silverwalk.ui.fragment.mission.MissionFragment"
         android:label="@string/title_mission"
         tools:layout="@layout/fragment_achievement" />
 
     <fragment
         android:id="@+id/navigation_achievement"
-        android:name="com.gsc.silverwalk.ui.achievement.AchievementFragment"
+        android:name="com.gsc.silverwalk.ui.fragment.achievement.AchievementFragment"
         android:label="@string/title_achievement"
         tools:layout="@layout/fragment_mission" />
 
     <fragment
         android:id="@+id/navigation_neighborhood"
-        android:name="com.gsc.silverwalk.ui.neighborhood.NeighborhoodFragment"
+        android:name="com.gsc.silverwalk.ui.fragment.neighborhood.NeighborhoodFragment"
         android:label="@string/title_neighborhood"
         tools:layout="@layout/fragment_neighborhood" />
 
     <fragment
         android:id="@+id/navigation_information"
-        android:name="com.gsc.silverwalk.ui.information.InformationFragment"
+        android:name="com.gsc.silverwalk.ui.fragment.information.InformationFragment"
         android:label="@string/title_information"
         tools:layout="@layout/fragment_information" />
 

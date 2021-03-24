@@ -1,34 +1,24 @@
-package com.gsc.silverwalk
+package com.gsc.silverwalk.ui.share
 
-import android.app.ActionBar
-import android.app.ProgressDialog
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.GridLayout
-import android.widget.ImageView
 import androidx.core.view.iterator
-import androidx.fragment.app.FragmentManager
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.gsc.silverwalk.ui.mission.MissionStartDialog
+import com.gsc.silverwalk.R
+import com.gsc.silverwalk.WaitDialog
 import kotlinx.android.synthetic.main.activity_share.*
 import kotlinx.android.synthetic.main.framelayout_history_camera_view.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
-import java.util.zip.Inflater
 import kotlin.collections.ArrayList
 
 class ShareActivity : AppCompatActivity() {
@@ -88,7 +78,7 @@ class ShareActivity : AppCompatActivity() {
         val it = imagePath.iterator()
         while(it.hasNext()){
             val newImage = layoutInflater.inflate(
-                    R.layout.framelayout_history_camera_view,
+                R.layout.framelayout_history_camera_view,
                     share_activity_photos_gridlayout, false)
 
             share_activity_photos_gridlayout.addView(newImage)

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="?attr/actionBarSize"
     android:orientation="vertical"
-    tools:context=".ui.neighborhood.NeighborhoodFragment">
+    tools:context=".ui.fragment.neighborhood.NeighborhoodFragment">
 
 <LinearLayout
     android:id="@+id/neighborhood_root_linearlayout"

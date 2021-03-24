@@ -5,7 +5,7 @@
     android:id="@+id/history_root_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".HistoryActivity">
+    tools:context=".ui.history.HistoryActivity">
 
     <LinearLayout
         android:id="@+id/history_root_linearlayout"

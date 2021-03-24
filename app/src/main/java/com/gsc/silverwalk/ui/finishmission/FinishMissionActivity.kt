@@ -1,4 +1,4 @@
-package com.gsc.silverwalk
+package com.gsc.silverwalk.ui.finishmission
 
 import android.content.Intent
 import android.graphics.Typeface
@@ -10,6 +10,9 @@ import androidx.annotation.RequiresApi
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.gsc.silverwalk.R
+import com.gsc.silverwalk.ui.share.ShareActivity
+import com.gsc.silverwalk.WaitDialog
 import kotlinx.android.synthetic.main.activity_finish_mission.*
 
 class FinishMissionActivity : AppCompatActivity() {

@@ -1,46 +1,31 @@
-package com.gsc.silverwalk.ui.mission
+package com.gsc.silverwalk.ui.fragment.mission
 
-import android.Manifest
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import com.gsc.silverwalk.MissionActivity
+import com.gsc.silverwalk.ui.domission.MissionActivity
 import com.gsc.silverwalk.R
-import com.gsc.silverwalk.retrofit.RetrofitClient
-import kotlinx.android.synthetic.main.dialog_mission_start.*
-import org.json.JSONObject
-import retrofit2.Call
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MissionStartDialog : DialogFragment() {
 
-    private var temperature = ""
-    private var temperature_text = ""
-    private var time = 0L
-    private var location = ""
-    private var type = ""
-    private var level = 0L
+    private var temperature: String? = null
+    private var temperature_text: String? = null
+    private var time: Long? = null
+    private var location: String? = null
+    private var type: String? = null
+    private var level: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -62,12 +47,6 @@ class MissionStartDialog : DialogFragment() {
 
         dialogView.findViewById<Button>(R.id.mission_start_dialog_start_button)
             .setOnClickListener(View.OnClickListener {
-                val missionActivityIntent = Intent(context, MissionActivity::class.java)
-                missionActivityIntent.putExtra("missionTime", time)
-                missionActivityIntent.putExtra("missionLocation", location)
-                missionActivityIntent.putExtra("missionType", type)
-                missionActivityIntent.putExtra("missionLevel",level)
-                startActivity(missionActivityIntent)
                 dialog?.dismiss()
             })
 
@@ -86,12 +65,14 @@ class MissionStartDialog : DialogFragment() {
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    fun setDialogInfo(time : Long, location : String, type : String, level : Long,
-        temperature : String, temperature_text : String) {
+    fun setDialogInfo(time: Long?, location: String?, type: String?, level: Long?) {
         this.time = time;
         this.location = location;
         this.type = type;
         this.level = level;
+    }
+
+    fun setDialogWeatherInfo(temperature : String?, temperature_text : String?){
         this.temperature = temperature
         this.temperature_text = temperature_text
     }
