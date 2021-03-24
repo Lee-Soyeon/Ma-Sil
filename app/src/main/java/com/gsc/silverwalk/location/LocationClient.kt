@@ -7,8 +7,6 @@ import android.location.Location
 import android.os.Looper
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
-import com.gsc.silverwalk.retrofit.RetrofitClient
-import org.json.JSONObject
 
 class LocationClient {
     companion object {
@@ -19,26 +17,29 @@ class LocationClient {
         }
     }
 
-    lateinit var fusedLocationClient : FusedLocationProviderClient
-    lateinit var locationCallback : LocationCallback
-    lateinit var locationRequest : LocationRequest
-    lateinit var context : Context
+    lateinit var fusedLocationClient: FusedLocationProviderClient
+    lateinit var locationCallback: LocationCallback
+    lateinit var locationRequest: LocationRequest
+    lateinit var context: Context
 
-    fun buildLocationClient(context : Context) {
+    fun buildLocationClient(context: Context) {
         this.context = context
 
         if (ActivityCompat.checkSelfPermission(
-                        context, Manifest.permission.ACCESS_FINE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(
-                        context, Manifest.permission.ACCESS_COARSE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED) {
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
             return
         }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
         locationRequest = LocationRequest.create()
-        locationRequest.run{
+        locationRequest.run {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             interval = 60000
         }
@@ -46,7 +47,8 @@ class LocationClient {
         locationCallback = object : LocationCallback() {}
 
         fusedLocationClient.requestLocationUpdates(
-                locationRequest, locationCallback, Looper.myLooper())
+            locationRequest, locationCallback, Looper.myLooper()
+        )
     }
 
     fun destoryLocationClient() {
@@ -55,18 +57,21 @@ class LocationClient {
 
     fun getLastLocation(success: (Location) -> Unit) {
         if (ActivityCompat.checkSelfPermission(
-                        context, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(
-                        context, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) ==
+            PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) ==
+            PackageManager.PERMISSION_GRANTED
+        ) {
             fusedLocationClient.lastLocation
-                    .addOnSuccessListener {
-                        success(it)
-                    }
-                    .addOnFailureListener {
+                .addOnSuccessListener {
+                    success(it)
+                }
+                .addOnFailureListener {
 
-                    }
+                }
         }
     }
 }
