@@ -1,4 +1,4 @@
-package com.gsc.silverwalk
+package com.gsc.silverwalk.ui.map
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +9,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.gsc.silverwalk.R
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 

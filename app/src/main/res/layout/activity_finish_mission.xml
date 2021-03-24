@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FinishMissionActivity">
+    tools:context=".ui.finishmission.FinishMissionActivity">
 
     <TextView
         android:id="@+id/activity_finish_mission_display_1_text"

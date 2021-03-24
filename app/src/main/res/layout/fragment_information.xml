@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="?attr/actionBarSize"
     android:orientation="vertical"
-    tools:context=".ui.information.InformationFragment">
+    tools:context=".ui.fragment.information.InformationFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
