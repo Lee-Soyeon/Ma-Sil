@@ -11,9 +11,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.location.LocationClient
+
 
 class MainActivity : AppCompatActivity() {
 
