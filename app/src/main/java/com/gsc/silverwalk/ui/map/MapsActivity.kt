@@ -3,7 +3,9 @@ package com.gsc.silverwalk.ui.map
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
@@ -21,6 +23,7 @@ import com.google.android.gms.maps.model.*
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.location.LocationClient
 import java.util.*
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -91,6 +94,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         markerOptions.position(currentPostion!!)
 //        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
         markerOptions.anchor(0.5.toFloat(), 0.5.toFloat())
+
+        val bitmapdraw = resources.getDrawable(R.drawable.ic_current_marker) as BitmapDrawable
+        val b = bitmapdraw.bitmap
+        val smallMarker = Bitmap.createScaledBitmap(b, 68, 100, false)
+        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
 
         map.addMarker(markerOptions)
 
