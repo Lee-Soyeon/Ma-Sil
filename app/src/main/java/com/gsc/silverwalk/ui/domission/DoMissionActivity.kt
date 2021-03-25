@@ -37,7 +37,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 import kotlin.jvm.Throws
 
-class MissionActivity : AppCompatActivity() {
+class DoMissionActivity : AppCompatActivity() {
 
     // CAMERA Intent Parameter
     companion object{

@@ -12,9 +12,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
-import com.gsc.silverwalk.ui.domission.MissionActivity
+import com.gsc.silverwalk.ui.domission.DoMissionActivity
 import com.gsc.silverwalk.R
-import com.gsc.silverwalk.ui.history.HistoryActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -48,7 +47,7 @@ class MissionStartDialog : DialogFragment() {
 
         dialogView.findViewById<Button>(R.id.mission_start_dialog_start_button)
             .setOnClickListener(View.OnClickListener {
-                val i = Intent(context, MissionActivity::class.java)
+                val i = Intent(context, DoMissionActivity::class.java)
                 i.putExtra("missionTime",time)
                 i.putExtra("missionLocation",location)
                 i.putExtra("missionType",type)

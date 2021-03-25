@@ -66,12 +66,13 @@ class AchievementFragment : Fragment() {
                 historyLayout.setOnClickListener {
                     val historyActivityIntent = Intent(context, HistoryActivity::class.java)
                     historyActivityIntent.putExtra("steps", item.steps)
-                    historyActivityIntent.putExtra("average_pace", item.averagePace)
+                    historyActivityIntent.putExtra("averagePace", item.averagePace)
                     historyActivityIntent.putExtra("distance", item.distance)
-                    historyActivityIntent.putExtra("heart_rate", item.heartRate)
+                    historyActivityIntent.putExtra("heartRate", item.heartRate)
                     historyActivityIntent.putExtra("location", item.location)
-                    historyActivityIntent.putExtra("time_second", item.time)
+                    historyActivityIntent.putExtra("time", item.time)
                     historyActivityIntent.putExtra("calories", item.calories)
+                    historyActivityIntent.putExtra("walkTime", item.walkTime)
                     startActivity(historyActivityIntent)
                 }
 

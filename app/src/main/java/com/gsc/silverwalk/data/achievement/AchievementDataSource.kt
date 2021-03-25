@@ -74,7 +74,8 @@ class AchievementDataSource {
                             document.data.get("average_pace") as Long,
                             document.data.get("distance") as Double,
                             document.data.get("heart_rate") as Long,
-                            document.data.get("calories") as Long
+                            document.data.get("calories") as Long,
+                            document.data.get("time_second") as Long
                         )
                     )
                 }

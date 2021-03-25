@@ -72,10 +72,10 @@
     <string name="history_activity_title_2">Intensity Level</string>
     <string name="history_activity_title_3">Gender</string>
     <string name="history_activity_title_4">Age Range</string>
-    <string name="history_activity_display_1">(%count) people (%tab)</string>
-    <string name="history_activity_display_2">also completed (%tab)</string>
-    <string name="history_activity_display_3">this mission (%tab)</string>
-    <string name="history_activity_display_4">in (%location) (%tab)</string>
+    <string name="history_activity_display_1">(%count) people </string>
+    <string name="history_activity_display_2">also completed</string>
+    <string name="history_activity_display_3">this mission</string>
+    <string name="history_activity_display_4">in (%location)</string>
     <string name="history_activity_display_5">Meantime</string>
 
     <!-- Information Activity String -->
