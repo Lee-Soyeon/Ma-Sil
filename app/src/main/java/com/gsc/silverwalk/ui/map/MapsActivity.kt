@@ -76,14 +76,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        setMarkerOption(zoom)
+
+        LocationClient.getInstance().getLastLocation {
+            longitude = it.longitude.toDouble()
+            latitude = it.latitude.toDouble()
+            currentPostion = LatLng(latitude, longitude)
+            setMarkerOption(zoom)
+        }
     }
 
     fun setMarkerOption(zoom: Int) {
         map.clear()
         var markerOptions = MarkerOptions()
         markerOptions.position(currentPostion!!)
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
+//        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
         markerOptions.anchor(0.5.toFloat(), 0.5.toFloat())
 
         map.addMarker(markerOptions)

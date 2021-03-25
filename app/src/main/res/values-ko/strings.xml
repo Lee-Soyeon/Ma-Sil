@@ -72,11 +72,11 @@
     <string name="history_activity_title_2">난이도</string>
     <string name="history_activity_title_3">성별</string>
     <string name="history_activity_title_4">나이 평균</string>
-    <string name="history_activity_display_1">그동안 (%tab)</string>
-    <string name="history_activity_display_2">(%location) (%tab)</string>
-    <string name="history_activity_display_3">에서는 (%tab)</string>
-    <string name="history_activity_display_4">총 (%count)명이 (%tab)</string>
-    <string name="history_activity_display_5">도전을 완료했어요! (%tab)</string>
+    <string name="history_activity_display_1">그동안</string>
+    <string name="history_activity_display_2">(%location)</string>
+    <string name="history_activity_display_3">에서는</string>
+    <string name="history_activity_display_4">총 (%count)명이</string>
+    <string name="history_activity_display_5">도전을 완료했어요!</string>
 
     <!-- Information Activity String -->
     <string name="information_activity_badge_1_text_1">우리 동네</string>

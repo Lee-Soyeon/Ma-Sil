@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.domission.MissionActivity">
+    tools:context=".ui.domission.DoMissionActivity">
 
     <TextView
         android:id="@+id/activity_mission_display_1_text"
