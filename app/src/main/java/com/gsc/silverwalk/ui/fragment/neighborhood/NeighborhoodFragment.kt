@@ -33,6 +33,9 @@ class NeighborhoodFragment : Fragment() {
         neighborhoodViewModel.neighborhoodForm.observe(viewLifecycleOwner, Observer {
             val neighborhoodForm = it ?: return@Observer
 
+            neighborhood_progressBar.visibility = View.INVISIBLE
+            neighborhood_root_scrollview.visibility = View.VISIBLE
+
             val iter = neighborhoodForm.items?.iterator()
             while(iter!!.hasNext()){
                 val item = iter.next()
@@ -65,7 +68,7 @@ class NeighborhoodFragment : Fragment() {
                         .addView(neighborhoodImageItem)
                 }
 
-                neighborhood_root_linearlayout.addView(neighborhoodItem)
+                neighborhood_scroll_linearlayout.addView(neighborhoodItem)
             }
         })
     }

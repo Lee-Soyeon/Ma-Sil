@@ -1,10 +1,7 @@
 package com.gsc.silverwalk.ui.fragment.mission
 
 import android.graphics.drawable.Drawable
-import android.location.Location
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,16 +13,8 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.JsonObject
 import com.gsc.silverwalk.R
-import com.gsc.silverwalk.location.LocationClient
-import com.gsc.silverwalk.retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.fragment_mission.*
-import org.json.JSONObject
-import retrofit2.Call
 
 class MissionFragment : Fragment() {
 
