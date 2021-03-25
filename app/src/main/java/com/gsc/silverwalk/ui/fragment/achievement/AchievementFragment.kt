@@ -1,6 +1,8 @@
 package com.gsc.silverwalk.ui.fragment.achievement
 
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
@@ -18,6 +24,7 @@ import com.gsc.silverwalk.R
 import com.gsc.silverwalk.userinfo.UserInfo
 import kotlinx.android.synthetic.main.cardview_history.view.*
 import kotlinx.android.synthetic.main.fragment_achievement.*
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -25,6 +32,9 @@ import kotlin.math.roundToInt
 class AchievementFragment : Fragment() {
 
     private lateinit var achievementViewModel: AchievementViewModel
+    private var mMap: GoogleMap? = null
+    private var geocoder: Geocoder? = null
+    private var achievement_location: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

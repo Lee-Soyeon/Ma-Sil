@@ -54,10 +54,12 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp">
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/history_mapview"
+            <fragment
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:id="@+id/history_mapview"
+                tools:context=".ui.history.HistoryActivity"
+                android:name="com.google.android.gms.maps.SupportMapFragment" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout

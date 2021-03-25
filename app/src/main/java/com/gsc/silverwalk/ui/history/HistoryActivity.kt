@@ -1,23 +1,37 @@
 package com.gsc.silverwalk.ui.history
 
+import android.R.attr.button
+import android.location.Address
+import android.location.Geocoder
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.gsc.silverwalk.R
 import kotlinx.android.synthetic.main.activity_history.*
+import kotlinx.android.synthetic.main.activity_history.view.*
+import java.io.IOException
 
-class HistoryActivity : AppCompatActivity() {
+
+class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var historyViewModel: HistoryViewModel
+    private var mMap: GoogleMap? = null
+    private var geocoder: Geocoder? = null
+    private var history_location: String? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +54,8 @@ class HistoryActivity : AppCompatActivity() {
             history_distance_text.setText(achievementHistoryItem.getDistanceString())
             history_time_text.setText(achievementHistoryItem.walkTimeToStringFormatHHMM())
 
+            history_location = achievementHistoryItem.location.toString()
+
             // Title
             history_title_1_text.setText(
                 getString(R.string.history_activity_title_1)
@@ -49,19 +65,29 @@ class HistoryActivity : AppCompatActivity() {
             // Display Text
             history_display_1_text.setText(
                 history_display_1_text.text.toString().replace(
-                    "(%location)",achievementHistoryItem.location.toString()))
+                    "(%location)", achievementHistoryItem.location.toString()
+                )
+            )
             history_display_2_text.setText(
                 history_display_2_text.text.toString().replace(
-                    "(%location)",achievementHistoryItem.location.toString()))
+                    "(%location)", achievementHistoryItem.location.toString()
+                )
+            )
             history_display_3_text.setText(
                 history_display_3_text.text.toString().replace(
-                    "(%location)",achievementHistoryItem.location.toString()))
+                    "(%location)", achievementHistoryItem.location.toString()
+                )
+            )
             history_display_4_text.setText(
                 history_display_4_text.text.toString().replace(
-                    "(%location)",achievementHistoryItem.location.toString()))
+                    "(%location)", achievementHistoryItem.location.toString()
+                )
+            )
             history_display_5_text.setText(
                 history_display_5_text.text.toString().replace(
-                    "(%location)",achievementHistoryItem.location.toString()))
+                    "(%location)", achievementHistoryItem.location.toString()
+                )
+            )
 
             historyViewModel.getLocationStatistics(achievementHistoryItem.location!!)
         })
@@ -81,19 +107,29 @@ class HistoryActivity : AppCompatActivity() {
             // Display Text
             history_display_1_text.setText(
                 history_display_1_text.text.toString().replace(
-                    "(%count)",historyForm.totalHumanCount.toString()))
+                    "(%count)", historyForm.totalHumanCount.toString()
+                )
+            )
             history_display_2_text.setText(
                 history_display_2_text.text.toString().replace(
-                    "(%count)",historyForm.totalHumanCount.toString()))
+                    "(%count)", historyForm.totalHumanCount.toString()
+                )
+            )
             history_display_3_text.setText(
                 history_display_3_text.text.toString().replace(
-                    "(%count)",historyForm.totalHumanCount.toString()))
+                    "(%count)", historyForm.totalHumanCount.toString()
+                )
+            )
             history_display_4_text.setText(
                 history_display_4_text.text.toString().replace(
-                    "(%count)",historyForm.totalHumanCount.toString()))
+                    "(%count)", historyForm.totalHumanCount.toString()
+                )
+            )
             history_display_5_text.setText(
                 history_display_5_text.text.toString().replace(
-                    "(%count)",historyForm.totalHumanCount.toString()))
+                    "(%count)", historyForm.totalHumanCount.toString()
+                )
+            )
 
             // Age Range Chart
             val entries = arrayListOf<BarEntry>()
@@ -142,6 +178,10 @@ class HistoryActivity : AppCompatActivity() {
         })
 
         historyViewModel.getIntent(intent)
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.history_mapview) as SupportMapFragment?
+        mapFragment!!.getMapAsync(this)
     }
 
     val labels = arrayOf("50s", "60s", "70s")
@@ -173,5 +213,39 @@ class HistoryActivity : AppCompatActivity() {
 
             legend.isEnabled = false
         }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        geocoder = Geocoder(this)
+
+        val str: String? = history_location
+        var addressList: List<Address>? = null
+        try {
+            // editText에 입력한 텍스트(주소, 지역, 장소 등)을 지오 코딩을 이용해 변환
+            addressList = geocoder!!.getFromLocationName(
+                str,  // 주소
+                10
+            ) // 최대 검색 결과 개수
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        System.out.println(addressList!![0].toString())
+        // 콤마를 기준으로 split
+        val splitStr: List<String> = addressList!![0].toString().split(",")
+        val address = splitStr[0].substring(
+            splitStr[0].indexOf("\"") + 1,
+            splitStr[0].length - 2
+        ) // 주소
+        println(address)
+        val latitude = splitStr[10].substring(splitStr[10].indexOf("=") + 1) // 위도
+        val longitude = splitStr[12].substring(splitStr[12].indexOf("=") + 1) // 경도
+        println(latitude)
+        println(longitude)
+
+        // 좌표(위도, 경도) 생성
+        val point = LatLng(latitude.toDouble(), longitude.toDouble())
+        // 해당 좌표로 화면 줌
+        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15f))
     }
 }

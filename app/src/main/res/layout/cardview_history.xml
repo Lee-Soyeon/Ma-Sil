@@ -27,10 +27,11 @@
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp">
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/history_cardview_mapview"
+            <fragment
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:id="@+id/history_cardview_mapview"
+                android:name="com.google.android.gms.maps.SupportMapFragment" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
