@@ -245,6 +245,13 @@ class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // 좌표(위도, 경도) 생성
         val point = LatLng(latitude.toDouble(), longitude.toDouble())
+        // 마커 생성
+        val mOptions = MarkerOptions()
+        mOptions.title(history_location)
+        mOptions.snippet(address)
+        mOptions.position(point)
+        // 마커 추가
+        mMap!!.addMarker(mOptions)
         // 해당 좌표로 화면 줌
         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15f))
     }
