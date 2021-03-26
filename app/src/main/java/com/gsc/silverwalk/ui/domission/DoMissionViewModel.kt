@@ -168,7 +168,7 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
     @RequiresApi(Build.VERSION_CODES.O)
     fun readFitnessData(context: Context) {
         val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
-        val startTime = endTime.minusWeeks(1)
+        val startTime = endTime.minusSeconds(1)
         Log.i(TAG, "Range Start: $startTime")
         Log.i(TAG, "Range End: $endTime")
 
@@ -187,7 +187,7 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
             .addOnSuccessListener { response ->
                 // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
                 for (dataSet in response.buckets.flatMap { it.dataSets }) {
-                    Log.d("#####", dataSet.toString())
+
                 }
             }
             .addOnFailureListener { e ->
