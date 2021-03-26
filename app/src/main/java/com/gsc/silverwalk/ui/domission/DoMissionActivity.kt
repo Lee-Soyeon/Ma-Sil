@@ -27,13 +27,6 @@ class DoMissionActivity : AppCompatActivity() {
     // Cancle Dialog
     private val dialogObject = CancelDialog()
 
-    private val fitnessOptions: FitnessOptions by lazy {
-        FitnessOptions.builder()
-            .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
-            .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
-            .build()
-    }
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

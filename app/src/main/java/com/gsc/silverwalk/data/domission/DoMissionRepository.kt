@@ -13,8 +13,6 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
 
     private val cameraPathList: ArrayList<String> = arrayListOf()
 
-    private var currentTime = 0L
-
     private val fitnessOptions: FitnessOptions by lazy {
         FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
