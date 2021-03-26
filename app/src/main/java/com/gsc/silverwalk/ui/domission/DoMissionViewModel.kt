@@ -134,9 +134,10 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
     }
 
     // Google Fit
+    @RequiresApi(Build.VERSION_CODES.O)
     fun fitSignIn(context: Activity) {
         if (oAuthPermissionsApproved(context)) {
-            readDailySteps(context)
+            readFitnessData(context)
         } else {
             GoogleSignIn.requestPermissions(
                 context,
@@ -186,7 +187,7 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
             .addOnSuccessListener { response ->
                 // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
                 for (dataSet in response.buckets.flatMap { it.dataSets }) {
-                    Log.d(TAG, dataSet.toString())
+                    Log.d("#####", dataSet.toString())
                 }
             }
             .addOnFailureListener { e ->
