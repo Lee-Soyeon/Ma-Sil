@@ -1,8 +1,5 @@
 package com.gsc.silverwalk.ui.history
 
-import android.R.attr.button
-import android.location.Address
-import android.location.Geocoder
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -13,30 +10,23 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMapClickListener
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.gsc.silverwalk.MyMapViewAsync
 import com.gsc.silverwalk.R
 import kotlinx.android.synthetic.main.activity_history.*
-import kotlinx.android.synthetic.main.activity_history.view.*
-import java.io.IOException
 
 
-class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
+class HistoryActivity : AppCompatActivity() {
 
     private lateinit var historyViewModel: HistoryViewModel
-    private var mMap: GoogleMap? = null
-    private var geocoder: Geocoder? = null
-    private var history_location: String? = null
+
+    val labels = arrayOf("50s", "60s", "70s")
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
+
+        history_mapview.onCreate(savedInstanceState)
 
         supportActionBar?.hide()
 
@@ -54,7 +44,9 @@ class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
             history_distance_text.setText(achievementHistoryItem.getDistanceString())
             history_time_text.setText(achievementHistoryItem.walkTimeToStringFormatHHMM())
 
-            history_location = achievementHistoryItem.location.toString()
+            // Map View
+            history_mapview.getMapAsync(
+                MyMapViewAsync(achievementHistoryItem.location.toString(),this))
 
             // Title
             history_title_1_text.setText(
@@ -178,13 +170,37 @@ class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
         historyViewModel.getIntent(intent)
-
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.history_mapview) as SupportMapFragment?
-        mapFragment!!.getMapAsync(this)
     }
 
-    val labels = arrayOf("50s", "60s", "70s")
+    override fun onStart() {
+        super.onStart()
+        history_mapview.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        history_mapview.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        history_mapview.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        history_mapview.onPause()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        history_mapview.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        history_mapview.onDestroy()
+        super.onDestroy()
+    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun initChart() {
@@ -213,46 +229,5 @@ class HistoryActivity : AppCompatActivity(), OnMapReadyCallback {
 
             legend.isEnabled = false
         }
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        geocoder = Geocoder(this)
-
-        val str: String? = history_location
-        var addressList: List<Address>? = null
-        try {
-            // editText에 입력한 텍스트(주소, 지역, 장소 등)을 지오 코딩을 이용해 변환
-            addressList = geocoder!!.getFromLocationName(
-                str,  // 주소
-                10
-            ) // 최대 검색 결과 개수
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        System.out.println(addressList!![0].toString())
-        // 콤마를 기준으로 split
-        val splitStr: List<String> = addressList!![0].toString().split(",")
-        val address = splitStr[0].substring(
-            splitStr[0].indexOf("\"") + 1,
-            splitStr[0].length - 2
-        ) // 주소
-        println(address)
-        val latitude = splitStr[10].substring(splitStr[10].indexOf("=") + 1) // 위도
-        val longitude = splitStr[12].substring(splitStr[12].indexOf("=") + 1) // 경도
-        println(latitude)
-        println(longitude)
-
-        // 좌표(위도, 경도) 생성
-        val point = LatLng(latitude.toDouble(), longitude.toDouble())
-        // 마커 생성
-        val mOptions = MarkerOptions()
-        mOptions.title(history_location)
-        mOptions.snippet(address)
-        mOptions.position(point)
-        // 마커 추가
-        mMap!!.addMarker(mOptions)
-        // 해당 좌표로 화면 줌
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15f))
     }
 }
