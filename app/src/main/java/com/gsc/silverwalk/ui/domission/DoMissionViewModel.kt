@@ -33,7 +33,6 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.coroutineContext
 
 class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) : ViewModel() {
 
@@ -44,6 +43,12 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
     val doMissionTimeForm: LiveData<DoMissionTimeForm> = _doMissionTimeForm
 
     private lateinit var timerTask: Timer
+
+    public var calories: String? = null
+    public var distance: String? = null
+    public var averagePace: Double? = null
+    public var active_minutes: String? = null
+    public var step_count: String? = null
 
     init {
         _doMissionTimeForm.value = DoMissionTimeForm(0L)
@@ -193,6 +198,8 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
                 for (dataSet in response.buckets.flatMap { it.dataSets }) {
                         dumpDataSet(dataSet)
                 }
+
+                calculateAveragePace()
             }
             .addOnFailureListener { e ->
                 Log.w(TAG,"There was an error reading data from Google Fit", e)
@@ -204,8 +211,19 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
         for (dp in dataSet.dataPoints) {
             Log.i(TAG,"Data point:")
             Log.i(TAG,"\tType: ${dp.dataType.name}")
+
             for (field in dp.dataType.fields) {
                 Log.i(TAG,"\tField: ${field.name.toString()} Value: ${dp.getValue(field)}")
+
+                if (dp.dataType.name.toString() == "com.google.distance.delta") {
+                    distance = dp.getValue(field).toString()
+                } else if (dp.dataType.name.toString() == "com.google.calories.expended") {
+                    calories = dp.getValue(field).toString()
+                } else if (dp.dataType.name.toString() == "com.google.active_minutes") {
+                    active_minutes = dp.getValue(field).toString()
+                } else if (dp.dataType.name.toString() == "com.google.step_count.delta") {
+                    step_count = dp.getValue(field).toString()
+                }
             }
         }
     }
@@ -218,4 +236,8 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
 
     private fun getGoogleAccount(context: Context): GoogleSignInAccount =
         GoogleSignIn.getAccountForExtension(context, doMissionRepository.getFitnessOption())
+
+    private fun calculateAveragePace() {
+        averagePace = active_minutes?.toInt()?.div(distance?.toDouble()!!)
+    }
 }

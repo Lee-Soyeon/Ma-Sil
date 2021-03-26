@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
@@ -109,9 +110,9 @@ class DoMissionActivity : AppCompatActivity() {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 doMissionViewModel.readFitnessData(applicationContext, time)
 
-                activity_mission_average_pace_text.setText(doMissionForm.averagePace.toString())
-                activity_mission_distance_text.setText(doMissionForm.distance.toString())
-                activity_mission_kcal_text.setText(doMissionForm.calories.toString())
+                activity_mission_average_pace_text.setText(doMissionViewModel.averagePace.toString())
+                activity_mission_kcal_text.setText(doMissionViewModel.calories.toString())
+                activity_mission_distance_text.setText(doMissionViewModel.distance.toString())
             }
         }
     }
