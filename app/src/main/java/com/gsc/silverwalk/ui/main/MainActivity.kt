@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gsc.silverwalk.R
 import com.gsc.silverwalk.location.LocationClient
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Google Map Options
+        GoogleMapOptions().liteMode(true)
 
         // Location Client Build
         LocationClient.getInstance().buildLocationClient(this)

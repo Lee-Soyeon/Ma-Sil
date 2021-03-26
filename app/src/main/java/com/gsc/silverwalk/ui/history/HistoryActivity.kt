@@ -172,16 +172,6 @@ class HistoryActivity : AppCompatActivity() {
         historyViewModel.getIntent(intent)
     }
 
-    override fun onStart() {
-        super.onStart()
-        history_mapview.onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        history_mapview.onStop()
-    }
-
     override fun onResume() {
         super.onResume()
         history_mapview.onResume()
@@ -190,16 +180,6 @@ class HistoryActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         history_mapview.onPause()
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        history_mapview.onLowMemory()
-    }
-
-    override fun onDestroy() {
-        history_mapview.onDestroy()
-        super.onDestroy()
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
