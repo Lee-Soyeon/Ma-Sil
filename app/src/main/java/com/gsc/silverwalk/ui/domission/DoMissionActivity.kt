@@ -13,6 +13,9 @@ import com.gsc.silverwalk.R
 import com.gsc.silverwalk.ui.map.MapsActivity
 import kotlinx.android.synthetic.main.activity_mission.*
 import androidx.lifecycle.Observer
+import java.time.LocalDateTime
+import java.time.ZoneId
+import kotlin.concurrent.timer
 
 class DoMissionActivity : AppCompatActivity() {
 
@@ -101,7 +104,16 @@ class DoMissionActivity : AppCompatActivity() {
             startActivity(doMissionViewModel.finishMission(this))
             finish()
         })
+
+        timer(initialDelay = 1000, period = 1000) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                doMissionViewModel.readFitnessData(applicationContext, time)
+            }
+        }
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private val time = LocalDateTime.now().atZone(ZoneId.systemDefault())
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -109,7 +121,7 @@ class DoMissionActivity : AppCompatActivity() {
 
         when (resultCode) {
             RESULT_OK -> {
-                doMissionViewModel.readFitnessData(this)
+//                doMissionViewModel.readFitnessData(this)
             }
             else -> {
 
