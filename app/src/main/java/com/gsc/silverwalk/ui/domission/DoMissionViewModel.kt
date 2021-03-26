@@ -47,7 +47,6 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
 
     init {
         _doMissionTimeForm.value = DoMissionTimeForm(0L)
-        startTimer()
     }
 
     // Intent
@@ -70,13 +69,12 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
         timerTask.cancel()
     }
 
-    fun startTimer() {
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun startTimer(context: Context) {
         timerTask = timer(initialDelay = 1000, period = 1000) {
-            if(_doMissionTimeForm.value!!.isRequestTime()){
-                doMissionRepository.requestGoogleFitApi {
-                    if(it is Result.Success){
-                        _doMissionForm.postValue(it.data)
-                    }
+            doMissionRepository.requestGoogleFitApi(context) {
+                if (it is Result.Success) {
+                    _doMissionForm.postValue(it.data)
                 }
             }
 
@@ -135,86 +133,4 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
             doMissionRepository.addCameraPath(absolutePath)
         }
     }
-
-    // Google Fit
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fitSignIn(context: Activity) {
-        if (oAuthPermissionsApproved(context)) {
-            //readFitnessData(context)
-        } else {
-            GoogleSignIn.requestPermissions(
-                context,
-                DoMissionActivity.SIGN_IN_REQUEST_CODE,
-                getGoogleAccount(context),
-                doMissionRepository.getFitnessOption()
-            )
-        }
-    }
-
-    fun readDailySteps(context: Context) {
-        Fitness.getHistoryClient(context, getGoogleAccount(context))
-            .readDailyTotal(DataType.TYPE_STEP_COUNT_DELTA)
-            .addOnSuccessListener { dataSet ->
-                val total = when {
-                    dataSet.isEmpty -> 0
-                    else -> dataSet.dataPoints.first()
-                        .getValue(Field.FIELD_STEPS).asInt()
-                }
-
-                Log.i("#####", "Total steps: $total")
-            }
-            .addOnFailureListener { e ->
-                Log.w("#####", "There was a problem getting the step count.", e)
-            }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun readFitnessData(context: Context, time: ZonedDateTime) {
-        val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
-        val startTime = time
-        Log.i(TAG, "Range Start: $startTime")
-        Log.i(TAG, "Range End: $endTime")
-
-        val readRequest =
-            DataReadRequest.Builder()
-                .aggregate(DataType.AGGREGATE_STEP_COUNT_DELTA)
-                .aggregate(DataType.AGGREGATE_DISTANCE_DELTA)
-                .aggregate(DataType.AGGREGATE_CALORIES_EXPENDED)
-                .aggregate(DataType.AGGREGATE_MOVE_MINUTES)
-                .bucketByTime(1, TimeUnit.DAYS)
-                .setTimeRange(startTime.toEpochSecond(), endTime.toEpochSecond(), TimeUnit.SECONDS)
-                .build()
-
-        Fitness.getHistoryClient(context, GoogleSignIn.getAccountForExtension(context, doMissionRepository.fitnessOptions))
-            .readData(readRequest)
-            .addOnSuccessListener { response ->
-                // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
-                for (dataSet in response.buckets.flatMap { it.dataSets }) {
-                        dumpDataSet(dataSet)
-                }
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG,"There was an error reading data from Google Fit", e)
-            }
-    }
-
-    fun dumpDataSet(dataSet: DataSet) {
-        Log.i(TAG, "Data returned for Data type: ${dataSet.dataType.name}")
-        for (dp in dataSet.dataPoints) {
-            Log.i(TAG,"Data point:")
-            Log.i(TAG,"\tType: ${dp.dataType.name}")
-            for (field in dp.dataType.fields) {
-                Log.i(TAG,"\tField: ${field.name.toString()} Value: ${dp.getValue(field)}")
-            }
-        }
-    }
-
-    private fun oAuthPermissionsApproved(context: Context) =
-        GoogleSignIn.hasPermissions(
-            getGoogleAccount(context),
-            doMissionRepository.getFitnessOption()
-        )
-
-    private fun getGoogleAccount(context: Context): GoogleSignInAccount =
-        GoogleSignIn.getAccountForExtension(context, doMissionRepository.getFitnessOption())
 }

@@ -21,16 +21,10 @@ class DoMissionActivity : AppCompatActivity() {
 
     private lateinit var doMissionViewModel: DoMissionViewModel
 
-    // CAMERA Intent Parameter
-    companion object {
-        const val REQUEST_CAMERA = 100
-        const val SIGN_IN_REQUEST_CODE = 1001
-    }
-
     // Cancle Dialog
     private val dialogObject = CancelDialog()
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mission)
@@ -41,8 +35,6 @@ class DoMissionActivity : AppCompatActivity() {
             .get(DoMissionViewModel::class.java)
 
         doMissionViewModel.getIntent(intent)
-
-        doMissionViewModel.fitSignIn(this)
 
         doMissionViewModel.doMissionTimeForm.observe(this, Observer{
             val doMissionTimeForm = it ?: return@Observer
@@ -96,7 +88,7 @@ class DoMissionActivity : AppCompatActivity() {
         activity_mission_continue_button.setOnClickListener(View.OnClickListener {
             activity_mission_playing_linearlayout.visibility = View.VISIBLE
             activity_mission_stop_linearlayout.visibility = View.INVISIBLE
-            doMissionViewModel.startTimer()
+            doMissionViewModel.startTimer(this)
         })
 
         // Testing Finish Mission
@@ -105,28 +97,7 @@ class DoMissionActivity : AppCompatActivity() {
             finish()
         })
 
-        timer(initialDelay = 1000, period = 1000) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                doMissionViewModel.readFitnessData(applicationContext, time)
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val time = LocalDateTime.now().atZone(ZoneId.systemDefault())
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        when (resultCode) {
-            RESULT_OK -> {
-//                doMissionViewModel.readFitnessData(this)
-            }
-            else -> {
-
-            }
-        }
+        doMissionViewModel.startTimer(this)
     }
 
     override fun onBackPressed() {

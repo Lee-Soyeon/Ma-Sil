@@ -1,5 +1,10 @@
 package com.gsc.silverwalk.data.achievement
 
+import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.google.android.gms.fitness.FitnessOptions
+import com.google.android.gms.fitness.data.DataType
 import com.google.firebase.Timestamp
 import com.gsc.silverwalk.data.Result
 import com.gsc.silverwalk.ui.fragment.achievement.AchievementForm
@@ -7,11 +12,25 @@ import com.gsc.silverwalk.ui.fragment.achievement.AchievementHistoryForm
 
 class AchievementRepository(val dataSource: AchievementDataSource) {
 
-    fun statisticsByTimestamp(timestamp: Timestamp, result: (Result<AchievementForm>) -> Unit){
-        dataSource.statisticsByTimestamp(timestamp, result)
+    private val fitnessOptions: FitnessOptions by lazy {
+        FitnessOptions.builder()
+            .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA)
+            .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
+            .addDataType(DataType.AGGREGATE_CALORIES_EXPENDED)
+            .addDataType(DataType.AGGREGATE_MOVE_MINUTES)
+            .build()
     }
 
-    fun findAllHistory(result: (Result<AchievementHistoryForm>) -> Unit){
-        dataSource.findAllHistory(result)
+    fun statisticsByTimestamp(
+        timestamp: Timestamp,
+        achievementHistoryForm: AchievementHistoryForm,
+        result: (Result<AchievementForm>) -> Unit
+    ) {
+        dataSource.statisticsByTimestamp(timestamp, achievementHistoryForm, result)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun findAllHistory(context: Context, result: (Result<AchievementHistoryForm>) -> Unit) {
+        dataSource.findAllHistory(context, fitnessOptions, result)
     }
 }

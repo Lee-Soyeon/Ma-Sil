@@ -1,11 +1,17 @@
 package com.gsc.silverwalk.data.domission
 
+import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.gsc.silverwalk.ui.domission.DoMissionForm
 import com.gsc.silverwalk.ui.domission.MissionData
 import com.gsc.silverwalk.data.Result
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 class DoMissionRepository(private val dataSource: DoMissionDataSource) {
 
@@ -13,9 +19,7 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
 
     private val cameraPathList: ArrayList<String> = arrayListOf()
 
-    private var currentTime = 0L
-
-    val fitnessOptions: FitnessOptions by lazy {
+    private val fitnessOptions: FitnessOptions by lazy {
         FitnessOptions.builder()
             .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA)
             .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
@@ -23,6 +27,9 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
             .addDataType(DataType.AGGREGATE_MOVE_MINUTES)
             .build()
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    val startTime: ZonedDateTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
 
     fun setMissionData(
         missionTime: Long,
@@ -43,15 +50,12 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
         return (time.toFloat() / missionData.missionTime!!.toFloat() * 100.0f).toInt()
     }
 
-    fun getFitnessOption(): FitnessOptions{
-        return fitnessOptions
-    }
-
     fun addCameraPath(path: String) {
         cameraPathList.add(path)
     }
 
-    fun requestGoogleFitApi(result: (Result<DoMissionForm>) -> Unit){
-        dataSource.requestGoogleFitApi(result)
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun requestGoogleFitApi(context: Context, result: (Result<DoMissionForm>) -> Unit){
+        dataSource.requestGoogleFitApi(context, fitnessOptions, startTime, result)
     }
 }

@@ -152,31 +152,36 @@ class MainActivity : AppCompatActivity() {
         Fitness.getRecordingClient(this, getGoogleAccount())
             .listSubscriptions()
             .addOnSuccessListener { subscriptions ->
+                val checkList : MutableList<Boolean> = mutableListOf(false, false, false, false)
                 for (sc in subscriptions) {
-                    val dt = sc.dataType
-                    Log.i("CHOI", "Active subscription for data type: ${dt.name}")
+                    if(sc.dataType == DataType.TYPE_STEP_COUNT_DELTA){
+                        checkList[0] = true
+                    }else if(sc.dataType == DataType.TYPE_DISTANCE_DELTA){
+                        checkList[1] = true
+                    }else if(sc.dataType == DataType.TYPE_CALORIES_EXPENDED){
+                        checkList[2] = true
+                    }else if(sc.dataType == DataType.TYPE_MOVE_MINUTES){
+                        checkList[3] = true
+                    }
+                }
+
+                if(!checkList[0]) {
+                    Fitness.getRecordingClient(this, getGoogleAccount())
+                        .subscribe(DataType.TYPE_STEP_COUNT_DELTA)
+                }
+                if(!checkList[1]) {
+                    Fitness.getRecordingClient(this, getGoogleAccount())
+                        .subscribe(DataType.TYPE_DISTANCE_DELTA)
+                }
+                if(!checkList[2]) {
+                    Fitness.getRecordingClient(this, getGoogleAccount())
+                        .subscribe(DataType.TYPE_CALORIES_EXPENDED)
+                }
+                if(!checkList[3]) {
+                    Fitness.getRecordingClient(this, getGoogleAccount())
+                        .subscribe(DataType.TYPE_MOVE_MINUTES)
                 }
             }
-
-        Fitness.getRecordingClient(this, getGoogleAccount())
-            .subscribe(DataType.TYPE_STEP_COUNT_DELTA)
-            .addOnSuccessListener { Log.i("CHOI", "Successfully subscribed!1") }
-            .addOnFailureListener { Log.i("CHOI", "There was a problem subscribing.1") }
-
-        Fitness.getRecordingClient(this, getGoogleAccount())
-            .subscribe(DataType.TYPE_DISTANCE_DELTA)
-            .addOnSuccessListener { Log.i("CHOI", "Successfully subscribed!2") }
-            .addOnFailureListener { Log.i("CHOI", "There was a problem subscribing.2" + it.toString()) }
-
-        Fitness.getRecordingClient(this, getGoogleAccount())
-            .subscribe(DataType.TYPE_CALORIES_EXPENDED)
-            .addOnSuccessListener { Log.i("CHOI", "Successfully subscribed!3") }
-            .addOnFailureListener { Log.i("CHOI", "There was a problem subscribing.3" + it.toString()) }
-
-        Fitness.getRecordingClient(this, getGoogleAccount())
-            .subscribe(DataType.TYPE_MOVE_MINUTES)
-            .addOnSuccessListener { Log.i("CHOI", "Successfully subscribed!4") }
-            .addOnFailureListener { Log.i("CHOI", "There was a problem subscribing.4" + it.toString()) }
     }
 
     private fun permissionApproved(): Boolean {

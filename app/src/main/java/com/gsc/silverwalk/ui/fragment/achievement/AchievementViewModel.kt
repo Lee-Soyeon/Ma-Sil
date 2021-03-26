@@ -1,5 +1,8 @@
 package com.gsc.silverwalk.ui.fragment.achievement
 
+import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,12 +19,9 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
     private val _achievementHistoryForm = MutableLiveData<AchievementHistoryForm>()
     val achievementHistoryForm: LiveData<AchievementHistoryForm> = _achievementHistoryForm
 
-    init {
-        setAchievementData(0)
-        findAllHistory()
-    }
-
     fun setAchievementData(index: Int) {
+        if(_achievementForm.value == null) return
+
         val calendar = Calendar.getInstance()
         // Today
         if (index == 0) {
@@ -41,15 +41,16 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
         }
         val timestamp = Timestamp(Date(calendar.timeInMillis))
 
-        achievementRepository.statisticsByTimestamp(timestamp) {
+        achievementRepository.statisticsByTimestamp(timestamp, _achievementHistoryForm.value!!) {
             if (it is Result.Success) {
                 _achievementForm.value = it.data
             }
         }
     }
 
-    private fun findAllHistory() {
-        achievementRepository.findAllHistory {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun findAllHistory(context: Context) {
+        achievementRepository.findAllHistory(context) {
             if (it is Result.Success) {
                 _achievementHistoryForm.value = it.data
             }

@@ -97,6 +97,8 @@ class AchievementFragment : Fragment() {
 
                 achievement_history_linearlayout.addView(historyLayout)
             }
+
+            achievementViewModel.setAchievementData(0)
         })
 
         achievement_tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
