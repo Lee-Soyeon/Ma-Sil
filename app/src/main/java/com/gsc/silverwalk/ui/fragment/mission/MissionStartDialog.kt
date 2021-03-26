@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
@@ -20,18 +21,12 @@ import java.util.*
 
 class MissionStartDialog : DialogFragment() {
 
-    private var temperature: String? = null
-    private var temperature_text: String? = null
+    private lateinit var weatherInfo: MissionWeather
+
     private var time: Long? = null
     private var location: String? = null
     private var type: String? = null
     private var level: Long? = null
-
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
-        super.onCreate(savedInstanceState)
-
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,10 +51,14 @@ class MissionStartDialog : DialogFragment() {
                 dialog?.dismiss()
             })
 
+        dialogView.findViewById<ImageView>(R.id.dialog_start_weather_image).setImageResource(
+            weatherInfo.getWeatherIconId())
+        dialogView.findViewById<TextView>(R.id.dialog_start_display_2_textview).setText(
+            weatherInfo.getTemperatureComment(requireContext()))
         dialogView.findViewById<TextView>(R.id.dialog_start_temperature_textview)
-            .setText(temperature)
+            .setText(weatherInfo.temperature)
         dialogView.findViewById<TextView>(R.id.dialog_start_temperature_info_text)
-            .setText(temperature_text)
+            .setText(weatherInfo.weather_text)
 
         return dialogView
     }
@@ -79,7 +78,6 @@ class MissionStartDialog : DialogFragment() {
     }
 
     fun setDialogWeatherInfo(temperature : String?, temperature_text : String?){
-        this.temperature = temperature
-        this.temperature_text = temperature_text
+        weatherInfo = MissionWeather(temperature, temperature_text)
     }
 }

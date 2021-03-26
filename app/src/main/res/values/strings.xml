@@ -49,6 +49,16 @@
     <string name="mission_hard">Hard</string>
     <string name="mission_start">Start</string>
 
+    <!-- Weather String -->
+    <string name="weather_1">It’s freezing! It’s safe to stay at home and do some in-door workout instead</string>
+    <string name="weather_2">It’s cold outside. Warm up warm as much as you could.</string>
+    <string name="weather_3">It’s cold outside. You’ll need to wear a thick coat. </string>
+    <string name="weather_4">You could wear a slightly less heavy sweater. </string>
+    <string name="weather_5">Let go of heavy outers. Spring has come!</string>
+    <string name="weather_6">Wear something that keeps you fresh. </string>
+    <string name="weather_7">It’s hot. Keep yourself cool with airy clothing and stay hydrated enough.</string>
+    <string name="weather_8">It’s too hot! It’s safe to stay at home and do some in-door workout instead.</string>
+
     <!-- Achievement Fragment String -->
     <string name="achievement_display_1">Achievement</string>
     <string name="achievement_display_2">History</string>

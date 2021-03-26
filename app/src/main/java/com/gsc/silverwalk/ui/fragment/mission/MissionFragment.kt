@@ -80,7 +80,7 @@ class MissionFragment : Fragment() {
             val missionWeather = it ?: return@Observer
 
             dialogObject.setDialogWeatherInfo(
-                missionWeather.tempratrue,
+                missionWeather.temperature,
                 missionWeather.weather_text
             )
         })

@@ -49,6 +49,16 @@
     <string name="mission_hard">어려움</string>
     <string name="mission_start">시작하기</string>
 
+    <!-- Weather String -->
+    <string name="weather_1">정말 추워요! 집에 머물면서 실내 운동을하는건 어때요? </string>
+    <string name="weather_2">밖이 추워요! 최대한 따듯하게 입고 나가세요. </string>
+    <string name="weather_3">밖이 추워요! 두꺼운 코트를 입는 것을 추천드릴게요. </string>
+    <string name="weather_4">약간 덜 무거운 스웨터를 입는 것이 어떠세요? </string>
+    <string name="weather_5">무거운 옷은 벗어던지세요! 봄이 왔어요!</string>
+    <string name="weather_6">가벼운 옷을 입는 것이 어떠세요?</string>
+    <string name="weather_7">더워요! 통풍이 잘되는 옷으로 몸을 시원하게 유지하고 충분한 수분을 유지하세요!</string>
+    <string name="weather_8">너무 더워요! 집에 머물면서 실내운동을 하는건 어때요? </string>
+
     <!-- Achievement Fragment String -->
     <string name="achievement_display_1">오늘의 도전 기록</string>
     <string name="achievement_display_2">지난 기록</string>
