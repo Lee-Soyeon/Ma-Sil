@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA)
             .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
             .addDataType(DataType.AGGREGATE_CALORIES_EXPENDED)
-            .addDataType(DataType.AGGREGATE_MOVE_MINUTES)
+            .addDataType(DataType.TYPE_SPEED)
             .build()
     }
 

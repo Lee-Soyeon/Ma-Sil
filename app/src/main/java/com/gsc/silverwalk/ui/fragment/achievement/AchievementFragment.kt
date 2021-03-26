@@ -3,11 +3,13 @@ package com.gsc.silverwalk.ui.fragment.achievement
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.iterator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -44,6 +46,7 @@ class AchievementFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_achievement, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -97,8 +100,6 @@ class AchievementFragment : Fragment() {
 
                 achievement_history_linearlayout.addView(historyLayout)
             }
-
-            achievementViewModel.setAchievementData(0)
         })
 
         achievement_tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -114,6 +115,8 @@ class AchievementFragment : Fragment() {
 
             }
         })
+
+        achievementViewModel.findAllHistory(requireContext())
     }
 
     override fun onResume() {

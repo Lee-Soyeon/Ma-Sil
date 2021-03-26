@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
+import com.google.firebase.Timestamp
 import com.gsc.silverwalk.ui.domission.DoMissionForm
 import com.gsc.silverwalk.ui.domission.MissionData
 import com.gsc.silverwalk.data.Result
@@ -28,8 +29,7 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
             .build()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    val startTime: ZonedDateTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
+    val startTime: Long = (Timestamp.now().seconds)
 
     fun setMissionData(
         missionTime: Long,
@@ -54,7 +54,6 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
         cameraPathList.add(path)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun requestGoogleFitApi(context: Context, result: (Result<DoMissionForm>) -> Unit){
         dataSource.requestGoogleFitApi(context, fitnessOptions, startTime, result)
     }

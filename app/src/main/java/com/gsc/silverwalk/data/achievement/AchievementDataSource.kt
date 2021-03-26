@@ -21,7 +21,9 @@ import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 
 class AchievementDataSource {
 
@@ -31,7 +33,7 @@ class AchievementDataSource {
         result: (Result<AchievementForm>) -> Unit
     ) {
         val iter = achievementHistoryForm.histories!!.iterator()
-        while(iter.hasNext()){
+        while (iter.hasNext()) {
             val item = iter.next()
 
             var totalSteps = 0L
@@ -42,7 +44,7 @@ class AchievementDataSource {
             var totalTime = 0L
             var count = 0L
 
-            if(item.time!! > timestamp){
+            if (item.time!!.seconds > timestamp.seconds) {
                 totalSteps += item.steps!!
                 totalAveragePace += item.averagePace!!
                 totalBurnCalories += item.calories!!
@@ -67,7 +69,6 @@ class AchievementDataSource {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun findAllHistory(
         context: Context,
         fitnessOptions: FitnessOptions,
@@ -82,21 +83,11 @@ class AchievementDataSource {
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot) {
-                    val stamp = (document.data.get("time") as Timestamp).toDate()
+                    val stamp = (document.data.get("time") as Timestamp)
                     val walkTime = document.data.get("time_second") as Long
-                    val endTime = ZonedDateTime.of(
-                        stamp.year,
-                        stamp.month,
-                        stamp.day,
-                        stamp.hours,
-                        stamp.minutes,
-                        stamp.seconds,
-                        0,
-                        ZoneId.systemDefault()
-                    )
                     requestGoogleFitApi(
                         context, fitnessOptions,
-                        endTime.minusSeconds(walkTime), endTime
+                        stamp.seconds.minus(walkTime), stamp.seconds
                     )
                     {
                         if (it is Result.Success) {
@@ -127,12 +118,11 @@ class AchievementDataSource {
             }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun requestGoogleFitApi(
         context: Context,
         fitnessOptions: FitnessOptions,
-        startTime: ZonedDateTime,
-        endTime: ZonedDateTime,
+        startTime: Long,
+        endTime: Long,
         result: (Result<DoMissionForm>) -> Unit
     ) {
         val readRequest =
@@ -142,7 +132,7 @@ class AchievementDataSource {
                 .aggregate(DataType.AGGREGATE_CALORIES_EXPENDED)
                 .aggregate(DataType.TYPE_SPEED)
                 .bucketByTime(1, TimeUnit.DAYS)
-                .setTimeRange(startTime.toEpochSecond(), endTime.toEpochSecond(), TimeUnit.SECONDS)
+                .setTimeRange(startTime, endTime, TimeUnit.SECONDS)
                 .build()
 
         Fitness.getHistoryClient(
@@ -151,14 +141,37 @@ class AchievementDataSource {
         )
             .readData(readRequest)
             .addOnSuccessListener { response ->
-                // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
-                for (dataSet in response.buckets.flatMap { it.dataSets }) {
+                var distance = 0.0
+                var calories = 0
+                var typeSpeed = 0.0
+                var stepCount = 0
 
+                for (dataSet in response.buckets.flatMap { it.dataSets }) {
+                    for (dp in dataSet.dataPoints) {
+                        for (field in dp.dataType.fields) {
+                            if (dp.dataType.name.toString() == "com.google.distance.delta") {
+                                distance = dp.getValue(field).toString().toDouble().toInt() / 1000.0
+                            } else if (dp.dataType.name.toString() == "com.google.calories.expended") {
+                                calories = dp.getValue(field).toString().toDouble().toInt()
+                            } else if (dp.dataType.name.toString() == "com.google.speed.summary") {
+                                typeSpeed = (dp.getValue(field).toString()
+                                    .toDouble() * 100).roundToInt() / 100.0
+                            } else if (dp.dataType.name.toString() == "com.google.step_count.delta") {
+                                stepCount = dp.getValue(field).toString().toInt()
+                            }
+                        }
+                    }
                 }
 
                 result(
                     Result.Success(
-                        DoMissionForm(0, 0.0, 0.0, 0, 0)
+                        DoMissionForm(
+                            calories.toLong(),
+                            distance,
+                            typeSpeed,
+                            0,
+                            stepCount.toLong()
+                        )
                     )
                 )
             }

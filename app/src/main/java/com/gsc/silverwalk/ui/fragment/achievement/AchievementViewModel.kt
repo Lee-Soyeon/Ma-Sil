@@ -20,7 +20,7 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
     val achievementHistoryForm: LiveData<AchievementHistoryForm> = _achievementHistoryForm
 
     fun setAchievementData(index: Int) {
-        if(_achievementForm.value == null) return
+        if(_achievementHistoryForm.value == null) return
 
         val calendar = Calendar.getInstance()
         // Today
@@ -49,10 +49,11 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun findAllHistory(context: Context) {
+    fun findAllHistory(context: Context) {
         achievementRepository.findAllHistory(context) {
             if (it is Result.Success) {
                 _achievementHistoryForm.value = it.data
+                setAchievementData(0)
             }
         }
     }

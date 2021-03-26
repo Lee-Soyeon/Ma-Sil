@@ -29,7 +29,6 @@ class AchievementRepository(val dataSource: AchievementDataSource) {
         dataSource.statisticsByTimestamp(timestamp, achievementHistoryForm, result)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun findAllHistory(context: Context, result: (Result<AchievementHistoryForm>) -> Unit) {
         dataSource.findAllHistory(context, fitnessOptions, result)
     }

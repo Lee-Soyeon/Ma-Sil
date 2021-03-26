@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
@@ -24,7 +25,6 @@ class DoMissionActivity : AppCompatActivity() {
     // Cancle Dialog
     private val dialogObject = CancelDialog()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mission)
@@ -36,7 +36,7 @@ class DoMissionActivity : AppCompatActivity() {
 
         doMissionViewModel.getIntent(intent)
 
-        doMissionViewModel.doMissionTimeForm.observe(this, Observer{
+        doMissionViewModel.doMissionTimeForm.observe(this, Observer {
             val doMissionTimeForm = it ?: return@Observer
 
             activity_mission_timer_text.setText(doMissionTimeForm.getTimeStringFormat())

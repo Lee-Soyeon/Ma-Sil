@@ -33,7 +33,6 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.coroutineContext
 
 class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) : ViewModel() {
 
@@ -69,7 +68,6 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
         timerTask.cancel()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun startTimer(context: Context) {
         timerTask = timer(initialDelay = 1000, period = 1000) {
             doMissionRepository.requestGoogleFitApi(context) {
