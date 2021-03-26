@@ -15,7 +15,7 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
 
     private var currentTime = 0L
 
-    val fitnessOptions: FitnessOptions by lazy {
+    private val fitnessOptions: FitnessOptions by lazy {
         FitnessOptions.builder()
             .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA)
             .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
