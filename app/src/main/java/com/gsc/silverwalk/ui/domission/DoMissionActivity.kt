@@ -110,12 +110,13 @@ class DoMissionActivity : AppCompatActivity() {
         })
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (resultCode) {
             RESULT_OK -> {
-                doMissionViewModel.readDailySteps(this)
+                doMissionViewModel.readFitnessData(this)
             }
             else -> {
 

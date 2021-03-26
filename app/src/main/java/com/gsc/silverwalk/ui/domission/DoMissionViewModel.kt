@@ -1,12 +1,15 @@
 package com.gsc.silverwalk.ui.domission
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.Field
+import com.google.android.gms.fitness.request.DataReadRequest
 import com.gsc.silverwalk.data.domission.DoMissionRepository
 import java.util.*
 import kotlin.concurrent.timer
@@ -24,6 +28,9 @@ import com.gsc.silverwalk.ui.finishmission.FinishMissionActivity
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.util.concurrent.TimeUnit
 
 class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) : ViewModel() {
 
@@ -154,6 +161,36 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
             }
             .addOnFailureListener { e ->
                 Log.w("#####", "There was a problem getting the step count.", e)
+            }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun readFitnessData(context: Context) {
+        val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
+        val startTime = endTime.minusWeeks(1)
+        Log.i(TAG, "Range Start: $startTime")
+        Log.i(TAG, "Range End: $endTime")
+
+        val readRequest =
+            DataReadRequest.Builder()
+                .aggregate(DataType.AGGREGATE_STEP_COUNT_DELTA)
+                .aggregate(DataType.AGGREGATE_DISTANCE_DELTA)
+                .aggregate(DataType.AGGREGATE_CALORIES_EXPENDED)
+                .aggregate(DataType.AGGREGATE_MOVE_MINUTES)
+                .bucketByTime(1, TimeUnit.DAYS)
+                .setTimeRange(startTime.toEpochSecond(), endTime.toEpochSecond(), TimeUnit.SECONDS)
+                .build()
+
+        Fitness.getHistoryClient(context, GoogleSignIn.getAccountForExtension(context, doMissionRepository.fitnessOptions))
+            .readData(readRequest)
+            .addOnSuccessListener { response ->
+                // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
+                for (dataSet in response.buckets.flatMap { it.dataSets }) {
+                    Log.d(TAG, dataSet.toString())
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG,"There was an error reading data from Google Fit", e)
             }
     }
 

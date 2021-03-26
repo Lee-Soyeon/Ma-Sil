@@ -15,10 +15,12 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
 
     private var currentTime = 0L
 
-    private val fitnessOptions: FitnessOptions by lazy {
+    val fitnessOptions: FitnessOptions by lazy {
         FitnessOptions.builder()
-            .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
-            .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
+            .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA)
+            .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
+            .addDataType(DataType.AGGREGATE_CALORIES_EXPENDED)
+            .addDataType(DataType.AGGREGATE_MOVE_MINUTES)
             .build()
     }
 
