@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.fitness.Fitness
+import com.google.android.gms.fitness.data.DataSet
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.Field
 import com.google.android.gms.fitness.request.DataReadRequest
@@ -30,7 +31,9 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.coroutineContext
 
 class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) : ViewModel() {
 
@@ -137,7 +140,7 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
     @RequiresApi(Build.VERSION_CODES.O)
     fun fitSignIn(context: Activity) {
         if (oAuthPermissionsApproved(context)) {
-            readFitnessData(context)
+            //readFitnessData(context)
         } else {
             GoogleSignIn.requestPermissions(
                 context,
@@ -166,9 +169,10 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun readFitnessData(context: Context) {
+    fun readFitnessData(context: Context, time: ZonedDateTime) {
         val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
-        val startTime = endTime.minusSeconds(1)
+        val startTime = time
+
         Log.i(TAG, "Range Start: $startTime")
         Log.i(TAG, "Range End: $endTime")
 
@@ -187,12 +191,23 @@ class DoMissionViewModel(private val doMissionRepository: DoMissionRepository) :
             .addOnSuccessListener { response ->
                 // The aggregate query puts datasets into buckets, so flatten into a single list of datasets
                 for (dataSet in response.buckets.flatMap { it.dataSets }) {
-
+                        dumpDataSet(dataSet)
                 }
             }
             .addOnFailureListener { e ->
                 Log.w(TAG,"There was an error reading data from Google Fit", e)
             }
+    }
+
+    fun dumpDataSet(dataSet: DataSet) {
+        Log.i(TAG, "Data returned for Data type: ${dataSet.dataType.name}")
+        for (dp in dataSet.dataPoints) {
+            Log.i(TAG,"Data point:")
+            Log.i(TAG,"\tType: ${dp.dataType.name}")
+            for (field in dp.dataType.fields) {
+                Log.i(TAG,"\tField: ${field.name.toString()} Value: ${dp.getValue(field)}")
+            }
+        }
     }
 
     private fun oAuthPermissionsApproved(context: Context) =
