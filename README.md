@@ -147,3 +147,70 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
             throw IllegalArgumentException("Unkown ViewModel class")  
         }  
     }
+
+
+
+## Description of Activity/Fragment
+
+### Mission Fragment
+
+<img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="20%"  height="20%">
+<img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="20%"  height="20%">
+
+
+- First, the user -> today_mission collection is read from Firebase and the mission information is saved as a list in the repository.  When all today_mission information is read, the first index value is read, the location -> image collection is read, and the image in firestorage is retrieved using the firestore path information.
+- When the mission fragment is executed, it requests weather information and stores the value in the missionstartdialog. (Uses OpenWeather API - RetrofitClient)
+- If you press the start button, missionstartdialog is displayed, and comments and weather information according to the current time and weather are displayed.
+- Yes, I did. If you click, the currently selected mission information is stored in the intent and sent to domissionactivity, and domissionactivty is executed.
+
+
+### Achievement Fragment
+
+<img  src="https://user-images.githubusercontent.com/7011030/112718859-14cfc280-8f39-11eb-93bf-287d9a92e368.jpg"  width="20%"  height="20%">
+
+- First, get all historty information in the user -> history collection.
+- By using the time in history, google fit's historyclient is called to get the biometric data of the time zone that the mission was performed.
+- By using the location information of history, the google map is zoomed to the location through geocoding of the google map api, and the location where the mission was executed is shown in mapview.
+- When all the history information is read, statistics are obtained by properly classifying the information by time when the today, weekly, monthely, and yearly tabs are clicked.
+- Click on the history card to launch the history activity to view more detailed information.
+
+
+### History Activity
+<img  src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="20%"  height="20%">
+
+
+### Neighborhood Fragment
+
+<img  src="https://user-images.githubusercontent.com/7011030/112718994-c53dc680-8f39-11eb-86a5-ad45861d5aef.jpg"  width="20%"  height="20%">
+
+- First, we get all the information in the share collection. (It should be modified so that it can be imported sequentially by selecting appropriately according to the location information.)
+- When all the information is brought, a layout is dynamically created based on that information and added to the scrollview.
+
+
+### Information Fragment
+
+<img  src="https://user-images.githubusercontent.com/7011030/112719071-1b126e80-8f3a-11eb-9d11-83a08efbf928.jpg"  width="20%"  height="20%">
+
+- Badge feature has not yet been implemented
+
+
+### DoMissionActivity
+
+<img  src="https://user-images.githubusercontent.com/7011030/112719080-2d8ca800-8f3a-11eb-828e-8a95af850eb2.jpg"  width="20%"  height="20%">
+
+- Starts a timer that runs every second in ViewModel.
+- Whenever the timer runs, it calls google fit api historyclient based on the mission start time to get and update mph/mile/kcal information.
+- Clicking the camera icon calls the ACTION_IMAGE_CAPTURE Intent, saves the picture taken in the local storage, stores the location in the Repository, and sends it to the FinishMissionActivity after the mission ends.
+- Clicking the map icon runs mapActivity that shows the current location.
+- Clicking the pause icon stops the timer.
+
+
+### FinishMissionActivity
+
+<img  src="https://user-images.githubusercontent.com/7011030/112719196-0bdff080-8f3b-11eb-9289-d341aa1d0a8c.jpg"  width="20%"  height="20%">
+
+
+### ShareActivity
+
+<img  src="https://user-images.githubusercontent.com/7011030/112719189-01bdf200-8f3b-11eb-95e3-f51a1399f6d9.jpg"  width="20%"  height="20%">
+
