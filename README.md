@@ -154,8 +154,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### Mission Fragment
 
-<img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="20%"  height="20%">
-<img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="20%"  height="20%">
+<img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="20%"  height="20%"> <img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="20%"  height="20%">
 
 
 - First, the user -> today_mission collection is read from Firebase and the mission information is saved as a list in the repository.  When all today_mission information is read, the first index value is read, the location -> image collection is read, and the image in firestorage is retrieved using the firestore path information.
