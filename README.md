@@ -178,6 +178,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 ### History Activity
 <img  src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="20%"  height="20%">
 
+- Place the value from the achievement fragment into the ui properly.
+- Using the location information received from the achievement fragment, the information of the user who completed this mission in the location -> done_users collection is retrieved. And it uses that information to generate statistics and place it in the ui appropriately.
 
 ### Neighborhood Fragment
 
@@ -209,8 +211,13 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 <img  src="https://user-images.githubusercontent.com/7011030/112719196-0bdff080-8f3b-11eb-9289-d341aa1d0a8c.jpg"  width="20%"  height="20%">
 
+- Click the share your route button to go to shareactivity.
+- Clicking the end the mission button saves the location information received from domissionactivity, the difficulty level selected from finishmissionactivity, and the current time in users -> history collection.
 
 ### ShareActivity
 
 <img  src="https://user-images.githubusercontent.com/7011030/112719189-01bdf200-8f3b-11eb-95e3-f51a1399f6d9.jpg"  width="20%"  height="20%">
 
+
+- It updates the list of my photos using the file path of the photos taken from domissionactivity.
+- When you click the upload button, the photo is saved in firestorage and the url, catpion, and location route information are saved in the share collection.
