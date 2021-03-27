@@ -44,6 +44,8 @@ This part explains the technical structure and design of this app.
 
 
 ## Work Flow
+![프레젠테이션1](https://user-images.githubusercontent.com/7011030/112716925-a8e75d00-8f2c-11eb-9ba9-af127ed075de.png)
+
 
 ## Fire Store Structure
 ![firebase](https://user-images.githubusercontent.com/7011030/112715359-0b3b6000-8f23-11eb-9a8f-d45a74cffc36.png)
