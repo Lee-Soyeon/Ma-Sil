@@ -16,19 +16,14 @@ class MyMapViewAsync(private val location: String, private val context: Context)
             location,
             10
         )
+            ?: return
 
-        val splitStr: List<String> = addressList[0].toString().split(",")
-        val address = splitStr[0].substring(
-            splitStr[0].indexOf("\"") + 1,
-            splitStr[0].length - 2
-        )
+        val address = addressList[0].getAddressLine(0)
 
-        val latitude =
-            splitStr[10].substring(splitStr[10].indexOf("=") + 1)
-        val longitude =
-            splitStr[12].substring(splitStr[12].indexOf("=") + 1)
+        val latitude = addressList[0].latitude
+        val longitude = addressList[0].longitude
 
-        val point = LatLng(latitude.toDouble(), longitude.toDouble())
+        val point = LatLng(latitude, longitude)
         val options = MarkerOptions()
         options.title(location)
         options.snippet(address)
@@ -37,5 +32,4 @@ class MyMapViewAsync(private val location: String, private val context: Context)
         googleMap.addMarker(options)
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15f))
     }
-
 }
