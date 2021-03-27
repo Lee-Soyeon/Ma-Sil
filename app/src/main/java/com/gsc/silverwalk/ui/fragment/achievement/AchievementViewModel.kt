@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Timestamp
 import com.gsc.silverwalk.data.Result
 import com.gsc.silverwalk.data.achievement.AchievementRepository
+import java.time.ZoneId
 import java.util.*
 
 class AchievementViewModel(private val achievementRepository: AchievementRepository) : ViewModel() {
@@ -19,10 +20,11 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
     private val _achievementHistoryForm = MutableLiveData<AchievementHistoryForm>()
     val achievementHistoryForm: LiveData<AchievementHistoryForm> = _achievementHistoryForm
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun setAchievementData(index: Int) {
         if(_achievementHistoryForm.value == null) return
 
-        val calendar = Calendar.getInstance()
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone(ZoneId.systemDefault()))
         // Today
         if (index == 0) {
             calendar.add(Calendar.DATE, -1)
@@ -39,9 +41,8 @@ class AchievementViewModel(private val achievementRepository: AchievementReposit
         else {
             calendar.add(Calendar.YEAR, -1)
         }
-        val timestamp = Timestamp(Date(calendar.timeInMillis))
 
-        achievementRepository.statisticsByTimestamp(timestamp, _achievementHistoryForm.value!!) {
+        achievementRepository.statisticsByTimestamp(calendar.time.time, _achievementHistoryForm.value!!) {
             if (it is Result.Success) {
                 _achievementForm.value = it.data
             }

@@ -57,4 +57,6 @@ class DoMissionRepository(private val dataSource: DoMissionDataSource) {
     fun requestGoogleFitApi(context: Context, result: (Result<DoMissionForm>) -> Unit){
         dataSource.requestGoogleFitApi(context, fitnessOptions, startTime, result)
     }
+
+
 }

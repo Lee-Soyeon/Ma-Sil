@@ -22,11 +22,11 @@ class AchievementRepository(val dataSource: AchievementDataSource) {
     }
 
     fun statisticsByTimestamp(
-        timestamp: Timestamp,
+        time: Long,
         achievementHistoryForm: AchievementHistoryForm,
         result: (Result<AchievementForm>) -> Unit
     ) {
-        dataSource.statisticsByTimestamp(timestamp, achievementHistoryForm, result)
+        dataSource.statisticsByTimestamp(time, achievementHistoryForm, result)
     }
 
     fun findAllHistory(context: Context, result: (Result<AchievementHistoryForm>) -> Unit) {

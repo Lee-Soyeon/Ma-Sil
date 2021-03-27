@@ -36,6 +36,7 @@ data class HistoryForm(
     }
 
     fun getTotalAgeCount(): Int {
-        return total50sCount!! + total60sCount!! + total70sCount!!
+        val total = (total50sCount!! + total60sCount!! + total70sCount!!)
+        return if (total == 0) 1 else total
     }
 }

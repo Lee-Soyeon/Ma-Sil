@@ -28,23 +28,23 @@ import kotlin.math.roundToInt
 class AchievementDataSource {
 
     fun statisticsByTimestamp(
-        timestamp: Timestamp,
+        time: Long,
         achievementHistoryForm: AchievementHistoryForm,
         result: (Result<AchievementForm>) -> Unit
     ) {
+        var totalSteps = 0L
+        var totalAveragePace = 0L
+        var totalBurnCalories = 0L
+        var totalHeartRate = 0L
+        var totalDistance = 0.0
+        var totalTime = 0L
+        var count = 0L
+
         val iter = achievementHistoryForm.histories!!.iterator()
         while (iter.hasNext()) {
             val item = iter.next()
 
-            var totalSteps = 0L
-            var totalAveragePace = 0L
-            var totalBurnCalories = 0L
-            var totalHeartRate = 0L
-            var totalDistance = 0.0
-            var totalTime = 0L
-            var count = 0L
-
-            if (item.time!!.seconds > timestamp.seconds) {
+            if (item.time!!.toDate().time > time) {
                 totalSteps += item.steps!!
                 totalAveragePace += item.averagePace!!
                 totalBurnCalories += item.calories!!
@@ -52,21 +52,21 @@ class AchievementDataSource {
                 totalDistance += item.distance!!
                 totalTime += item.walkTime!!
             }
+        }
 
-            count = if (count == 0L) 1 else count
-            result(
-                Result.Success(
-                    AchievementForm(
-                        totalSteps,
-                        totalAveragePace / count,
-                        totalBurnCalories,
-                        totalHeartRate / count,
-                        totalDistance,
-                        totalTime
-                    )
+        count = if (count == 0L) 1 else count
+        result(
+            Result.Success(
+                AchievementForm(
+                    totalSteps,
+                    totalAveragePace / count,
+                    totalBurnCalories,
+                    totalHeartRate / count,
+                    totalDistance,
+                    totalTime
                 )
             )
-        }
+        )
     }
 
     fun findAllHistory(
