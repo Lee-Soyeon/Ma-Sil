@@ -59,18 +59,18 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### *Example)*
 
-
+<br>
 > AchievementForm
-
+<br>
 
     data class AchievementForm(  
         val totalSteps: Long? = null,  
         ...
     )
 
-
+<br>
 > Fragment
-
+<br>
 
     private lateinit var achievementViewModel: AchievementViewModel
     
@@ -78,9 +78,9 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
     	...
     })
 
-
+<br>
 > ViewModel
-
+<br>
 
 	class AchievementViewModel(private val achievementRepository: AchievementRepository) : ViewModel() {
 	
@@ -97,9 +97,9 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 	    ...
     }
 
-
+<br>
 > AchievementRepository
-
+<br>
 
     class AchievementRepository(val dataSource: AchievementDataSource) {
     	...
@@ -109,9 +109,9 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
         ...
     }
 
-
+<br>
 > AchievementHistory
-
+<br>
 
     class AchievementDataSource {
         fun findAllHistory(  
@@ -131,9 +131,9 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 		    }
 	    }
 
-
+<br>
 > AchievementViewModelFactory
-
+<br>
 
     class AchievementViewModelFactory : ViewModelProvider.Factory {  
         @Suppress("UNCHECKED_CAST")  
@@ -160,8 +160,9 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - If you press the start button, missionstartdialog is displayed, and comments and weather information according to the current time and weather are displayed.
 - Yes, I did. If you click, the currently selected mission information is stored in the intent and sent to domissionactivity, and domissionactivty is executed.
 
-
+<br>
 <p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="40%"  height="40%"></p>
+<br>
 <p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="40%"  height="40%"></p>
 
 
@@ -176,6 +177,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - When all the history information is read, statistics are obtained by properly classifying the information by time when the today, weekly, monthely, and yearly tabs are clicked.
 - Click on the history card to launch the history activity to view more detailed information.
 
+<br>
 <p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718859-14cfc280-8f39-11eb-93bf-287d9a92e368.jpg"  width="40%"  height="40%"></p>
 
 ---
@@ -185,6 +187,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - Place the value from the achievement fragment into the ui properly.
 - Using the location information received from the achievement fragment, the information of the user who completed this mission in the location -> done_users collection is retrieved. And it uses that information to generate statistics and place it in the ui appropriately.
 
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="40%"  height="40%"></p>
 
 ---
@@ -194,6 +197,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - First, we get all the information in the share collection. (It should be modified so that it can be imported sequentially by selecting appropriately according to the location information.)
 - When all the information is brought, a layout is dynamically created based on that information and added to the scrollview.
 
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112718994-c53dc680-8f39-11eb-86a5-ad45861d5aef.jpg"  width="40%"  height="40%"></p>
 
 ---
@@ -202,7 +206,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 - Badge feature has not yet been implemented
 
-
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719071-1b126e80-8f3a-11eb-9d11-83a08efbf928.jpg"  width="40%"  height="40%"></p>
 
 
@@ -216,7 +220,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - Clicking the map icon runs mapActivity that shows the current location.
 - Clicking the pause icon stops the timer.
 
-
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719080-2d8ca800-8f3a-11eb-828e-8a95af850eb2.jpg"  width="40%"  height="40%"></p>
 
 ---
@@ -226,6 +230,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - Click the share your route button to go to shareactivity.
 - Clicking the end the mission button saves the location information received from domissionactivity, the difficulty level selected from finishmissionactivity, and the current time in users -> history collection.
 
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719196-0bdff080-8f3b-11eb-9289-d341aa1d0a8c.jpg"  width="40%"  height="40%"></p>
 
 
@@ -236,7 +241,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - It updates the list of my photos using the file path of the photos taken from domissionactivity.
 - When you click the upload button, the photo is saved in firestorage and the url, catpion, and location route information are saved in the share collection.
 
-
+<br>
 <p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719189-01bdf200-8f3b-11eb-95e3-f51a1399f6d9.jpg"  width="40%"  height="40%"></p>
 
 
