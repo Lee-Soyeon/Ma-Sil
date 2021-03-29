@@ -1,10 +1,10 @@
-# 마실 Masil 👵🏻🧓🏻🏃🏻‍♀️🏃🏻
+# 마실 Ma-sil 👵🏻🧓🏻🏃🏻‍♀️🏃🏻
 
 ## Promoting walking services to promote physical and mental health and to to interact with people through walking missions.
 
 ### Overview
 
-#### Duration : 2020.12.? ~ 2021.03.31
+#### Duration : 2020.12.28 ~ 2021.03.31
 
 #### Team member 💁🏻‍♀️💁🏻
 * **Designer** : 이현승(Hyunseung Lee), 최지원(Jiwon Choi)
