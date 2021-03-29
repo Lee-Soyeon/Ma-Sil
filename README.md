@@ -37,9 +37,9 @@
     * 노인들의 생활 만족도에 통계적으로 유의미한 영향을 미치는 여가 활동은 신체적 여가 활동 유형으로 나타남
     * TV 앞에서 무료하게 일상을 보내는 대신 여가 활동을 통해 노인의 삶을 질적으로 향상시킬 수 있음
 
+--- 
+
 # Development Part
-
-
 This part explains the technical structure and design of this app.
 
 
