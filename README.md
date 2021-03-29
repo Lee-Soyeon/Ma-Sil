@@ -98,6 +98,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
     }
 
 <br>
+
 > AchievementRepository
 
     class AchievementRepository(val dataSource: AchievementDataSource) {
@@ -109,6 +110,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
     }
 
 <br>
+
 > AchievementHistory
 
     class AchievementDataSource {
@@ -130,6 +132,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 	    }
 
 <br>
+
 > AchievementViewModelFactory
 
     class AchievementViewModelFactory : ViewModelProvider.Factory {  
