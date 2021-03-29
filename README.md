@@ -2,15 +2,15 @@
 
 ## Promoting walking services to promote physical and mental health and to to interact with people through walking missions.
 
-### Overview
+### Overview 
 
-#### Duration : 2020.12.28 ~ 2021.03.31
+#### Duration : 2020.12.28 ~ 2021.03.31 ⏰
 
 #### Team member 💁🏻‍♀️💁🏻
 * **Designer** : 이현승(Hyunseung Lee), 최지원(Jiwon Choi)
 * **Developer** : 이소연(Soyeon Lee), 최다함(Daham Choi)
 
-#### Technology of Use
+#### Technology of Use 💻
 
 * Android
 * Kotlin
@@ -19,7 +19,7 @@
 
 ---
 
-### Key Features
+### Key Features 💡
 
 * Senior-oriented UX/UI
 * Personalized walking routes recommendation system for senior citizens using their health data and real-time location
