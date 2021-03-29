@@ -21,8 +21,8 @@
 
 ### Key Features
 
-* Elderly friendly UX/UI
-* Personalized walk recommendation service for senior citizens using personal health data and real-time location
+* Senior-oriented UX/UI
+* Personalized walking routes recommendation system for senior citizens using their health data and real-time location
 * Local community service through walking route sharing
 
 --- 
