@@ -42,10 +42,12 @@
 # Development Part
 This part explains the technical structure and design of this app.
 
+---
 
 ## Work Flow
 ![프레젠테이션1](https://user-images.githubusercontent.com/7011030/112716925-a8e75d00-8f2c-11eb-9ba9-af127ed075de.png)
 
+---
 
 ## Fire Store Structure
 ![firebase](https://user-images.githubusercontent.com/7011030/112715359-0b3b6000-8f23-11eb-9a8f-d45a74cffc36.png)
@@ -59,6 +61,7 @@ This part explains the technical structure and design of this app.
 
 location contains information about locations that can be selected as a walking spot.  The type contains information on the type of mission such as walk, fast walk, drink coffee, etc., and the name of the location that can be connected to the link.  share contains walking sharing data that can be checked in the neighborhood tab.  User's personal information (age, gender...), user's walking record, and today's mission list are included in user. By using the time(Timestamp) and time_second of history, a query is requested to the fit api to load biometric data in real time.
 
+---
 
 ## Default App Architecture Design Overview
 
