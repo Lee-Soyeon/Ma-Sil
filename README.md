@@ -23,7 +23,7 @@
 
 * Senior-oriented UX/UI
 * Personalized walking routes recommendation system for senior citizens using their health data and real-time location
-* Local community service through walking route sharing
+* Sharing routes with nearby users
 
 --- 
 
