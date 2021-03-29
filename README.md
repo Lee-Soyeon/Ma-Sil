@@ -66,8 +66,9 @@ location contains information about locations that can be selected as a walking 
 The overall structure of this app is taken from the login activity that exists in the android template. Based on the template, the structure was modified by using lambda expressions to request data from firebase and update live data.  
 In addition, there were unique values (firestorageurl, google fit value) that had to be found by referring to the data in Firebase, which was unavoidably implemented in a double callback method in the datasource, and then compared the size of the document to determine the end point. did.
 
+---
 
- ### *Example)*
+### *Example)*
 
 
 > AchievementForm
@@ -148,7 +149,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
         }  
     }
 
-
+---
 
 ## Description of Activity/Fragment
 
@@ -162,6 +163,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - If you press the start button, missionstartdialog is displayed, and comments and weather information according to the current time and weather are displayed.
 - Yes, I did. If you click, the currently selected mission information is stored in the intent and sent to domissionactivity, and domissionactivty is executed.
 
+---
 
 ### Achievement Fragment
 
@@ -173,12 +175,15 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - When all the history information is read, statistics are obtained by properly classifying the information by time when the today, weekly, monthely, and yearly tabs are clicked.
 - Click on the history card to launch the history activity to view more detailed information.
 
+---
 
 ### History Activity
 <img  src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="40%"  height="40%">
 
 - Place the value from the achievement fragment into the ui properly.
 - Using the location information received from the achievement fragment, the information of the user who completed this mission in the location -> done_users collection is retrieved. And it uses that information to generate statistics and place it in the ui appropriately.
+
+---
 
 ### Neighborhood Fragment
 
@@ -187,6 +192,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - First, we get all the information in the share collection. (It should be modified so that it can be imported sequentially by selecting appropriately according to the location information.)
 - When all the information is brought, a layout is dynamically created based on that information and added to the scrollview.
 
+---
 
 ### Information Fragment
 
@@ -194,6 +200,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 - Badge feature has not yet been implemented
 
+---
 
 ### DoMissionActivity
 
@@ -205,6 +212,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 - Clicking the map icon runs mapActivity that shows the current location.
 - Clicking the pause icon stops the timer.
 
+---
 
 ### FinishMissionActivity
 
@@ -212,6 +220,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 - Click the share your route button to go to shareactivity.
 - Clicking the end the mission button saves the location information received from domissionactivity, the difficulty level selected from finishmissionactivity, and the current time in users -> history collection.
+
+---
 
 ### ShareActivity
 
