@@ -35,7 +35,7 @@ This part explains the technical structure and design of this app.
 
 ---
 
-## Fire Store Structure
+## FireStore Structure
 ![firebase](https://user-images.githubusercontent.com/7011030/112715359-0b3b6000-8f23-11eb-9a8f-d45a74cffc36.png)
 
 
@@ -60,8 +60,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 ### *Example)*
 
 <br>
+
 > AchievementForm
-<br>
 
     data class AchievementForm(  
         val totalSteps: Long? = null,  
@@ -69,8 +69,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
     )
 
 <br>
+
 > Fragment
-<br>
 
     private lateinit var achievementViewModel: AchievementViewModel
     
@@ -79,8 +79,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
     })
 
 <br>
+
 > ViewModel
-<br>
 
 	class AchievementViewModel(private val achievementRepository: AchievementRepository) : ViewModel() {
 	
@@ -99,7 +99,6 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 <br>
 > AchievementRepository
-<br>
 
     class AchievementRepository(val dataSource: AchievementDataSource) {
     	...
@@ -111,7 +110,6 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 <br>
 > AchievementHistory
-<br>
 
     class AchievementDataSource {
         fun findAllHistory(  
@@ -133,7 +131,6 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 <br>
 > AchievementViewModelFactory
-<br>
 
     class AchievementViewModelFactory : ViewModelProvider.Factory {  
         @Suppress("UNCHECKED_CAST")  
