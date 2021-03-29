@@ -144,7 +144,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### Mission Fragment
 
-<img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="40%"  height="40%"> <img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="40%"  height="40%">
+<p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718639-b229f700-8f37-11eb-8823-4c0d9b44e905.jpg"  width="40%"  height="40%"></p>
+<p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718640-b35b2400-8f37-11eb-8a20-d1469ea6b9f2.jpg"  width="40%"  height="40%"></p>
 
 
 - First, the user -> today_mission collection is read from Firebase and the mission information is saved as a list in the repository.  When all today_mission information is read, the first index value is read, the location -> image collection is read, and the image in firestorage is retrieved using the firestore path information.
@@ -156,7 +157,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### Achievement Fragment
 
-<img  src="https://user-images.githubusercontent.com/7011030/112718859-14cfc280-8f39-11eb-93bf-287d9a92e368.jpg"  width="40%"  height="40%">
+<p align="center"><img  src="https://user-images.githubusercontent.com/7011030/112718859-14cfc280-8f39-11eb-93bf-287d9a92e368.jpg"  width="40%"  height="40%"></p>
 
 - First, get all historty information in the user -> history collection.
 - By using the time in history, google fit's historyclient is called to get the biometric data of the time zone that the mission was performed.
@@ -167,7 +168,8 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 ---
 
 ### History Activity
-<img  src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="40%"  height="40%">
+
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719245-57929a00-8f3b-11eb-9425-9b1dad546134.jpg"  width="40%"  height="40%"></p>
 
 - Place the value from the achievement fragment into the ui properly.
 - Using the location information received from the achievement fragment, the information of the user who completed this mission in the location -> done_users collection is retrieved. And it uses that information to generate statistics and place it in the ui appropriately.
@@ -176,7 +178,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### Neighborhood Fragment
 
-<img  src="https://user-images.githubusercontent.com/7011030/112718994-c53dc680-8f39-11eb-86a5-ad45861d5aef.jpg"  width="40%"  height="40%">
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112718994-c53dc680-8f39-11eb-86a5-ad45861d5aef.jpg"  width="40%"  height="40%"></p>
 
 - First, we get all the information in the share collection. (It should be modified so that it can be imported sequentially by selecting appropriately according to the location information.)
 - When all the information is brought, a layout is dynamically created based on that information and added to the scrollview.
@@ -185,7 +187,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### Information Fragment
 
-<img  src="https://user-images.githubusercontent.com/7011030/112719071-1b126e80-8f3a-11eb-9d11-83a08efbf928.jpg"  width="40%"  height="40%">
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719071-1b126e80-8f3a-11eb-9d11-83a08efbf928.jpg"  width="40%"  height="40%"></p>
 
 - Badge feature has not yet been implemented
 
@@ -193,7 +195,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### DoMissionActivity
 
-<img  src="https://user-images.githubusercontent.com/7011030/112719080-2d8ca800-8f3a-11eb-828e-8a95af850eb2.jpg"  width="40%"  height="40%">
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719080-2d8ca800-8f3a-11eb-828e-8a95af850eb2.jpg"  width="40%"  height="40%"></p>
 
 - Starts a timer that runs every second in ViewModel.
 - Whenever the timer runs, it calls google fit api historyclient based on the mission start time to get and update mph/mile/kcal information.
@@ -205,7 +207,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### FinishMissionActivity
 
-<img  src="https://user-images.githubusercontent.com/7011030/112719196-0bdff080-8f3b-11eb-9289-d341aa1d0a8c.jpg"  width="40%"  height="40%">
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719196-0bdff080-8f3b-11eb-9289-d341aa1d0a8c.jpg"  width="40%"  height="40%"></p>
 
 - Click the share your route button to go to shareactivity.
 - Clicking the end the mission button saves the location information received from domissionactivity, the difficulty level selected from finishmissionactivity, and the current time in users -> history collection.
@@ -214,7 +216,7 @@ In addition, there were unique values (firestorageurl, google fit value) that ha
 
 ### ShareActivity
 
-<img  src="https://user-images.githubusercontent.com/7011030/112719189-01bdf200-8f3b-11eb-95e3-f51a1399f6d9.jpg"  width="40%"  height="40%">
+<p align="center"><img src="https://user-images.githubusercontent.com/7011030/112719189-01bdf200-8f3b-11eb-95e3-f51a1399f6d9.jpg"  width="40%"  height="40%"></p>
 
 
 - It updates the list of my photos using the file path of the photos taken from domissionactivity.
