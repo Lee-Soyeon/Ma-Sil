@@ -45,7 +45,7 @@ This part explains the technical structure and design of this app.
  location contains information about locations that can be selected as a walking spot.  The type contains information on the type of mission such as walk, fast walk, drink coffee, etc., and the name of the location that can be connected to the link.
 
 
-location contains information about locations that can be selected as a walking spot.  The type contains information on the type of mission such as walk, fast walk, drink coffee, etc., and the name of the location that can be connected to the link.  share contains walking sharing data that can be checked in the neighborhood tab.  User's personal information (age, gender...), user's walking record, and today's mission list are included in user. By using the time(Timestamp) and time_second of history, a query is requested to the fit api to load biometric data in real time.
+share contains walking sharing data that can be checked in the neighborhood tab.  User's personal information (age, gender...), user's walking record, and today's mission list are included in user. By using the time(Timestamp) and time_second of history, a query is requested to the fit api to load biometric data in real time.
 
 ---
 
