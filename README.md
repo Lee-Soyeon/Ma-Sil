@@ -27,7 +27,9 @@
 
 --- 
 # Demo Video
-https://drive.google.com/file/d/1cv48DmsoummSNL5a_JXCPG06L-ghlxuu/view?usp=sharing
+<a href="https://drive.google.com/file/d/1cv48DmsoummSNL5a_JXCPG06L-ghlxuu/view?usp=sharing">
+<img width="655" alt="스크린샷 2021-11-17 오후 4 08 37" src="https://user-images.githubusercontent.com/39182235/142150885-b51fc987-a265-423f-b8c8-b44c9d65c205.png">
+</a>
 
 # Development Part
 This part explains the technical structure and design of this app.
